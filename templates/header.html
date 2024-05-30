@@ -1,0 +1,163 @@
+{% load static %}
+
+<style>
+    
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  z-index: 999;
+}
+
+.dropdown-menu.show {
+  display: flex !important;
+}
+
+.dropdown-menu li .dropdown-item {
+  color: whitesmoke;
+  font-size: 1em;
+  padding: 0.5em 1em;
+}
+
+.dropdown-menu {
+  border: none;
+  border-radius: 5px;
+  padding: 0.7em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #6e5c5c;
+}
+
+@media only screen and (min-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+    display: flex !important;
+  }
+  .dropdown-menu.show {
+    display: flex !important;
+  }
+}
+
+.navbar-dark .navbar-nav a.nav-link {
+  color: #010101;
+  font-size: 1.1em;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #ffffff; /* Font color when link is hovered over */
+  background-color: #bbb6b7; /* Background color when link is hovered over */
+  border-radius: 5px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+@media only screen and (max-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+    max-height: 350px;
+    overflow-y: scroll;
+  }
+}
+
+.navbar-brand img {
+  max-width: 100px; /* Adjust width as needed */
+  height: auto;
+}
+
+.navbar-brand {
+  margin-right: 80px; /* Adjust margin as needed */
+  
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #000000; /* Color of the toggle button */
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3e%3cpath stroke='rgba(194, 123, 127, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+</style>
+<!-- ========== Header start ========== -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #f7f7f7;">
+    <div class="container"> <!-- Center contents within container -->
+      <a class="navbar-brand"href="{% url 'home' %}">
+        <img src="{% static 'assets/images/logo3.png' %}" alt="Your Logo"/>
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-center me-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item dropdown mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ghostwriting
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul>
+                            <li><a class="dropdown-item" href="{% url 'biography' %}">Biography Writing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'memoir' %}">Memoir Writing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'manuscript' %}">Manuscript Writing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'comic-book' %}">Comic Book Writing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'childrens-book' %}">Children's Book Writing</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="dropdown-item" href="{% url 'non-fiction' %}">Non-Fiction Writing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'screen-writing' %}">Screenwriting Services</a></li>
+                            <li><a class="dropdown-item" href="{% url 'horror-writing' %}">Horror Writing Services</a></li>
+                            <li><a class="dropdown-item" href="{% url 'audiobook' %}">Audiobook Services</a></li>
+                            <li><a class="dropdown-item" href="{% url 'book-trailer' %}">Book Trailer Services</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'editing' %}">Editing</a>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'publishing' %}">Publishing</a>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'design' %}">Design</a>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'marketing' %}">Marketing</a>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                </li>
+                <li class="nav-item mx-2"> <!-- Add margin on both sides -->
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<script>
+$(document).ready(function(){
+  $('.navbar-nav .nav-link').click(function(){
+    $('.navbar-nav .nav-link').removeClass('active');
+    $(this).addClass('active');
+    
+    // Collapse the navbar if it's currently expanded
+    var navbarCollapse = $('.navbar-collapse');
+    if (navbarCollapse.hasClass('show')) {
+      navbarCollapse.collapse('hide');
+    }
+  });
+
+  // Stop event propagation for click events on dropdown menu items
+  $('.dropdown-menu').click(function(event){
+    event.stopPropagation();
+  });
+});
+
+
+
+</script>
+<!-- ========== Header end ========== -->

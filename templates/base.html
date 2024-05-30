@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i-RiseUp Publishing</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="icon" href="{% static 'assets/images/logo1.png' %}"/>
+    <!-- Headings font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet"/>
+    <!-- Body font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+          rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"/>
+    <!--====== IcoFont css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/icofont.min.css' %}"/>
+    <!--====== Glightbox css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/glightbox.css' %}"/>
+    <!--====== swiper css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/swiper.min.css' %}"/>
+    <!--====== Margins & Paddings css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/margins-paddings.css' %}"/>
+    <!--====== Aos & Paddings css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}"/>
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+    <!--====== Custom variants ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/colors/oldRose.css' %}" id="color-switch"/>
+    <!-- Default color version -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" id="font-switch">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Playfair+Display&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+mbCOyZ3LLOvD35P8rwoRSr12Pm1z0BPa8g3+IY" crossorigin="anonymous">
+</head>
+<body>
+
+{% block content %}{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--====== jquery js ======-->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<!--====== Bootstrap js ======-->
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+<!--====== One page nav ======-->
+<script src="{% static 'assets/js/onepageNav.js' %}"></script>
+<!--====== Ajaxchimp js ======-->
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+<!--====== Glightbox js ======-->
+<script src="{% static 'assets/js/glightbox.js' %}"></script>
+<!--====== jquery Swiper js ======-->
+<script src="{% static 'assets/js/swiper.min.js' %}"></script>
+<!--====== Appear js ======-->
+<script src="{% static 'assets/js/jquery.appear.min.js' %}"></script>
+<!--====== Odometer js ======-->
+<script src="{% static 'assets/js/odometer.min.js' %}"></script>
+<!--====== Aos js ======-->
+<script src="{% static 'assets/js/aos.js' %}"></script>
+<!--====== Custom js ======-->
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha384-s0VLxMmKjO2C/0G/ijlxj+i63reZv4L1aCfZXLOPOFxg8jMR+gV0FzKjwaJxSMEy" crossorigin="anonymous"></script>
+
+</body>
+
+<style>
+    /* You may need to adjust z-index and other properties if the second button overlaps with other content */
+.rectangle {
+    border-radius: 10px;
+    padding: 20px; /* Reduced padding for smaller screens */
+    max-width: 100%; /* Adjusted max-width for smaller screens */
+    margin: 20px auto; /* Centered the rectangle */
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); /* Shadow effect with all around */
+    max-height: none; /* Removed max-height for responsiveness */
+}
+
+.rectangle form input[type="text"],
+.rectangle form input[type="email"] {
+    font-size: 16px; /* Reduced font size for smaller screens */
+}
+
+.rectangle form .btn {
+    font-size: 16px; /* Reduced button font size for smaller screens */
+}
+
+@media (min-width: 768px) {
+    .rectangle {
+        padding: 30px; /* Increased padding for larger screens */
+        max-width: 900px; /* Restored max-width for larger screens */
+    }
+
+    .rectangle form input[type="text"],
+    .rectangle form input[type="email"] {
+        font-size: 20px; /* Restored font size for larger screens */
+    }
+
+    .rectangle form .btn {
+        font-size: 20px; /* Restored button font size for larger screens */
+    }
+}
+
+.floatbutton.active {
+    right: 0;
+    z-index: 9;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+.floatbutton {
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+    position: fixed;
+    right: -371px;
+    top: 15%;
+    font-size: 0;
+    width: 405px;
+    z-index: 999;
+}
+
+
+
+.floatbutton .clickbutton {
+    width: 50px;
+    z-index: 999;
+    height: 200px;
+    cursor: pointer;
+    box-shadow: -20px 7px 18px -7px rgba(87, 184, 151, .09);
+    border-radius: 3px 0 0 3px;
+    border-radius: 30px 0 0 30px;
+    display: inline-block;
+    padding-top: 0;
+    vertical-align: top;
+    margin-top: 125px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    background-color: #c2c2c2;
+    box-shadow: 0 0 40px #00000026;
+    -webkit-box-shadow: 0 0 40px #00000026;
+    -ms-box-shadow: 0 0 40px #00000026;
+    -o-box-shadow: 0 0 40px #00000026;
+}
+
+
+.floatbutton .clickbutton .crossplus:before {
+    content: "";
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    right: 0;
+    background: #c2c2c2;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+.floatbutton .clickbutton .crossplus:after {
+    content: "";
+    display: none;
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    right: 0;
+    background: #c2c2c2;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/* LETS START HERE EDIT*/
+
+.floatbutton .clickbutton .crossplus {
+    position: absolute;
+    display: block;
+    transform: rotate(-90deg);
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+    left: -28px;
+    white-space: pre;
+    bottom: 87px;
+}
+/* LETS START HERE EDIT end*/
+
+
+.floatbutton .clickbutton .crossplus.rotate {
+    transform: rotate(45deg);
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+.floatbutton .clickbutton .crossplus i {
+    font-size: 10px;
+    color: #fff;
+    margin: 17px 0 0 15px;
+}
+
+/* Lets get started button start */
+.floatbutton .banner-form {
+    background: #fff;
+    padding: 10px;
+    position: absolute;
+    z-index: 9999999!important;
+    border-radius: 5px;
+    margin: 0;
+    width: 350px;
+    display: inline-block;
+    box-shadow: 0 0 30px #0000001f;
+}
+/* Lets get started button end */
+
+.floatbutton .ban-form input {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    padding: 10px 15px;
+    color: gray;
+    font-size: 14px;
+    border-radius: 3px;
+    height: 50px;
+    font-weight: 400;
+    outline: 0!important;
+    margin: 0 0 15px 0;
+}
+.floatbutton .banner-form .intl-tel-input {
+    width: 100%;
+}
+.floatbutton .banner-form h3 {
+    color: #141315;
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.floatbutton .banner-form h3 strong {
+    font: 24px/24px Poppins, sans-serif;
+    font-weight: 600;
+}
+.floatbutton .ban-form input[type=submit] {
+    color: #fff;
+    font-weight: 600;
+    border-radius: 3px;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 20px 0 0;
+    border: transparent;
+    cursor: pointer;
+    background-color: #7f7f7f;
+    z-index: 9999;
+}
+
+.floatbutton .ban-form input[type=submit]:hover {
+    background-color: #000000; /* Change the background color on hover */
+}
+
+
+.floatbutton .ban-form textarea {
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    padding: 10px 15px;
+    color: rgb(5, 5, 5);
+    font-size: 14px;
+    border-radius: 3px;
+    font-weight: 400;
+    height: 120px;
+    outline: 0!important;
+    margin: 15px 0 0 0;
+    resize: none;
+}
+.floatbutton .btns_wrap {
+    position: fixed;
+    right: -6px;
+}
+.floatbutton .btns_wrap a:hover {
+    text-decoration: none!important;
+    right: 0;
+}
+.floatbutton .btns_wrap .call_wrap {
+    width: 270px;
+    border: 1px solid #fff;
+    background-color: #bebebe;
+    position: absolute;
+    right: -225px;
+    top: 63px;
+    border-radius: 3px 0 0 3px;
+    overflow: hidden;
+    box-shadow: 0 0 40px #00000026!important;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 9999;
+    border-radius: 30px 0 0 30px;
+}
+.floatbutton .btns_wrap .call_wrap span {
+    color: #fff;
+    font-size: 20px;
+    vertical-align: middle;
+    padding: 15px 20px 15px 15px;
+}
+
+/*chat now edit*/
+
+.floatbutton .btns_wrap .chat_wrap {
+    display: block;
+    position: absolute;
+    right: -225px;
+    width: 270px;
+    background-color:#c7c7c7;
+    top: 0;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #fff;
+    box-shadow: 0 0 40px #00000026!important;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    border-radius: 30px 0 0 30px;
+    z-index: 9999;
+}
+/*chat now edit end*/
+
+.floatbutton .btns_wrap .call_wrap span.icoo, .floatbutton .btns_wrap .chat_wrap span.icoo {
+    color: #000;
+    font-size: 18px;
+    padding: 15px 20px;
+    border-right: 1px solid #0e0e0e;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 10px 0 0 10px;
+}
+.floatbutton .btns_wrap .chat_wrap span {
+    color: #fff;
+    font-size: 20px;
+    vertical-align: middle;
+    padding: 15px 30px 15px 15px;
+}
+.floatbutton .ban-form .fldset.inpchecbx label {
+    display: inline-block;
+    margin: 0;
+    line-height: 1.4;
+    color: #676767;
+    font-size: 13px;
+}
+.floatbutton .ban-form .fldset.inpchecbx input {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+.floatbutton .fldset.inpchecbx {
+    margin: 10px 0 0 0;
+}
+.floatbutton .fldset p {
+    font-size: 13px;
+    color: #676767;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+.floatbutton .fldset p a {
+    display: block;
+    padding: 5px 0 0 0;
+    color: #141315;
+    font-weight: 500;
+    font-size: 14px;
+}
+.floatbutton .main-services-banner-sec .ban-form .fldset textarea {
+    height: 60px;
+}
+.floatbutton .main-services-banner-sec .ban-form input {
+    height: 60px;
+}
+.floatbutton .intl-tel-input .country-list .country {
+    font-size: 14px;
+}
+
+.banner-form h3 {
+    color: #141315;
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.icoo {
+    display: inline-block;
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.chat_icon {
+    background-image: url("{% static 'assets/images/chatlogo10.png' %}");
+}
+
+.phone_icon {
+    background-image: url("{% static 'assets/images/2.png' %}");
+}
+
+#iframeContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 320px; /* Set maximum width for better readability */
+    height: 80%; /* Adjust height for smaller screens */
+    max-height: 400px; /* Set maximum height */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none; /* Initially hide the iframe */
+    z-index: 10000;
+}
+
+
+        #showIframeButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 30px; /* Adjust padding to change height */
+    background-color: #c2c2c2;
+    color: black;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    z-index: 0; /* Ensure button is above iframe */
+    height: auto; /* Reset height to auto */
+}
+
+
+</style>
+
+
+<body>
+<div class="floatbutton">
+    <div class="btns_wrap">
+        <a href="#" class="chat_wrap" title="Live Chat" onclick="openChatBox(event)">
+            <span class="icoo chat_icon"></span>
+            <span>Chat With Us</span>
+        </a>
+        <a href="tel:+1 614 259 8933" class="call_wrap">
+            <span class="icoo phone_icon"></span>
+            <span>+1 614 259 8933</span>
+        </a>
+    </div>    
+    <div class="clickbutton" onclick="toggleForm()">
+        <div class="crossplus"> START HERE</div>
+    </div>        
+    <div class="banner-form">
+        <h3 class="px-3 py-2">Sign Up Now &amp; <br><strong>Let’s Get Started</strong></h3>
+        <div class="banform">
+            <div class="container">
+                <div class="row">
+                    <div class="ban-form">
+                        <form class="addsender" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="signup" value="hidden_text">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="fldset">
+                                        <input name="name" id="name" type="text" placeholder="Enter your name *" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="fldset">
+                                        <input type="email" name="email" id="email" placeholder="Enter email here *" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="fldset">
+                                        <input name="phone" id="phone" type="tel" placeholder="Phone Number *" minlength="9" maxlength="11" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="fldset">
+                                        <textarea name="message" id="message" rows="7" placeholder="Talk About Your Project"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="fldset">
+                                        <input type="submit" value="submit" class="addsenderbtn">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<button class="button-container" id="showIframeButton">Chat</button>
+
+   
+<div id="iframeContainer" class="chatbox-container" style="display: none;">
+    <!-- Close button -->
+    <button id="closeButton" class="close-button">Close</button>
+    <!-- Chat iframe -->
+    <iframe src="https://www.chatbase.co/chatbot-iframe/38LUjIhuRzNAhpBQH5Jxg" title="i-Box Publishing" frameborder="0" height="400px" width="300px"></iframe>
+</div>
+
+
+<script>
+
+function toggleForm() {
+    var floatButton = document.querySelector(".floatbutton");
+    floatButton.classList.toggle("active");
+}
+
+ // Function to open the modal
+ function openModal() {
+        $('#exampleModal1').modal('show');  // Replace 'exampleModal1' with the ID of your modal
+    }
+
+
+
+// Function to toggle the display of the iframe and update the button's visibility
+// Function to toggle the display of the iframe and update the button's visibility
+function toggleIframeVisibility() {
+    var iframeContainer = document.getElementById('iframeContainer');
+    var chatButton = document.getElementById('showIframeButton');
+
+    if (iframeContainer.style.display === 'none') {
+        iframeContainer.style.display = 'block';
+        chatButton.style.display = 'none'; // Hide the chat button when the iframe is displayed
+    } else {
+        iframeContainer.style.display = 'none';
+        chatButton.style.display = 'block'; // Show the chat button when the iframe is hidden
+    }
+}
+
+// Function to close the iframe
+function closeIframe() {
+    var iframeContainer = document.getElementById('iframeContainer');
+    iframeContainer.style.display = 'none';
+    var chatButton = document.getElementById('showIframeButton');
+    chatButton.style.display = 'block'; // Show the chat button when the iframe is closed
+}
+
+// Add event listener to the chat button to toggle iframe visibility
+var showIframeButton = document.getElementById('showIframeButton');
+showIframeButton.addEventListener('click', toggleIframeVisibility);
+
+// Add event listener to the close button within the iframe to close the iframe
+var closeButton = document.getElementById('closeButton');
+closeButton.addEventListener('click', closeIframe);
+
+// Immediately toggle visibility on load to ensure correct behavior from the start
+toggleIframeVisibility();
+
+
+
+
+// Function to open the chat box
+function openChatBox(event) {
+    // Prevent the default behavior of the button (which is to scroll to the top)
+    event.preventDefault();
+
+    var iframeContainer = document.getElementById('iframeContainer');
+    iframeContainer.style.display = 'block';
+    var chatButton = document.getElementById('showIframeButton');
+    chatButton.style.display = 'none'; // Hide the chat button when the iframe is displayed
+}
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="section-wrapper">
+    <!-- ========== Preloader start ========== -->
+    <div id="preLoader"></div>
+    <!-- ========== Preloader end ========== -->
+
+    {% include 'header.html' %}
+
+    <!-- ========== Page hero start ========== -->
+    <section
+            id="all-blogs"
+            class="all-blogs hero__padding overflow-hidden position-relative bg-one"
+    >
+        <div class="container">
+            <div class="row">
+                <div class="blog-title">
+                    <h1
+                            class="display-3"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="600"
+                    >
+                        Terms and Condition
+                    </h1>
+                    <ul>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="650"
+                        >
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="700"
+                        >
+                            <i class="icofont-rounded-right"></i>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="750"
+                        >
+                            Terms&Condition
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== Page hero end ========== -->
+    <!-- ========== Content start ========== -->
+    <section class="section-padding pages">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="pages__content">
+                        <p>
+                            Using this Website and/or our services means you accept the following terms and conditions:
+                            <br>
+                            <br>
+
+                            If you disagree with these terms and conditions, please refrain from using this Website and
+                            our services.
+                            Those not of legal consenting age in their district are prohibited from using this Website
+                            or our services.
+                            You confirm that you are of legal age to buy any of our products or services offered on this
+                            Website.
+
+                            By placing an order and/or payment, you confirm understanding and agreement to these terms
+                            and conditions,
+                            forming the complete agreement between you and I Rise Up Publishing.
+                        </p>
+                        <blockquote>
+                            <p>
+                                Definitions: <br>
+                                - "Website" refers to content on I Rise Up Publishing website pages. <br>
+                                - "Customer," "You," "Yours" refer to you or anyone placing an order with I Rise Up
+                                Publishing on your behalf. <br>
+                                - "Company," "We," "Our" refer to I Rise Up Publishing, a company abiding by state laws.
+                                <br>
+                                - "Product or Services" refers to all services and products provided by I Rise Up
+                                Publishing as per your order. <br>
+                                - "Order" means a purchase made by you for our services or products, confirmed through
+                                various payment methods. <br>
+                            </p>
+                        </blockquote>
+                        <p>
+                            Our Services: <br>
+                            Ordering and/or payment implies purchasing the product for personal use. All products are
+                            created by freelance writers who grant all rights and ownership to the Company.
+                            Products are non-refundable and provided without any warranties, expressed or implied.
+                            Review these Terms and Conditions before any order/payment submission. <br>
+                            <br>
+                            Refund Policy: <br>
+                            Understand our refund policy's privileges and limitations as per the Professional
+                            Ghostwriter Policy.
+                            Refunds are issued under specific conditions: <br>
+                            <br>
+
+                            Change of Mind: <br>
+                            Entitled to a 50% refund before work commencement.
+                            Post-order placement changes must be requested within one hour to avoid a 50% processing
+                            fee.<br>
+                            <br>
+
+                            Incompetent Delivery: <br>
+                            Claims are valid if the product fails to meet documented requirements. We offer unlimited
+                            revisions for satisfaction, with possible free future services of equal value if unresolved.
+                            Refunds, based on mutual agreement, are processed for significantly off-mark deliveries.
+                            <br>
+                            <br>
+
+                            Late Delivery: <br>
+                            Commitment to timely delivery; however, delays proven to be our fault,
+                            after three contact attempts, will lead to a refund. <br>
+                            <br>
+
+                            Refund Time Frame: <br>
+                            Claims must be made within 30 days of delivery. Late claims are not accepted.<br>
+                            <br>
+
+                            Non-Refundable Cases: <br>
+                            Refunds or partial refunds are not provided for minor technical errors (grammar, typing,
+                            etc.), delays due to the client’s end, or quality dissatisfaction.
+
+                        </p>
+                        <blockquote>
+                            Please contact us at info@iriseuppublishing.com for any concerns about these policies.
+                            We're committed to ensuring a satisfactory and clear understanding of our terms and your
+                            rights.
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== Content end ========== -->
+    {% include 'footer.html' %}
+</div>
+
+{% endblock %}
+
+

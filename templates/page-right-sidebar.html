@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="section-wrapper">
+    <!-- ========== Preloader start ========== -->
+    <div id="preLoader"></div>
+    <!-- ========== Preloader end ========== -->
+
+    {% include 'header.html' %}
+
+    <!-- ========== Page hero start ========== -->
+    <section
+            id="all-blogs"
+            class="all-blogs hero__padding overflow-hidden position-relative bg-one"
+    >
+        <div class="container">
+            <div class="row">
+                <div class="blog-title">
+                    <h1
+                            class="display-3"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="600"
+                    >
+                        Page Right Sidebar
+                    </h1>
+                    <ul>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="650"
+                        >
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="700"
+                        >
+                            <i class="icofont-rounded-right"></i>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="750"
+                        >
+                            Page Right Sidebar
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== Page hero end ========== -->
+    <!-- ========== Content start ========== -->
+    <section class="section-padding pages">
+        <div class="container">
+            <div class="row">
+                <div
+                        class="col-lg-8"
+                        data-aos="fade-left"
+                        data-aos-duration="1000"
+                        data-aos-delay="200"
+                >
+                    <div class="pages__content">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
+                            iste a nam molestiae dicta, eveniet esse cumque, non labore
+                            quae aspernatur quasi deserunt nobis explicabo, illo harum
+                            placeat. Deleniti sint commodi laboriosam eum dicta aliquid
+                            voluptas consectetur amet earum cupiditate?
+                        </p>
+                        <blockquote>
+                            <p>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Voluptas molestias illo quos excepturi doloribus! Eveniet
+                                quaerat libero, alias vero omnis laboriosam sapiente
+                                suscipit saepe. Iusto dolor odit esse dolore debitis.
+                            </p>
+                        </blockquote>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Assumenda facilis perspiciatis unde officiis, quisquam minus
+                            similique, odio facere doloremque, quas aut cupiditate
+                            laboriosam. Et ut obcaecati, distinctio atque laboriosam omnis
+                            magni magnam perferendis eum sint amet nulla error maiores
+                            neque?
+                        </p>
+                        <blockquote>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
+                            distinctio eaque quae beatae officiis natus!
+                        </blockquote>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam et laudantium velit nihil temporibus quo fugiat,
+                            consequuntur voluptatibus quasi modi, magni repellat aut
+                            animi. Fugiat laboriosam expedita enim molestiae suscipit
+                            nihil, accusamus illo fuga in doloremque. Saepe praesentium
+                            aperiam, excepturi quis quisquam porro, obcaecati pariatur,
+                            voluptatum ullam ex tenetur ducimus?
+                        </p>
+                    </div>
+                </div>
+                <div
+                        id="right"
+                        class="col-md-5 col-lg-4"
+                        data-aos="fade-right"
+                        data-aos-duration="1000"
+                        data-aos-delay="200"
+                >
+                    <div class="all-blog2__sidebar">
+                        <form>
+                            <input type="text" placeholder="Search"/>
+                            <i class="icofont-search-1"></i>
+                        </form>
+                        <div class="all-blog2__sidebar__categories item-border">
+                            <h2 class="fs-4 mb-3">Blog Categories</h2>
+                            <ul>
+                                <li><a href="#">Accessories</a>(2)</li>
+                                <li><a href="#">Blog</a>(8)</li>
+                                <li><a href="#">Clocks</a>(4)</li>
+                                <li><a href="#">Home Accent</a>(1)</li>
+                                <li><a href="#">Lighting</a> (3)</li>
+                                <li><a href="#">Post Format</a>(9)</li>
+                                <li><a href="#">Sofas</a>(1)</li>
+                                <li><a href="#">Table &amp; Desk</a>(2)</li>
+                                <li><a href="#">Uncategorized</a> (10)</li>
+                            </ul>
+                        </div>
+                        <div class="all-blog2__sidebar__latest-news item-border">
+                            <h2 class="fs-4 mb-3">Latest News</h2>
+                            <div class="all-blog2__sidebar__latest-news__item">
+                                <div class="all-blog2__sidebar__latest-news__item__image">
+                                    <a href="#">
+                                        <img
+                                                width="80"
+                                                height="80"
+                                                src="{% static 'assets/images/blog/sidebar-image-1.jpg' %}"
+                                                class=""
+                                                alt="Sidebar Image 01"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="all-blog2__sidebar__latest-news__item__content">
+                                    <h4 class="fs-5 title">
+                                        <a href="#"
+                                        >Amazon Editors’ personal audiobook favorites</a
+                                        >
+                                    </h4>
+                                    <p class="mb-0">On October 3, 2016</p>
+                                </div>
+                            </div>
+                            <div class="all-blog2__sidebar__latest-news__item">
+                                <div class="all-blog2__sidebar__latest-news__item__image">
+                                    <a href="#">
+                                        <img
+                                                width="80"
+                                                height="80"
+                                                src="{% static 'assets/images/blog/sidebar-image-2.jpg' %}"
+                                                class="#"
+                                                alt="Sidebar Image 02"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="all-blog2__sidebar__latest-news__item__content">
+                                    <h4 class="fs-5 title">
+                                        <a href="#">Simply ipsum is lorem dummy text</a>
+                                    </h4>
+                                    <p class="mb-0">On October 14, 2016</p>
+                                </div>
+                            </div>
+                            <div class="all-blog2__sidebar__latest-news__item">
+                                <div class="all-blog2__sidebar__latest-news__item__image">
+                                    <a href="#">
+                                        <img
+                                                width="80"
+                                                height="80"
+                                                src="{% static 'assets/images/blog/sidebar-image-3.jpg' %}"
+                                                class="#"
+                                                alt="Sidebar Image 03"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="all-blog2__sidebar__latest-news__item__content">
+                                    <h4 class="fs-5 title">
+                                        <a href="#">Lorem Ipsum dummy simply text is</a>
+                                    </h4>
+                                    <p class="mb-0">On October 14, 2016</p>
+                                </div>
+                            </div>
+                            <div class="all-blog2__sidebar__latest-news__item">
+                                <div class="all-blog2__sidebar__latest-news__item__image">
+                                    <a href="#">
+                                        <img
+                                                width="80"
+                                                height="80"
+                                                src="{% static 'assets/images/blog/sidebar-image-4.jpg' %}"
+                                                class=""
+                                                alt="Sidebar Image 04"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="all-blog2__sidebar__latest-news__item__content">
+                                    <h4 class="fs-5 title">
+                                        <a href="#">Books with sneaky sci-fi plots</a>
+                                    </h4>
+                                    <p class="mb-0">On October 14, 2016</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="all-blog2__sidebar__social item-border">
+                            <h2 class="fs-4 mb-3">Social</h2>
+                            <ul class="social-icon my-4">
+                                <li>
+                                    <a href="#"><i class="icofont-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-youtube-play"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-whatsapp"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== Content end ========== -->
+    {% include 'footer.html' %}
+</div>
+
+{% endblock %}
+

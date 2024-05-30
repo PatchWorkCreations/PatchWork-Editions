@@ -1,0 +1,388 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<!-- ========== Preloader start ========== -->
+<div id="preLoader"></div>
+<!-- ========== Preloader end ========== -->
+<!-- ========== Header start ========== -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <!-- <h1 class="m-0">WONTED</h1> -->
+                    <img src="{% static 'assets/images/wonted-logo.png' %}" alt="Wonted"/>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul id="onepage-nav" class="navbar-nav menu ms-lg-auto">
+                        <li class="nav-item dropdown submenu">
+                            <a
+                                    class="nav-link scroll dropdown-toggle"
+                                    href="#hero"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >Home
+                            </a>
+                            <span
+                                    class="sub-menu-toggle dropdown-toggle"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                      <i class="icofont-rounded-down"></i>
+                    </span>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="{% url 'index' %}" class="nav-link">Home One</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Home Two</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'index-3' %}" class="nav-link">Home Three</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'index-4' %}" class="nav-link">Home Four</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'index-5' %}" class="nav-link">Home Five</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'index-6' %}" class="nav-link">Home Six</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a
+                                    class="nav-link scroll dropdown-toggle"
+                                    href="#events"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >Events
+                            </a>
+                            <span
+                                    class="sub-menu-toggle dropdown-toggle"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                      <i class="icofont-rounded-down"></i>
+                    </span>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="{% url 'all-events' %}" class="nav-link">All Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'single-events' %}" class="nav-link"
+                                    >Single Event</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a
+                                    class="nav-link scroll dropdown-toggle"
+                                    href="#events"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >Pages
+                            </a>
+                            <span
+                                    class="sub-menu-toggle dropdown-toggle"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                      <i class="icofont-rounded-down"></i>
+                    </span>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="404.html" class="nav-link">404 Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'page-without-sidebar' %}" class="nav-link"
+                                    >Page Without Sidebar</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'page-left-sidebar' %}" class="nav-link"
+                                    >Page Left Sidebar</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'page-right-sidebar' %}" class="nav-link"
+                                    >Page Right Sidebar</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a
+                                    class="nav-link scroll dropdown-toggle"
+                                    href="#blog"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >Blog
+                            </a>
+                            <span
+                                    class="sub-menu-toggle dropdown-toggle"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                      <i class="icofont-rounded-down"></i>
+                    </span>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="blog-grid.html" class="nav-link">Blog Grid</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'blog-list' %}" class="nav-link"
+                                    >Blog List</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'left-sidebar' %}" class="nav-link">Left Sidebar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'right-sidebar' %}" class="nav-link"
+                                    >Right Sidebar</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'single-blog' %}" class="nav-link"
+                                    >Details Without Sidebar</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'blog-left-sidebar' %}" class="nav-link"
+                                    >Details Left Sidebar</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'blog-right-sidebar' %}" class="nav-link"
+                                    >Details Right Sidebar</a
+                                    >
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button
+                        class="navbar-toggler collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                >
+                    <span></span><span></span><span></span><span></span><span></span
+                ><span></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- ========== Header end ========== -->
+<!-- ========== 404 hero start ========== -->
+<section
+        id="all-blogs"
+        class="all-blogs hero__padding overflow-hidden position-relative bg-one"
+>
+    <div class="container">
+        <div class="row">
+            <div class="blog-title">
+                <h1
+                        class="display-3"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="600"
+                >
+                    Not Found
+                </h1>
+                <ul>
+                    <li
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="650"
+                    >
+                        <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="700"
+                    >
+                        <i class="icofont-rounded-right"></i>
+                    </li>
+                    <li
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="750"
+                    >
+                        Not Found
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 404 hero end ========== -->
+<!-- ========== Content start ========== -->
+<section class="not-found section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+                <div class="text-center">
+                    <h1
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="150"
+                    >
+                        404
+                    </h1>
+                    <h3
+                            class="display-3"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="200"
+                    >
+                        Oops! Page Not Found
+                    </h3>
+                    <p
+                            class="mt-3"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="250"
+                    >
+                        The page you are looking for does not exist; it may have been
+                        moved, or removed altogether.
+                    </p>
+                    <a
+                            href="{% url 'index' %}"
+                            class="button button__primary mt-4"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="300"
+                    >
+                        <span>Back to Home</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== Content end ========== -->
+<!-- ========== Footer section Start ========== -->
+<footer class="footer bg-one overflow-hidden">
+    <div class="container">
+        <div class="footer__top m-50px-t m-50px-b">
+            <div class="row">
+                <div
+                        class="col-lg-3 d-flex justify-content-center align-items-center mb-3 mb-lg-0 justify-content-lg-start"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                >
+                    <a href="{% url 'index' %}">
+                        <img width="80" src="{% static 'assets/images/book-note-icon.png' %}" alt=""/>
+                    </a>
+                </div>
+                <div
+                        class="col-lg-6 d-flex justify-content-center align-items-center mb-3 mb-lg-0"
+                >
+                    <ul class="footer__menu">
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="200"
+                        >
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="250"
+                        >
+                            <a href="{% url 'all-events' %}">Events</a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="300"
+                        >
+                            <a href="#single-blog" class="smooth">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                        class="col-lg-3 d-flex justify-content-center align-items-center mb-3 mb-lg-0 justify-content-lg-end"
+                >
+                    <ul class="social-icon">
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="350"
+                        >
+                            <a href="#"><i class="icofont-facebook"></i></a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="400"
+                        >
+                            <a href="#"><i class="icofont-twitter"></i></a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="450"
+                        >
+                            <a href="#"><i class="icofont-linkedin"></i></a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="500"
+                        >
+                            <a href="#"><i class="icofont-youtube-play"></i></a>
+                        </li>
+                        <li
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="550"
+                        >
+                            <a href="#"><i class="icofont-whatsapp"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="footer__copyright m-20px-t m-20px-b">
+            <div class="row">
+                <div class="col-12">
+                    <p class="m-0 text-center">
+                        &copy; 2022 All right reserved. Made with
+                        <i class="icofont-heart"></i> by <a href="#">ThemeAtelier</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ========== Footer section End ========== -->
+
+
+{% endblock %}
+    
+
+

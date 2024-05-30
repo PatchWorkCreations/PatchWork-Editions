@@ -1,0 +1,178 @@
+<!-- flipbox.html -->
+{% load static %}
+
+<style>
+
+.card-front h3.title,
+.card-back h3.title,
+.card-front p,
+.card-back p {
+    color: black !important;
+}
+
+
+.container-box {
+        display: flex;
+        justify-content: center;
+      }
+      
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Center the cards */
+      }
+      
+      .card {
+        width: 200px;
+        height: 200px;
+        perspective: 1000px;
+        position: relative;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .card-inner {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+      
+      .card-front,
+      .card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+        border-radius: 10px;
+      }
+      
+      .card-front {
+        background: linear-gradient(120deg, rgb(255, 255, 255) 30%, rgb(223, 223, 223) 88%, rgb(165, 165, 165) 40%, #091a39 48%);
+        color: white;
+      }
+      
+      .card-back {
+        background: linear-gradient(120deg, rgb(255, 255, 255) 30%, rgb(223, 223, 223) 88%, rgb(165, 165, 165) 40%, #091a39 78%);
+        color: white;
+        transform: rotateY(180deg);
+      }
+      
+      .card:hover .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .h3, p{
+        color: black;
+      }
+      
+      @media (max-width: 768px) {
+        .container-box {
+            display: flex;
+            justify-content: center; /* Center the cards horizontally */
+        }
+    
+        .card {
+            width: calc(100% - 20px); /* Take up full width of container with 10px margin on each side */
+            margin: 10px; /* Add margin around each card */
+        }
+    }
+    
+
+</style>
+
+<section class="flip-boxx">
+    <div class="row">
+        <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+            <div class="section-title-center text-center">
+
+                <h2
+                        class="display-6"
+                        data-aos="zoom-in-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="200"
+                >
+                    LEARN ABOUT OUR SIMPLE BOOK WRITING PROCESS BELOW
+                </h2>
+                <div
+                        class="section-divider divider-traingle"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="300"
+                ></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row card-container justify-content-center mt-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front text-center">
+                            <h3 class="title text-white text-sm font-semibold mt-2 mb-3">Order Details & Outline</h3>
+                            <p class="text-white text-sm mt-2 mb-4">________</p>
+                        </div>
+                        <div class="card-back text-center">
+                            <h3 class="title text-white font-bold" style="font-size: 20px;">"Call us now and give us the details of your
+                                book. Our experts will create an outline accordingly."</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front text-center">
+                            <h3 class="title text-white text-sm font-semibold mt-2 mb-3">Chapters Delivery</h3>
+                            <p class="text-white text-sm mt-2 mb-4">________</p>
+                        </div>
+                        <div class="card-back text-center">
+                            <h3 class="title text-white font-bold" style="font-size: 20px;">"Next, we will begin drafting the chapters as
+                                per the outline, and send them to you for feedback."</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front text-center">
+                            <h3 class="title text-white text-sm font-semibold mt-2 mb-3">Feedback & Approval</h3>
+                            <p class="text-white text-sm mt-2 mb-4">________</p>
+                        </div>
+                        <div class="card-back text-center">
+                            <h3 class="title text-white font-bold" style="font-size: 20px;">"Our book writers will cater to your comments
+                                and feedback and revise the content accordingly."</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front text-center">
+                            <h3 class="title text-white text-sm font-semibold mt-2 mb-3">Publication</h3>
+                            <p class="text-white text-sm mt-2 mb-4">________</p>
+                        </div>
+                        <div class="card-back text-center">
+                            <h3 class="title text-white font-bold" style="font-size: 20px;">"i-Box Publishing will then publish the book & promote
+                                it to boost sales."</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>    
+    
+    

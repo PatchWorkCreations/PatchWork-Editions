@@ -1,0 +1,1 @@
+web: gunicorn iBoxPublishing.wsgi --log-file -

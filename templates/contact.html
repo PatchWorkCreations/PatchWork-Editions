@@ -1,0 +1,402 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<style>
+
+
+.input-border-focus {
+            --tw-ring-color: #60A5FA;
+        }
+        .btn-hover:focus, .btn-hover:hover {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .floating-form {
+            position: fixed;
+            bottom: -100px; /* Initially hide the form */
+            right: 20px;
+            transition: bottom 0.3s ease-in-out; /* Smooth transition */
+            z-index: 999;
+        }
+        .floating-form.show {
+            bottom: 20px; /* Show the form when scrolled down */
+        }
+
+.banner-logo-bg {
+	background: transparent radial-gradient(closest-side at 50% 50%, #091a39 0, #091a39 100%);
+	padding: 30px 0;
+}
+.banner-form {
+	background: #fff;
+	box-shadow: 0 3px 30px #00000029;
+	border-radius: 15px;
+	padding: 35px;
+	position: relative;
+	top: 60px;
+	margin: 0
+}
+.banner-btn button {
+	background: #005503;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #fff;
+	padding: 10px 0;
+	width: 100%;
+	border: 2px solid #4CAF50
+}
+.banner-logo-bg input {
+	height: 50px
+}
+.banner-logo-bg .owl-carousel .owl-item img {
+	width: 160px;
+}
+
+.owl-carousel .item {
+    margin-right: 30px;
+    margin-left: 30px; /* Adjust the value as needed */
+}
+
+
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.get-started-btn,
+.live-chat-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  background-color: #005503;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.get-started-btn:hover,
+.live-chat-btn:hover {
+  background-color: #45a049;
+}
+
+
+.chat-now, 
+.contact-us-now, .get-a-quote {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  background-color: #005503;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.chat-now:hover, 
+.contact-us-now:hover, .get-a-quote:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+
+ 
+
+.flip-cards-container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    z-index:-1;
+}
+
+.flip-card {
+    width: calc(25% - 25px); /* Adjust width as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+
+/* Add your existing CSS styles here */
+
+
+
+/* You may need to adjust z-index and other properties if the second button overlaps with other content */
+.rectangle {
+    border-radius: 10px;
+    padding: 20px; /* Reduced padding for smaller screens */
+    max-width: 100%; /* Adjusted max-width for smaller screens */
+    margin: 20px auto; /* Centered the rectangle */
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); /* Shadow effect with all around */
+    max-height: none; /* Removed max-height for responsiveness */
+}
+
+.rectangle form input[type="text"],
+.rectangle form input[type="email"] {
+    font-size: 16px; /* Reduced font size for smaller screens */
+}
+
+.rectangle form .btn {
+    font-size: 16px; /* Reduced button font size for smaller screens */
+}
+
+@media (min-width: 768px) {
+    .rectangle {
+        padding: 30px; /* Increased padding for larger screens */
+        max-width: 900px; /* Restored max-width for larger screens */
+    }
+
+    .rectangle form input[type="text"],
+    .rectangle form input[type="email"] {
+        font-size: 20px; /* Restored font size for larger screens */
+    }
+
+    .rectangle form .btn {
+        font-size: 20px; /* Restored button font size for larger screens */
+    }
+}
+
+section.position-relative h2.display-2.font-weight-bold {
+            color: white !important;
+        }
+
+        .custom-h2 {
+        font-size: 1.8rem; /* Adjust the font size as per your preference */
+    }
+</style>
+
+
+
+
+
+</div>
+
+
+<div class="section-wrapper">
+    <!-- Tmb loader end -->
+    <div id="preLoader"></div>
+    <!-- Tmb loader end -->
+
+    {% include 'header.html' %}
+    {% include 'modal.html' %}
+
+
+<!-- Hero section start -->
+<section class="position-relative" style="height: 50vh;">
+    <div class="position-absolute top-0 w-100 h-100" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+        <div class="bg-center bg-no-repeat bg-cover h-100" style="background-image: url(/static/assets/images/contact.jpg);">
+            <!-- Add an overlay to the image to make the text stand out -->
+            <div class="position-absolute w-100 h-100 bg-black opacity-50"></div>
+            <div class="position-absolute top-50 start-50 translate-middle text-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+                <div class="text-center">
+                    <h2 class="display-2 font-weight-bold" style="color: white; font-size: xx-large;">CONTACT US</h2>
+                    <div class="w-25 bg-white my-4 mx-auto"></div>
+                    <!-- Additional content can go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg class="position-absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" style="height: 70px;">
+        <polygon class="text-gray-300 fill-current" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+</section>
+
+
+<!-- End of Hero section -->
+
+    <!-- ========== Hero section end ========== -->
+
+    <!-- Banner Logo Start -->
+
+    <section class="banner-logo-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="owl-carousel owl-banner-logo owl-theme d-flex justify-content-center align-items-center">
+                        <div class="item"><img src="{% static 'assets/images/banner1.png' %}" class="img-fluid"
+                                               alt="LT-writing "></div>
+                        <div class="item"><img src="{% static 'assets/images/banner2.png' %}" class="img-fluid"
+                                               alt="LT-writing "></div>
+                        <div class="item"><img src="{% static 'assets/images/banner3.png' %}" class="img-fluid"
+                                               alt="LT-writing "></div>
+                        <div class="item"><img src="{% static 'assets/images/banner4.png' %}" class="img-fluid"
+                                               alt="LT-writing "></div>
+                        <div class="item"><img src="{% static 'assets/images/banner5.png' %}" class="img-fluid"
+                                               alt="LT-writing "></div>
+                        <div class="item"><img src="{% static 'assets/images/banner6.png' %}" class="img-fluid"
+                                               alt="LT-writing "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- ========== Contact section start ========== -->
+    <section id="contact" class="p-80px-tb bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+                    <div class="section-title-center text-center">
+                <span
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                >Contact Us</span
+                >
+                        <h2
+                                class="display-6 custom-h2"
+                                data-aos="zoom-in-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="200"
+                        >
+                            Write Your Dream Book with Us!
+                        </h2>
+                        <h4
+                                data-aos="zoom-in-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="250"
+                        >
+                            Connect with us today and embark on your publishing journey!
+                            <br>
+                            <div
+                                    class="section-divider divider-traingle"
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="250"
+                            >
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div
+                            class="col-lg-8 col-md-6 col-sm-12 m-25px-b"
+                            data-aos="fade-right"
+                            data-aos-duration="1000"
+                            data-aos-delay="200"
+                    >
+                        <div class="contact-form-box">
+                            <form id="contact-form" method="post" action="php/sendmail.php">
+                                <div class="message col">
+                                    <p class="email-loading alert alert-warning">
+                                        <img
+                                                src="{% static 'assets/images/loading.gif' %}"
+                                                alt=""
+                                        />&nbsp;&nbsp;&nbsp;Sending...
+                                    </p>
+                                    <p class="email-success alert alert-success">
+                                        <i class="icon icon-icon-check-alt2"></i> Your quote has
+                                        successfully been sent.
+                                    </p>
+                                    <p class="email-failed alert alert-danger">
+                                        <i class="icon icon-icon-close-alt2"></i> Something went
+                                        wrong!
+                                    </p>
+                                </div>
+                                <div class="mb13">
+                                    <input
+                                            name="name"
+                                            class="contact-name"
+                                            id="contact-name"
+                                            type="text"
+                                            placeholder="Your Name"
+                                            required=""
+                                    />
+                                </div>
+                                <div class="mb13">
+                                    <input
+                                            name="email"
+                                            class="contact-email"
+                                            id="contact-email"
+                                            type="email"
+                                            placeholder="Your Email"
+                                            required=""
+                                    />
+                                </div>
+                                <div class="mb13">
+                                    <input
+                                            name="subject"
+                                            class="contact-subject"
+                                            id="contact-subject"
+                                            type="text"
+                                            placeholder="Subject"
+                                            required=""
+                                    />
+                                </div>
+                                <div class="mb30">
+                    <textarea
+                            name="message"
+                            class="contact-message"
+                            id="contact-message"
+                            placeholder="Your Message"
+                            required=""
+                    ></textarea>
+                                </div>
+                                <button class="button button__primary align-items-center">
+                                    <span>Send Now</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End contact form area-->
+                    <div
+                            class="col-lg-4 col-md-6 col-sm-12 m-25px-b"
+                            data-aos="fade-left"
+                            data-aos-duration="1000"
+                            data-aos-delay="200"
+                    >
+                        <div class="contact__address p-30px">
+                            <ul class="contact__address__content">
+                                <li>
+                                    <span>Address:</span>16, Lankaway <br/>
+                                    Ohio, USA 99544
+                                </li>
+                                <li>
+                                    <span>Phone:</span><a href="tel:1124447900">112 444 7900</a>
+                                </li>
+                                <li>
+                                    <span>Email:</span><a href="#">i-RiseUp Publishing@support.com</a>
+                                </li>
+                            </ul>
+                            <h4>Connect book socials</h4>
+                            <ul class="social-icon mt-3">
+                                <li>
+                                    <a href="#"><i class="icofont-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-youtube-play"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-whatsapp"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- ========== Contact section end ========== -->
+
+    {% include 'footer.html' %}
+
+</div>
+
+{% endblock %}
+
+

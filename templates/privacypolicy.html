@@ -1,0 +1,435 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<style>
+.brown-500 {
+    color: #7D440C; /* Brown color */
+}
+
+.policy-section {
+    padding-right: 3rem; /* Right space to each other */
+    
+}
+
+.policy-text {
+    margin-left: 0.5rem; /* Adjust spacing between term and description */
+}
+    
+
+.policy-header {
+    text-align: center; /* Center the Privacy Policy header */
+}
+
+
+.input-border-focus {
+            --tw-ring-color: #60A5FA;
+        }
+        .btn-hover:focus, .btn-hover:hover {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .floating-form {
+            position: fixed;
+            bottom: -100px; /* Initially hide the form */
+            right: 20px;
+            transition: bottom 0.3s ease-in-out; /* Smooth transition */
+            z-index: 999;
+        }
+        .floating-form.show {
+            bottom: 20px; /* Show the form when scrolled down */
+        }
+
+.banner-logo-bg {
+	background: transparent radial-gradient(closest-side at 50% 50%, #091a39 0, #091a39 100%);
+	padding: 30px 0;
+}
+.banner-form {
+	background: #fff;
+	box-shadow: 0 3px 30px #00000029;
+	border-radius: 15px;
+	padding: 35px;
+	position: relative;
+	top: 60px;
+	margin: 0
+}
+.banner-btn button {
+	background: #005503;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #fff;
+	padding: 10px 0;
+	width: 100%;
+	border: 2px solid #4CAF50
+}
+.banner-logo-bg input {
+	height: 50px
+}
+.banner-logo-bg .owl-carousel .owl-item img {
+	width: 160px;
+}
+
+.owl-carousel .item {
+    margin-right: 30px;
+    margin-left: 30px; /* Adjust the value as needed */
+}
+
+
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.get-started-btn,
+.live-chat-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  background-color: #005503;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.get-started-btn:hover,
+.live-chat-btn:hover {
+  background-color: #45a049;
+}
+
+
+.chat-now, 
+.contact-us-now, .get-a-quote {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  background-color: #005503;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.chat-now:hover, 
+.contact-us-now:hover, .get-a-quote:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+
+ 
+
+.flip-cards-container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    z-index:-1;
+}
+
+.flip-card {
+    width: calc(25% - 25px); /* Adjust width as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+
+/* Add your existing CSS styles here */
+ 
+
+/* You may need to adjust z-index and other properties if the second button overlaps with other content */
+
+
+
+</style>
+
+
+ 
+
+<div class="section-wrapper">
+    <!-- Tmb loader end -->
+    <div id="preLoader"></div>
+    <!-- Tmb loader end -->
+
+    {% include 'header.html' %}
+
+
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="en">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="styles.css' %}"> <!-- Your CSS file link -->
+
+<section>
+    <div class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="policy-header text-3xl font-bold mb-4">Privacy Policy</h1>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-center text-5xl leading-6 font-bold text-brown-500">Privacy Policy </h2><br>
+                <p class="text-center text-sm leading-6 font-semibold text-brown-500">
+
+                    This notice discloses the privacy practices for iRiseUpPublishing.com</p>
+            </div>
+
+            <div class="border-t border-gray-200">
+                <dl>
+                    <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-lg font-bold text-brown-500">Information Collection, Use, and Sharing:</dt>
+                        <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                            <ul class="list-disc pl-5">
+                                <li>We collect personally identifiable information through the website, including how
+                                    it's used and whom it may be shared with.
+                                </li>
+                                <li>You're informed about your data usage choices and the security measures in place to
+                                    prevent misuse of your information.
+                                </li>
+                                <li>Our process for correcting any inaccuracies in the information we have about you.
+                                </li>
+                                <li>Assurance of confidentiality regarding the services you engage with.</li>
+                                <li>Guarantee of original, plagiarism-free content.</li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-lg font-bold text-brown-500">Your Access to and Control Over Information:</dt>
+                        <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                            <ul class="list-disc pl-5">
+                                <li>At any time, you can opt-out of future contacts from us.</li>
+                                <li>You also have the right to:</li>
+                                <li>See what data we have about you, if any.</li>
+                                <li>Change/correct any data we have about you.</li>
+                                <li>Request the deletion of any data we have about you.</li>
+                                <li>Express any concern you have about our use of your data.</li>
+                            </ul>
+                        </dd>
+                    </div>
+
+
+                    <dl>
+                        <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-lg font-bold text-brown-500">Security:</dt>
+                            <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                                <p>We take precautions to protect your information offline. Only employees and
+                                    contractors who need the information to perform a specific job (e.g., billing or
+                                    customer service) are granted access to personally identifiable information. The
+                                    computers/servers storing this information are kept in a secure environment.</p>
+                            </dd>
+                        </div>
+                        <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-lg font-bold text-brown-500">Payment:</dt>
+                            <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                                <p>For order processing, we collect personal information such as your name, email
+                                    address, billing address, and phone number. Credit card information is managed by
+                                    our third-party credit card provider.</p>
+                            </dd>
+                        </div>
+                        <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-lg font-bold text-brown-500">IP Address and Cookies:</dt>
+                            <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                                <p>Non-personal information like your IP address is automatically recorded for server
+                                    diagnostics and site administration. Cookies enhance user experience and collect
+                                    usage statistics.</p>
+                            </dd>
+                        </div>
+                        <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-lg font-bold text-brown-500">Information About Our Products and Services:
+                            </dt>
+                            <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                                <p>We strive for accuracy in describing our services and products on
+                                    IRiseUpPublishing.com. While we aim for accurate, reliable, and error-free content,
+                                    we cannot guarantee this. Contact us immediately if our service does not match its
+                                    online description.</p>
+                            </dd>
+                        </div>
+                        <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-lg font-bold text-brown-500">Confidentiality and Ownership:</dt>
+                            <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                                <p>Our service is 100% confidential. All content developed or reviewed remains
+                                    undisclosed to third parties. You retain full ownership and recognition as the
+                                    author/owner of your work.</p>
+                            </dd>
+                        </div>
+                        <div class="policy-section px-4 py-8 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-lg font-bold text-brown-500">Originality:</dt>
+                            <dd class="policy-text mt-1 text-base sm:mt-0 sm:col-span-2 text-gray-700">
+                                <p>All content we ghostwrite is original and free from plagiarism. Information inspired
+                                    or researched from other sources will be paraphrased and correctly cited, ensuring
+                                    reliability, authenticity, and originality.</p>
+                            </dd>
+                        </div>
+                    </dl>
+                </dl>
+            </div>
+        </div>
+           </section> <br><br>
+
+
+            <!-- ========== Contact section start ========== -->
+            <section id="contact" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+                            <div class="section-title-center text-center">
+                        <span
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="150"
+                        >Contact Us</span
+                        >
+                                <h2
+                                        class="display-6"
+                                        data-aos="zoom-in-up"
+                                        data-aos-duration="1000"
+                                        data-aos-delay="200"
+                                >
+                                    Write Your Dream Book with Us!
+                                </h2>
+                                <h2
+                                        data-aos="zoom-in-up"
+                                        data-aos-duration="1000"
+                                        data-aos-delay="250"
+                                >
+                                   
+
+                                    <div
+                                            class="section-divider divider-traingle"
+                                            data-aos="fade-up"
+                                            data-aos-duration="1000"
+                                            data-aos-delay="250"
+                                    ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div
+                                class="col-lg-8 col-md-6 col-sm-12 m-25px-b"
+                                data-aos="fade-right"
+                                data-aos-duration="1000"
+                                data-aos-delay="200"
+                        >
+                            <div class="contact-form-box">
+                                <form id="contact-form" method="post" action="php/sendmail.php' %}">
+                                    <div class="message col">
+                                        <p class="email-loading alert alert-warning">
+                                            <img
+                                                    src="{% static 'assets/images/loading.gif' %}"
+                                                    alt=""
+                                            />&nbsp;&nbsp;&nbsp;Sending...
+                                        </p>
+                                        <p class="email-success alert alert-success">
+                                            <i class="icon icon-icon-check-alt2"></i> Your quote has
+                                            successfully been sent.
+                                        </p>
+                                        <p class="email-failed alert alert-danger">
+                                            <i class="icon icon-icon-close-alt2"></i> Something went
+                                            wrong!
+                                        </p>
+                                    </div>
+                                    <div class="mb13">
+                                        <input
+                                                name="name"
+                                                class="contact-name"
+                                                id="contact-name"
+                                                type="text"
+                                                placeholder="Your Name"
+                                                required=""
+                                        />
+                                    </div>
+                                    <div class="mb13">
+                                        <input
+                                                name="email"
+                                                class="contact-email"
+                                                id="contact-email"
+                                                type="email"
+                                                placeholder="Your Email"
+                                                required=""
+                                        />
+                                    </div>
+                                    <div class="mb13">
+                                        <input
+                                                name="subject"
+                                                class="contact-subject"
+                                                id="contact-subject"
+                                                type="text"
+                                                placeholder="Subject"
+                                                required=""
+                                        />
+                                    </div>
+                                    <div class="mb30">
+                            <textarea
+                                    name="message"
+                                    class="contact-message"
+                                    id="contact-message"
+                                    placeholder="Your Message"
+                                    required=""
+                            ></textarea>
+                                    </div>
+                                    <button class="button button__primary align-items-center">
+                                        <span>Send Now</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End contact form area-->
+                        <div
+                                class="col-lg-4 col-md-6 col-sm-12 m-25px-b"
+                                data-aos="fade-left"
+                                data-aos-duration="1000"
+                                data-aos-delay="200"
+                        >
+                            <div class="contact__address p-30px">
+                                <ul class="contact__address__content">
+                                    <li>
+                                        <span>Address:</span>16, Lankaway <br/>
+                                        Ohio, USA 99544
+                                    </li>
+                                    <li>
+                                        <span>Phone:</span><a href="tel:1124447900">112 444 7900</a>
+                                    </li>
+                                    <li>
+                                        <span>Email:</span><a href="#">iRiseup@support.com</a>
+                                    </li>
+                                </ul>
+                                <h4>Connect book socials</h4>
+                                <ul class="social-icon mt-3">
+                                    <li>
+                                        <a href="#"><i class="icofont-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-linkedin"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-youtube-play"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-whatsapp"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ========== Contact section end ========== -->
+
+            {% include 'footer.html' %}
+        </div>
+
+        {% endblock %}
