@@ -150,10 +150,6 @@ body {
 .section-wrapper {
   overflow-x: hidden; }
 
-  body .bg-one {
-    background-color: #cecece !important;
-    z-index: 0 ;
-  }
   
 
 .section-padding {
@@ -1250,7 +1246,7 @@ p.first-letter::first-letter {
 
 .contact-form-box {
   padding: 40px;
-  background-color: #dcdcdc;
+  background-color: #bb46e2d6;
 
 }
 
