@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/Clem/Downloads/iBoxPublishing/myvev"
+set -gx VIRTUAL_ENV "/Users/Clem/PatchWork-Editions/myvev"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

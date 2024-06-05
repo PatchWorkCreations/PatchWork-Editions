@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-u-z0@@2p70h*+5qop_adieh7l9y)selde*if_7iq8ot@5u^rad
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://iboxpublishing.up.railway.app', 'https://www.iriseuppublishing.com']
+CSRF_TRUSTED_ORIGINS = ['https://i-patchwork-production.up.railway.app', 'https://www.i-patchwork.com']
 
 
 # Application definition
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'iBoxPublishing.urls'
+ROOT_URLCONF = 'PatchWork-Editions.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'iBoxPublishing.wsgi.application'
+WSGI_APPLICATION = 'PatchWork-Editions.wsgi.application'
 
 
 # Database
