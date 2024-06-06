@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'PatchWork-Editions.urls'
+ROOT_URLCONF = 'iBoxPublishing.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'PatchWork-Editions.wsgi.application'
+WSGI_APPLICATION = 'iBoxPublishing.wsgi.application'
 
 
 # Database
