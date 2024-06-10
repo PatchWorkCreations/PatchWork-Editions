@@ -1246,7 +1246,7 @@ p.first-letter::first-letter {
 
 .contact-form-box {
   padding: 40px;
-  background-color: #bb46e2d6;
+  background-color: #c2a1ff;
 
 }
 
@@ -1275,7 +1275,7 @@ p.first-letter::first-letter {
 
 .contact__address {
   height: 100%;
-  background-color: #cfcfcf; }
+  background-color: #c2a1ff; }
   .contact__address iframe {
     width: 100%;
     height: 250px;

@@ -205,7 +205,7 @@
 .whoisghostwriting {
 	background: #fff;
 	box-shadow: 0 3px 30px #00000029;
-	border: 1px solid #6cf3ff;
+	border: 1px solid #a855fb;
 	border-radius: 10px;
 	padding: 30px;
 	margin: -120px 0 0 0
@@ -227,14 +227,20 @@
 
 
 .feature-image {
-    background-size: cover;
-    height: 200px;
-    border: 4px solid #fff; /* Add border to images */
-  }
+        overflow: hidden; /* Ensure the image stays within its container */
+        max-width: 100%; /* Make sure the image container does not exceed its parent's width */
+    }
+    
+    .custom-img {
+        width: 100%; /* Make the image take up the full width of the container */
+        height: auto; /* Maintain the aspect ratio */
+        display: block; /* Remove any extra space at the bottom of the image */
+    }
 
   .bg-brown-500 {
     background-color: #8B4513;
   }
+
 
 </style>
  
@@ -435,38 +441,37 @@
         </div>
 
         <section class="container mx-auto p-3">
-            <div class="flex flex-wrap -mx-4"
-                 data-aos="zoom-in-up"
-                 data-aos-duration="1000"
-                 data-aos-delay="200">
+            <div class="row justify-content-center" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="200">
                 <!-- Feature 1 -->
-                <div class="w-full md:w-1/3 px-4 mb-8">
-                    <div class="feature-image rounded-lg mb-6"
-                         style="background-image: url('https://source.unsplash.com/featured/?writing');"></div>
+                <div class="col-md-4 text-center mb-8">
+                    <div class="feature-image rounded-lg mb-6">
+                        <img src="{% static 'assets/images/feature1.png' %}" class="custom-img" alt=""> <br>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">Customized Book Writing Services</h3>
-                    <p class="text-gray-700 text-base">Our team offers a personalized approach to ensure that the
-                        produced book matches your expectations and style.</p>
+                    <p class="text-gray-700 text-base">Our team offers a personalized approach to ensure that the produced book matches your expectations and style.</p> <br>
                 </div>
-
+        
                 <!-- Feature 2 -->
-                <div class="w-full md:w-1/3 px-4 mb-8">
-                    <div class="feature-image rounded-lg mb-6"
-                         style="background-image: url('https://source.unsplash.com/featured/?communication');"></div>
+                <div class="col-md-4 text-center mb-8">
+                    <div class="feature-image rounded-lg mb-6">
+                        <img src="{% static 'assets/images/feature2.png' %}" class="custom-img" alt="Communication Channels"> <br>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">Communication Channels</h3>
-                    <p class="text-gray-700 text-base">We have several communication channels so our clients can stay
-                        up-to-date with their projects.</p>
+                    <p class="text-gray-700 text-base">We have several communication channels so our clients can stay up-to-date with their projects.</p> <br>
                 </div>
-
+        
                 <!-- Feature 3 -->
-                <div class="w-full md:w-1/3 px-4 mb-8">
-                    <div class="feature-image rounded-lg mb-6"
-                         style="background-image: url('https://source.unsplash.com/featured/?books');"></div>
+                <div class="col-md-4 text-center mb-8">
+                    <div class="feature-image rounded-lg mb-6">
+                        <img src="{% static 'assets/images/feature3.png' %}" class="custom-img" alt="A Myriad of Genres"> <br>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">A Myriad of Genres</h3>
-                    <p class="text-gray-700 text-base">Our team can write books on various genres, including but not
-                        limited to fiction, nonfiction, memoir, children’s books, academics, autobiographies, etc.</p>
+                    <p class="text-gray-700 text-base">Our team can write books on various genres, including but not limited to fiction, nonfiction, memoir, children’s books, academics, autobiographies, etc.</p> <br>
                 </div>
             </div>
-        </section>
+            </section>
+        
+        
 
         <!-- ========== Chapter section start ========== -->
         <section id="chapters" class="section-padding chapter bg-one">
