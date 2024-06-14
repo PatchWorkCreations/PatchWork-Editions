@@ -951,11 +951,14 @@ background-color: #d9baff !important;
 
                         </p>
 
-                        <div class="flex justify-center">
-                            <a href="#" class="chat-now" style="margin-top: 30px;" onclick="openChatBox()">CHAT NOW</a>
-                            <a href="#" class="get-a-quote" style="margin-top: 30px;" onclick="openModal()">GET A QUOTE</a>
-                            <a href="#" class="contact-us-now" style="margin-top: 30px;">CONTACT US NOW</a>
-                        </div>
+                        <div class="button-container text-center justify-content-center">
+                        <button type="button" class="chat-now" onclick="openChatBox(event)"
+                            style="margin-top: 30px;">CHAT NOW</button>
+                            <button type="button" class="get-a-quote" data-bs-toggle="modal"
+                            data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
+                        <button type="button" class="get-a-quote" data-bs-toggle="modal"
+                        data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">GET A QUOTE</button>
+                    </div>
 
                     </div>
                 </div>
