@@ -3,7 +3,10 @@
 {% load static %}
 
 <style>
+  .btn-successs {
 
+background-color: #d9baff !important;
+}
 </style>
 
 
@@ -173,7 +176,7 @@
                             <input type="text" class="form-control form-control-lg" name="number" id="number" placeholder="Number">
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn-success btn-lg">Let's Start</button>
+                            <button type="submit" class="btn-successs btn-lg">Let's Start</button>
                         </div>
                     </div>
                 </form>
@@ -1508,7 +1511,9 @@
                     <div
                             class="col-lg-8 col-md-6 col-sm-12 m-25px-b"
                     >
-                        <div class="contact-form-box">
+                        <div class="contact-form-box" data-aos="fade-right"
+                        data-aos-duration="1000"
+                        data-aos-delay="250">
                             <form method="post">
                             {% csrf_token %}
                                 <input type="hidden" name="reaching_out" value="hidden_text">
