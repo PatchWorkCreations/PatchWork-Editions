@@ -10,13 +10,13 @@ def home_page(request):
         phone = request.POST.get('phone')
         message = request.POST.get('message')
 
-        user_subject = "Thank You for Registering with Patchwork Editions!"
+        user_subject = "Thank You for Registering with iPatchwork Editions!"
         user_content = f"""
 Dear {name},
 
-Thank you for registering with Patchwork Editions! We are thrilled to have you join our community of writers and authors.
+Thank you for registering with iPatchwork Editions! We are thrilled to have you join our community of writers and authors.
 
-At Patchwork Editions, we are committed to helping writers like you bring their stories to life and reach a wider audience. Whether you're a seasoned author or just starting on your writing journey, we're here to support you every step of the way.
+At iPatchwork Editions, we are committed to helping writers like you bring their stories to life and reach a wider audience. Whether you're a seasoned author or just starting on your writing journey, we're here to support you every step of the way.
 
 Here's what you can expect next:
 
@@ -25,10 +25,10 @@ Here's what you can expect next:
 - Support: Our team is here to support you throughout your publishing journey. Whether you need assistance with manuscript formatting, cover design, or marketing strategies, our experts are just a click away. Feel free to contact us anytime with your questions or concerns.
 - Community: Join our vibrant community of writers and authors on social media platforms to connect with fellow writers, share your experiences, and stay updated on the latest industry news and events.
 
-We're excited to embark on this journey with you and help you achieve your publishing goals. Thank you again for choosing Patchwork Editions!
+We're excited to embark on this journey with you and help you achieve your publishing goals. Thank you again for choosing iPatchwork Editions!
 
 Best regards,
-Patchwork Editions Team
+iPatchwork Editions Team
         """
 
         user_email = EmailMessage(user_subject, user_content, to=[email])
@@ -48,11 +48,11 @@ Patchwork Editions Team
         email = request.POST.get('email')
         number = request.POST.get('number')
 
-        user_subject = "Thank You for Registering with Patchwork Editions!"
+        user_subject = "Thank You for Registering with iPatchwork Editions!"
         user_content = f"""
 Dear {name},
 
-Thank you for registering with Patchwork Editions! We're thrilled to have you on board.
+Thank you for registering with iPatchwork Editions! We're thrilled to have you on board.
 
 Your registration is confirmed, and you're now part of our community of authors and creators. Whether you're an aspiring writer or an experienced author, we're here to support you on your publishing journey.
 
@@ -61,7 +61,7 @@ Stay tuned for updates, tips, and exclusive offers tailored just for you. If you
 We look forward to helping you achieve your publishing goals!
 
 Best regards,
-Patchwork Editions Team
+iPatchwork Editions Team
         """
 
         user_email = EmailMessage(user_subject, user_content, to=[email])
@@ -79,20 +79,20 @@ Patchwork Editions Team
     elif request.method == 'POST' and request.POST.get('subscribe'):
         email = request.POST.get('email')
 
-        user_subject = "Thank You for Registering with Patchwork Editions!"
+        user_subject = "Thank You for Registering with iPatchwork Editions!"
         user_content = f"""
 Hey there,
 
-Thank you for subscribing to the Patchwork Editions! We're excited to have you join our community.
+Thank you for subscribing to the iPatchwork Editions! We're excited to have you join our community.
 
 Get ready to receive exclusive content, writing tips, industry insights, and special offers directly to your inbox. We're committed to providing valuable resources to help you enhance your writing skills and stay updated on the latest trends in publishing.
 
 If you ever have any questions or suggestions, feel free to reach out to us. We value your feedback and are here to support you every step of the way.
 
-Stay tuned for our upcoming offers and get ready to embark on a journey of creativity and inspiration with Patchwork Editions!
+Stay tuned for our upcoming offers and get ready to embark on a journey of creativity and inspiration with iPatchwork Editions!
 
 Best regards,
-Patchwork Editions Team
+iPatchwork Editions Team
             """
 
         user_email = EmailMessage(user_subject, user_content, to=[email])
@@ -113,7 +113,7 @@ Patchwork Editions Team
         subject_field = request.POST.get('subject')
         message = request.POST.get('message')
 
-        user_subject = "Thanks for Reaching Out to Patchwork Editions!"
+        user_subject = "Thanks for Reaching Out to iPatchwork Editions!"
         user_content = f"""
 Hey there,
 
@@ -126,7 +126,7 @@ In the meantime, why not grab a cup of coffee (or tea, if that's your thing) and
 Until then, stay awesome!
 
 Warm regards,
-Patchwork Editions Team
+iPatchwork Editions Team
                 """
 
         user_email = EmailMessage(user_subject, user_content, to=[email])
@@ -147,13 +147,13 @@ Patchwork Editions Team
         number = request.POST.get('phone')
         message = request.POST.get('message')
 
-        user_subject = "Thank You for Registering with Patchwork Editions!"
+        user_subject = "Thank You for Registering with iPatchwork Editions!"
         user_content = f"""
 Dear {name},
 
-Thank you for registering with Patchwork Editions! We are thrilled to have you join our community of writers and authors.
+Thank you for registering with iPatchwork Editions! We are thrilled to have you join our community of writers and authors.
 
-At Patchwork Editions, we are committed to helping writers like you bring their stories to life and reach a wider audience. Whether you're a seasoned author or just starting on your writing journey, we're here to support you every step of the way.
+At iPatchwork Editions, we are committed to helping writers like you bring their stories to life and reach a wider audience. Whether you're a seasoned author or just starting on your writing journey, we're here to support you every step of the way.
 
 Here's what you can expect next:
 
@@ -162,10 +162,10 @@ Here's what you can expect next:
 - Support: Our team is here to support you throughout your publishing journey. Whether you need assistance with manuscript formatting, cover design, or marketing strategies, our experts are just a click away. Feel free to contact us anytime with your questions or concerns.
 - Community: Join our vibrant community of writers and authors on social media platforms to connect with fellow writers, share your experiences, and stay updated on the latest industry news and events.
 
-We're excited to embark on this journey with you and help you achieve your publishing goals. Thank you again for choosing Patchwork Editions!
+We're excited to embark on this journey with you and help you achieve your publishing goals. Thank you again for choosing iPatchwork Editions!
 
 Best regards,
-Patchwork Editions Team
+iPatchwork Editions Team
         """
 
         user_email = EmailMessage(user_subject, user_content, to=[email])

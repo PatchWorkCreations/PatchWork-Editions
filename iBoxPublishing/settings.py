@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-u-z0@@2p70h*+5qop_adieh7l9y)selde*if_7iq8ot@5u^rad
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://i-patchwork-production.up.railway.app', 'https://www.i-patchwork.com']
+CSRF_TRUSTED_ORIGINS = ['https://i-iPatchwork-production.up.railway.app', 'https://www.i-iPatchwork.com']
 
 
 # Application definition
