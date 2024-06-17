@@ -70,7 +70,7 @@
                         <h1 class="display-4 mb-4 text-capitalize text-center" style="font-size: 52px;">
                             PROFESSIONAL BOOK COVER DESIGN SERVICES TO MAKE YOUR WORK STAND OUT!
                         </h1>
-                        <p class="text-muted mb-5 fs-5" style="font-size: 5px;">
+                        <p class="text-muted mb-5 fs-5 text-center" style="font-size: 5px;">
                             Are you looking for a book cover design agency to promote your book online and in bookstores? Partner with us!
                     </div>
 
@@ -332,7 +332,7 @@
                                 <img src="{% static 'autobiography.png' %}" alt="Placeholder image for the book 'The Secret Lives of Royal Women'" class="mb-4">
                             </div>
                             <h2 class="text-xl font-bold mb-2 text-center">Autobiography</h2>
-                            <p class="text-gray-600 text-center">Seeking to inspire others with your life story? Let Patchwork ÉditionsPublisher make it happen for you! Reach out today!</p>
+                            <p class="text-gray-600 text-center">Seeking to inspire others with your life story? Let Patchwork Éditions make it happen for you! Reach out today!</p>
                         </div>
                     </div>
                     
@@ -991,6 +991,8 @@
     </section>
     <!-- ========== CTA v5 section end ========== -->
     <!-- ========== Events section end ========== -->
+    
+    <!--
     <section id="events" class="section-padding event">
         <div class="container">
             <div class="row">
@@ -1060,7 +1062,9 @@
                         </div>
                     </article>
                 </div>
-                <!-- End single event -->
+                End single event -->
+
+                <!--
                 <div
                         class="col-md-6 col-lg-4 mb-4"
                         data-aos="fade-up"
@@ -1102,7 +1106,9 @@
                         </div>
                     </article>
                 </div>
-                <!-- End single event -->
+                End single event -->
+
+                <!--
                 <div
                         class="col-md-6 col-lg-4 mb-4"
                         data-aos="fade-up"
@@ -1144,10 +1150,11 @@
                         </div>
                     </article>
                 </div>
-                <!-- End single event -->
-            </div>
+                </div>
         </div>
     </section>
+                End single event -->
+          
     <!-- ========== Events section end ========== -->
     <!-- ========== Testimonial section start ========== -->
     <section
@@ -1538,7 +1545,13 @@
             <div class="row">
                 <div
                         class="col-lg-8 col-md-6 col-sm-12 m-25px-b"
+                        <div
+                        class="col-lg-4 col-md-6 col-sm-12 m-25px-b"
+                        data-aos="fade-right"
+                        data-aos-duration="1000"
+                        data-aos-delay="200"
                 >
+                
                     <div class="contact-form-box">
                         <form method="post">
                         {% csrf_token %}
