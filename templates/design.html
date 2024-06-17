@@ -8,8 +8,32 @@
 
    
 
-/* Add your existing CSS styles here */
- 
+.section-padding.ctav4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.get-started-btn {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+    background-color: #0056b3;
+}
+
 
  
 
@@ -363,58 +387,49 @@
     </section>
     <!-- ========== Chapter section end ========== -->
     <!-- ========== CTA v4 section start ========== -->
-    <section class="section-padding ctav4" style="padding-top: 50px; padding-bottom: 50px;"> <!-- Adjust padding as needed -->
+    <section class="section-padding ctav4" style="padding-top: 50px; padding-bottom: 50px; text-align: center;"> 
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 mb-4 mb-lg-0 ctav4__content"> <!-- Adjust column size -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 mb-4 mb-lg-0 ctav4__content"> 
                     <h3
-                            class="display-4"
-                            data-aos="fade-up"
-                            data-aos-duration="1000"
-                            data-aos-delay="150"
+                        class="display-4"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
                     >
                         WHY HIRE THE BEST BOOK PROMOTION EXPERTS?
                     </h3>
                     <h3
-                            data-aos="fade-up"
-                            data-aos-duration="1000"
-                            data-aos-delay="200"
-                            style="font-size: 18px;" <!-- Adjust font size -->
-                    
-                        Our book promoters and marketers can promote a book of any genre and ensure the author
-                        reaches their target audience effectively. Hire our experts today and get a chance to improve your book sales online and in bookstores!
-                    </h3> <br>
-                    <p
-                            data-aos="fade-up"
-                            data-aos-duration="1000"
-                            data-aos-delay="250"
-                            style="font-size: 16px;" <!-- Adjust font size -->
-                    
-                    </p>
-                    <a
-                            href="#"
-                            class="get-started-btn"
-                            data-aos="fade-up"
-                            data-aos-duration="1000"
-                            data-aos-delay="300"
-                            style="font-size: 16px;"
-                            onclick="openModal()" <!-- Adjust font size -->
-                    <span>Get Started</span></a
-                    >
-                </div>
-                <div
-                        class="col-md-4"
                         data-aos="fade-up"
                         data-aos-duration="1000"
-                        data-aos-delay="250"
-                >
+                        data-aos-delay="200"
+                        style="font-size: 18px;"
+                    > 
+                        Our book promoters and marketers can promote a book of any genre and ensure the author
+                        reaches their target audience effectively. Hire our experts today and get a chance to improve your book sales online and in bookstores!
+                    </h3>
+                    <br>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="button-container">
+                        <a href="#" class="get-started-btn" style="margin-bottom: 20px;" onclick="openModal()">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+                   <!---
                     <div class="ctav4__video-btn">
                         <a
-                                href="https://www.youtube.com/watch?v=km0RXB9woxg"
-                                class="glightbox3 video-btn"
+                            href="https://www.youtube.com/watch?v=km0RXB9woxg"
+                            class="glightbox3 video-btn"
                         >
-                            <i class="icofont-play"></i
-                            ></a>
+                            <i class="icofont-play"></i>
+                        </a>
                         <div class="promo-video">
                             <div class="waves-block">
                                 <div class="waves wave-1"></div>
@@ -423,10 +438,13 @@
                             </div>
                         </div>
                     </div>
+
+                -->
                 </div>
             </div>
         </div>
     </section>
+    
     
     <!-- ========== CTA v4 section end ========== -->
 
@@ -1659,6 +1677,8 @@ myModal.show();
 var iframe = document.getElementById('chatbotFrame');
 iframe.src = 'https://www.chatbase.co/embed.html?chatbotId=38LUjIhuRzNAhpBQH5Jxg&domain=www.chatbase.co';
 });
+
+
 
 </script>
 
