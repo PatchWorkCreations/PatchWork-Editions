@@ -325,3 +325,11 @@ def single_event(request):
 
 def terms_and_condition(request):
     return render(request, 'termsandcondition.html')
+
+def terms_and_condition(request):
+    return render(request, 'termsandcondition.html')
+
+def wfgconvention(request):
+    return render(request, 'wfgconvention.html')
+
+
