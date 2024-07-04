@@ -332,4 +332,19 @@ def terms_and_condition(request):
 def wfgconvention(request):
     return render(request, 'wfgconvention.html')
 
+def single_blog1(request):
+    return render(request, 'single-blog1.html')
+
+def single_blog2(request):
+    return render(request, 'single-blog2.html')
+
+def single_blog3(request):
+    return render(request, 'single-blog3.html')
+
+def single_blog4(request):
+    return render(request, 'single-blog4.html')
+
+def single_blog5(request):
+    return render(request, 'single-blog5.html')
+
 

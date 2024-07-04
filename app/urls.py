@@ -41,5 +41,10 @@ urlpatterns = [
     path('single-event', single_event, name='single-event'),
     path('terms-and-condition', terms_and_condition, name='terms-and-condition'),
     path('wfgconvention', wfgconvention, name='wfgconvention'),
+    path('single-blog1', single_blog1, name='single-blog1'),
+    path('single-blog2', single_blog2, name='single-blog2'),
+    path('single-blog3', single_blog3, name='single-blog3'),
+    path('single-blog4', single_blog4, name='single-blog4'),
+    path('single-blog5', single_blog5, name='single-blog5'),
 
 ]
