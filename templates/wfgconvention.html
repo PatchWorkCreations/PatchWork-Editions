@@ -12,6 +12,27 @@ background-color: #0d6c00 !important;
 
 background-color: #c1a700 !important;
 }
+
+.pulsate {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
 </style>
 
 
@@ -58,7 +79,6 @@ background-color: #c1a700 !important;
 
     <!-- ========== Hero section start ========== -->
     <section id="hero" class="hero hero__padding overflow-hidden position-relative bg-one" style="margin-top: -20px;">
-
         <div class="circle x1"></div>
         <div class="circle x2"></div>
         <div class="circle x3"></div>
@@ -66,8 +86,7 @@ background-color: #c1a700 !important;
         <div class="circle x5"></div>
         <div class="container">
             <div class="row gx-5 align-items-center" style="margin-top: -30px;">
-                <div class="col-md-7 mb-10 mb-md-0 p-10" data-aos="zoom-in-up" data-aos-duration="1000"
-                     data-aos-delay="850">
+                <div class="col-md-7 mb-10 mb-md-0 p-10" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="850">
                     <div class="hero__content position-relative text-center">
                         <div class="badge-text mb-2 text-uppercase font-size: 7px">
                             WFG Life Changers, It’s Time to Publish Your Legacy!<br>
@@ -77,58 +96,37 @@ background-color: #c1a700 !important;
                             Join the Ranks of Influential Authors
                         </h1>
                         
-                        <h1 class="display-4 mb-4  text-center" style="font-size: 50px; font-family: 'Playfair Display', serif; margin-top: 5px; margin-bottom: 10px;">
-                            Share your incredible journey with the world.  <br>
+                        <h1 class="display-4 mb-4 text-center" style="font-size: 50px; font-family: 'Playfair Display', serif; margin-top: 5px; margin-bottom: 10px;">
+                            Share Your Incredible Journey with the World
                         </h1>
-                        
-
-
+    
                         <h2 class="display-4 mb-4 text-capitalize text-center" style="font-size: 25px;">
-                            As a member of World Financial Group, you’ve transformed lives with your expertise and leadership. 
+                            As a member of World Financial Group, you’ve transformed lives with your expertise and leadership.
                         </h2>
-
-
-
+    
                         <p class="text-muted mb-5 fs-5" style="font-size: 5px;">
                             Now, turn your story into a powerful book that inspires and educates others.
+                        </p>
                     </div>
-
-                    <!-- ======== -->
-                    <!---form
-                    <div class="row justify-content-center">
-                        <div class="col-4 text-center">
-                            <img src="{% static 'assets/images/goodfirms.png' %}" class="img-fluid" alt="GoodFirms">
-                        </div>
-                        <div class="col-4 text-center">
-                            <img src="{% static 'assets/images/clutch.png' %}" class="img-fluid" alt="Clutch">
-                        </div>
-                        <div class="col-4 text-center">
-                            <img src="{% static 'assets/images/pilot.png' %}" class="img-fluid" alt="Pilot">
-                        </div>
-                    </div>
-                   <!-->
-
+    
                     <div class="button-container text-center justify-content-center">
-                        <button type="button" class="chat-now" onclick="openChatBox(event)"
-                            style="margin-top: 30px;">CHAT NOW</button>
-                            <button type="button" class="get-a-quote" data-bs-toggle="modal"
-                            data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
-                        <button type="button" class="get-a-quote" data-bs-toggle="modal"
-                        data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">GET A QUOTE</button>
+                        <button type="button" class="chat-now" onclick="openChatBox(event)" style="margin-top: 30px;">CHAT NOW</button>
+                        <button type="button" class="get-a-quote" data-bs-toggle="modal" data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
+                        <a class="get-a-quote pulsate" style="margin-top: 30px;" href="https://square.link/u/09XUbvAg?src=embed" data-url="https://square.link/u/09XUbvAg?src=embed">SIGN UP NOW</a>
                     </div>
-                    
-
                 </div>
+
+                
+    
                 <div class="col-md-5 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="850">
                     <div class="text-absolute" style="color: white;">
-                        <img width="400" class="img-fluid" src="{% static 'assets/images/authortry.png' %}" alt=""/>
-                        
-                        </div>
+                        <img width="400" class="img-fluid" src="{% static 'assets/images/exclusive.png' %}" alt=""/>
                     </div>
                 </div>
             </div>
-
+        </div>
     </section>
+    
     <!-- ========== Hero section end ========== -->
 
     <!-- Banner Logo Start -->
@@ -189,53 +187,39 @@ background-color: #c1a700 !important;
 
 
     <!-- ========== Author section start ========== -->
-    <section id="author" class="section-padding authorv3 bg-one">
+    <section id="author" class="section-padding authorv3 bg-one" style="background-color: #f8f9fa;">
         <div class="container">
-            <div class="row">
-                <div
-                        class="col-lg-6"
-                        data-aos="fade-right"
-                        data-aos-duration="1000"
-                        data-aos-delay="200"
-                >
-                    <div class="author-image">
-                        <img
-                                class="img-fluid"
-                                src="{% static 'assets/images/jesse.png' %}"
-                                alt=""
-                        />
-                    </div>
-                </div>
-                <div
-                        class="col-lg-6"
-                        data-aos="fade-left"
-                        data-aos-duration="1000"
-                        data-aos-delay="200"
-                >
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                     <div class="authorv3__content">
-                        <div class="authorv3__content--badge">The Author</div>
-                        <h3 class="display-5 mb-0"> “Do you have a book idea? Let the experts at iPatchwork Éditions skillfully bring your visions to life with unparalleled style! ” </h3>
-                        <p class="m-30px-b text-muted fs-5"></p>
-                        <p class="m-30px-b">
-                            Why Choose iPatchwork Éditions for Your Book? <br> <br>
-
-                            - Expert Craftsmanship: We dive deep, conducting meticulous research and interviews to create a comprehensive outline for your book. <br> <br>
-                            - Timeless Inspiration: Taking cues from literary greats, we infuse timeless styles into our work to make your book stand out. <br> <br>
-                            - Personalized Process: We map out chapters based on your vision, offering unlimited revisions to perfectly capture your unique voice. <br> <br>
-                            -Comprehensive Services: More than just writers, we handle editing, marketing, and publishing to ensure your manuscript shines. <br> <br>
-                            - Around-the-Clock Support: With 24/7 availability, we are always here to help turn your idea into a masterpiece. <br> <br>
- 
-Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to life!
-                        </p>
-
-
-                        <div class="button-container">
-                            <a href="#" class="get-started-btn" style="margin-bottom: 20px;" onclick="openModal()">Get Started</a>
-                            <a href="#" class="live-chat-btn" style="margin-bottom: 20px;">Live Chat</a>
+                        <div class="authorv3__content--badge text-center">The Author</div>
+                        <h3 class="display-5 mb-4 text-center" style="font-family: 'Playfair Display', serif; color: #343a40;">Why Publish Your Book?</h3>
+                        
+                        <div class="m-30px-b text-muted fs-5" style="font-size: 18px;">
+                            <p style="margin-bottom: 15px; text-align: left;">
+                                <i class="icofont-chart-bar-graph" style="font-size: 24px; color: #007bff;"></i>
+                                <b style="font-size: 20px; color: #007bff;"> Amplify Your Influence:</b> Reach a wider audience and establish yourself as an authority in the financial industry.
+                            </p>
+                            <p style="margin-bottom: 15px; text-align: left;">
+                                <i class="icofont-light-bulb" style="font-size: 24px; color: #28a745;"></i>
+                                <b style="font-size: 20px; color: #28a745;"> Inspire Others:</b> Share your unique experiences and insights to motivate and guide others on their journey.
+                            </p>
+                            <p style="margin-bottom: 15px; text-align: left;">
+                                <i class="icofont-history" style="font-size: 24px; color: #dc3545;"></i>
+                                <b style="font-size: 20px; color: #dc3545;"> Leave a Lasting Legacy:</b> Create a lasting impact that extends beyond your immediate network.
+                            </p>
+                            <p style="font-family: 'Georgia', serif; font-size: 18px; text-align: justify;">
+                                <b style="font-size: 20px;">No Time to Write? No Problem!</b> <br>
+                                Picture this: becoming a published author with just a few minutes of your time. All we need are your answers to three simple questions, and our team of professional writers will take it from there. They will craft your story into a captivating book that perfectly showcases your unique journey and insights. Let us transform your experiences into a powerful narrative that will inspire and influence others.
+                            </p>
                         </div>
-
-
-                        <ul class="social-icon mt-0 mb-0">
+                        
+                        <div class="button-container mt-4 text-center">
+                            <a href="https://square.link/u/09XUbvAg?src=embed" class="get-started-btn pulsate" style="margin-bottom: 20px;">Sign Up Now</a>
+                            <a href="#" class="live-chat-btn" style="margin-bottom: 20px;" onclick="openChatBox(event)">Live Chat</a>
+                        </div>
+                        
+                        <ul class="social-icon mt-4 mb-0 text-center">
                             <li>
                                 <a href="#"><i class="icofont-facebook"></i></a>
                             </li>
@@ -257,6 +241,9 @@ Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to
             </div>
         </div>
     </section>
+    
+    
+    
     <!-- ========== Author v3 section end ========== -->
 
     <!-- ========== Benefits v3 section start ========== -->
@@ -391,35 +378,43 @@ Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to
         </section>
         <!-- ========== Chapter section end ========== -->
         <!-- ========== CTA v4 section start ========== -->
-        <section class="section-padding ctav4" style="padding-top: 50px; padding-bottom: 50px;"> <!-- Adjust padding as needed -->
+        
+      
+
+        <section class="section-padding ctav5">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 mb-4 mb-lg-0 ctav4__content"> <!-- Adjust column size -->
-                        <h3
-                                class="display-4"
-                                data-aos="fade-up"
-                                data-aos-duration="1000"
-                                data-aos-delay="150"
+                    <div class="ctav5__content">
+                        <h2
+                            class="display-3"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="150"
+                            style="text-align: left;"
                         >
                             WHY HIRE THE BEST BOOK PROMOTION EXPERTS?
-                        </h3>
-                        <h3
-                                data-aos="fade-up"
-                                data-aos-duration="1000"
-                                data-aos-delay="200"
-                                style="font-size: 18px;" <!-- Adjust font size -->
-                        
+                        </h2>
+                        <p
+                            class="fs-5"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="450"
+                            style="text-align: left;"
+                        >
                             Our book promoters and marketers can promote a book of any genre and ensure the author
-                            reaches their target audience effectively. Hire our experts today and get a chance to improve your book sales online and in bookstores!
-                        </h3> <br> </div>
-                        
-                        
-                       
-                        
+                            reaches their target audience effectively. Hire our experts today and get a chance to improve your book sales online and in bookstores! <br/>
+                        </p>
+                        <div class="button-container text-left">
+                            <button type="button" class="chat-now" onclick="openChatBox(event)" style="margin-top: 30px;">CHAT NOW</button>
+                            <button type="button" class="get-a-quote" data-bs-toggle="modal" data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
+                            <a class="get-a-quote pulsate" style="margin-top: 30px;" href="https://square.link/u/09XUbvAg?src=embed" data-url="https://square.link/u/09XUbvAg?src=embed">SIGN UP NOW</a>
+                        </div>
                     </div>
-                    
-                    
+                </div>
+            </div>
         </section>
+        
+        
         
         <!-- ========== CTA v4 section end ========== -->
 
@@ -955,8 +950,7 @@ Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to
                             style="margin-top: 30px;">CHAT NOW</button>
                             <button type="button" class="get-a-quote" data-bs-toggle="modal"
                             data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
-                        <button type="button" class="get-a-quote" data-bs-toggle="modal"
-                        data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">GET A QUOTE</button>
+                            <a class="get-a-quote pulsate" style="margin-top: 30px;" href="https://square.link/u/09XUbvAg?src=embed" data-url="https://square.link/u/09XUbvAg?src=embed">SIGN UP NOW</a>
                     </div>
 
                     </div>
@@ -1129,148 +1123,56 @@ Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to
     -->
         <!-- ========== Events section end ========== -->
         <!-- ========== Testimonial section start ========== -->
-        <section
-                id="testimonial"
-                class="section-padding testimonial testimonialv2 bg-one"
-        >
+        <section id="testimonial" class="section-padding testimonial-section bg-one">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 offset-6 mx-auto">
-                        <div class="section-title-center text-center">
-                <span
-                        data-aos="fade-up"
-                        data-aos-duration="1000"
-                        data-aos-delay="150"
-                >Client Feedback</span
-                >
-                            <h3
-                                    class="display-6"
-                                    data-aos="fade-up"
-                                    data-aos-duration="1000"
-                                    data-aos-delay="200"
-                            >
-                                Best Reviews & Feedback By Our Clients
-                            </h3>
-                            <div
-                                    class="section-divider divider-traingle"
-                                    data-aos="fade-up"
-                                    data-aos-duration="1000"
-                                    data-aos-delay="250"
-                            ></div>
-                        </div>
+                    <div class="col-md-6 offset-md-3 text-center">
+                        <span>Client Feedback</span>
+                        <h3 class="display-6">Best Reviews & Feedback By Our Clients</h3>
+                        <div class="divider-traingle"></div>
                     </div>
                 </div>
                 <div class="row testi-row">
                     <div class="col-12">
-                        <div class="clients-slider">
+                        <div class="swiper-container clients-slider">
                             <div class="swiper-wrapper">
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="200"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-2.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                John D. :
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "I couldn't have asked for a better publishing experience! From start to
-                                                finish, the team at iPatchwork Éditions was incredibly professional and
-                                                supportive.
-                                                They guided me through every step of the process, ensuring my vision for
-                                                my book was brought to life. The final product exceeded my expectations,
-                                                and I'm grateful for their dedication to helping authors like myself
-                                                achieve their dreams."
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-2.png' %}" alt="John D.">
+                                            <h4 class="testimonial-card-title">John D.</h4>
+                                            <h5 class="testimonial-card-subtitle">Customer</h5>
+                                            <p>"I couldn't have asked for a better publishing experience! From start to finish, the team at iPatchwork Éditions was incredibly professional and supportive. They guided me through every step of the process, ensuring my vision for my book was brought to life. The final product exceeded my expectations, and I'm grateful for their dedication to helping authors like myself achieve their dreams."</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="300"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-1.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                Sarah K.:
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Loyal Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "Working with iPatchwork Éditions was an absolute pleasure! As a first-time
-                                                author, I was nervous about navigating the publishing world, but their
-                                                team made it seamless.
-                                                They provided valuable feedback, excellent editing services, and took
-                                                care of all the intricate details. Thanks to them, my book is now out in
-                                                the world, touching hearts and making a difference.
-                                                I highly recommend their services to anyone looking to publish their
-                                                work!"
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-1.png' %}" alt="Sarah K.">
+                                            <h4 class="testimonial-card-title">Sarah K.</h4>
+                                            <h5 class="testimonial-card-subtitle">Loyal Customer</h5>
+                                            <p>"Working with iPatchwork Éditions was an absolute pleasure! As a first-time author, I was nervous about navigating the publishing world, but their team made it seamless. They provided valuable feedback, excellent editing services, and took care of all the intricate details. Thanks to them, my book is now out in the world, touching hearts and making a difference. I highly recommend their services to anyone looking to publish their work!"</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="400"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-2.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                Michael R.:
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Repeated Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "I've been in the writing industry for years, but I've never come across
-                                                a publishing company as dedicated and passionate as iPatchwork Éditions. Their
-                                                commitment to excellence is unmatched, and it reflects in every aspect
-                                                of their work.
-                                                They treated my manuscript with the utmost care, and the end result was
-                                                a beautifully crafted book that I'm proud to have my name on. Thank you
-                                                for making my publishing journey a memorable one!"
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-2.png' %}" alt="Michael R.">
+                                            <h4 class="testimonial-card-title">Michael R.</h4>
+                                            <h5 class="testimonial-card-subtitle">Repeated Customer</h5>
+                                            <p>"I've been in the writing industry for years, but I've never come across a publishing company as dedicated and passionate as iPatchwork Éditions. Their commitment to excellence is unmatched, and it reflects in every aspect of their work. They treated my manuscript with the utmost care, and the end result was a beautifully crafted book that I'm proud to have my name on. Thank you for making my publishing journey a memorable one!"</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="500"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-1.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                David H.:
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "As an indie author, finding a reliable publishing partner was crucial
-                                                for me, and I hit the jackpot with iPatchwork Éditions.
-                                                Their personalized approach and attention to detail set them apart from
-                                                the rest.
-                                                They took the time to understand my vision and brought it to fruition
-                                                with precision and care. Thanks to their guidance,
-                                                my book is now reaching audiences far and wide. I couldn't be happier
-                                                with the results!"
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-1.png' %}" alt="David H.">
+                                            <h4 class="testimonial-card-title">David H.</h4>
+                                            <h5 class="testimonial-card-subtitle">Customer</h5>
+                                            <p>"As an indie author, finding a reliable publishing partner was crucial for me, and I hit the jackpot with iPatchwork Éditions. Their personalized approach and attention to detail set them apart from the rest. They took the time to understand my vision and brought it to fruition with precision and care. Thanks to their guidance, my book is now reaching audiences far and wide. I couldn't be happier with the results!"</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1281,6 +1183,9 @@ Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to
                 </div>
             </div>
         </section>
+        
+        
+        
         <!-- ========== Testimonial section end ========== -->
         <!-- ========== Blog section start ========== -->
         <section id="blog" class="section-padding blog">
@@ -1660,6 +1565,10 @@ $(document).ready(function(){
     var iframe = document.getElementById('chatbotFrame');
     iframe.src = 'https://www.chatbase.co/embed.html?chatbotId=38LUjIhuRzNAhpBQH5Jxg&domain=www.chatbase.co';
 });
+
+
+
+
 
 </script>
 

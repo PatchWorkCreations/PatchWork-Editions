@@ -1043,148 +1043,56 @@
         </section>
         <!-- ========== Events section end ========== -->
         <!-- ========== Testimonial section start ========== -->
-        <section
-                id="testimonial"
-                class="section-padding testimonial testimonialv2 bg-one"
-        >
+       <section id="testimonial" class="section-padding testimonial-section bg-one">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 offset-6 mx-auto">
-                        <div class="section-title-center text-center">
-                <span
-                        data-aos="fade-up"
-                        data-aos-duration="1000"
-                        data-aos-delay="150"
-                >Client Feedback</span
-                >
-                            <h3
-                                    class="display-6"
-                                    data-aos="fade-up"
-                                    data-aos-duration="1000"
-                                    data-aos-delay="200"
-                            >
-                                Best Reviews & Feedback By Our Clients
-                            </h3>
-                            <div
-                                    class="section-divider divider-traingle"
-                                    data-aos="fade-up"
-                                    data-aos-duration="1000"
-                                    data-aos-delay="250"
-                            ></div>
-                        </div>
+                    <div class="col-md-6 offset-md-3 text-center">
+                        <span>Client Feedback</span>
+                        <h3 class="display-6">Best Reviews & Feedback By Our Clients</h3>
+                        <div class="divider-traingle"></div>
                     </div>
                 </div>
                 <div class="row testi-row">
                     <div class="col-12">
-                        <div class="clients-slider">
+                        <div class="swiper-container clients-slider">
                             <div class="swiper-wrapper">
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="200"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-2.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                John D. :
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "I couldn't have asked for a better publishing experience! From start to
-                                                finish, the team at iPatchwork Éditions was incredibly professional and
-                                                supportive.
-                                                They guided me through every step of the process, ensuring my vision for
-                                                my book was brought to life. The final product exceeded my expectations,
-                                                and I'm grateful for their dedication to helping authors like myself
-                                                achieve their dreams."
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-2.png' %}" alt="John D.">
+                                            <h4 class="testimonial-card-title">John D.</h4>
+                                            <h5 class="testimonial-card-subtitle">Customer</h5>
+                                            <p>"I couldn't have asked for a better publishing experience! From start to finish, the team at iPatchwork Éditions was incredibly professional and supportive. They guided me through every step of the process, ensuring my vision for my book was brought to life. The final product exceeded my expectations, and I'm grateful for their dedication to helping authors like myself achieve their dreams."</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="300"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-1.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                Sarah K.:
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Loyal Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "Working with iPatchwork Éditions was an absolute pleasure! As a first-time
-                                                author, I was nervous about navigating the publishing world, but their
-                                                team made it seamless.
-                                                They provided valuable feedback, excellent editing services, and took
-                                                care of all the intricate details. Thanks to them, my book is now out in
-                                                the world, touching hearts and making a difference.
-                                                I highly recommend their services to anyone looking to publish their
-                                                work!"
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-1.png' %}" alt="Sarah K.">
+                                            <h4 class="testimonial-card-title">Sarah K.</h4>
+                                            <h5 class="testimonial-card-subtitle">Loyal Customer</h5>
+                                            <p>"Working with iPatchwork Éditions was an absolute pleasure! As a first-time author, I was nervous about navigating the publishing world, but their team made it seamless. They provided valuable feedback, excellent editing services, and took care of all the intricate details. Thanks to them, my book is now out in the world, touching hearts and making a difference. I highly recommend their services to anyone looking to publish their work!"</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="400"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-2.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                Michael R.:
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Repeated Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "I've been in the writing industry for years, but I've never come across
-                                                a publishing company as dedicated and passionate as iPatchwork Éditions. Their
-                                                commitment to excellence is unmatched, and it reflects in every aspect
-                                                of their work.
-                                                They treated my manuscript with the utmost care, and the end result was
-                                                a beautifully crafted book that I'm proud to have my name on. Thank you
-                                                for making my publishing journey a memorable one!"
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-2.png' %}" alt="Michael R.">
+                                            <h4 class="testimonial-card-title">Michael R.</h4>
+                                            <h5 class="testimonial-card-subtitle">Repeated Customer</h5>
+                                            <p>"I've been in the writing industry for years, but I've never come across a publishing company as dedicated and passionate as iPatchwork Éditions. Their commitment to excellence is unmatched, and it reflects in every aspect of their work. They treated my manuscript with the utmost care, and the end result was a beautifully crafted book that I'm proud to have my name on. Thank you for making my publishing journey a memorable one!"</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                        class="swiper-slide p-5px-lr"
-                                        data-aos="fade-up"
-                                        data-aos-duration="1000"
-                                        data-aos-delay="500"
-                                >
-                                    <div class="testi-card card h-100 translateEffect1">
-                                        <div class="card-body text-center p-4">
-                                            <img src="{% static 'assets/images/user-1.png' %}" alt="User Image"/>
-                                            <h2 class="testimonialv2__card-title">
-                                                David H.:
-                                            </h2>
-                                            <h4 class="testimonialv2__card-subtitle">
-                                                Customer
-                                            </h4>
-                                            <p class="pt-2 lh-base">
-                                                "As an indie author, finding a reliable publishing partner was crucial
-                                                for me, and I hit the jackpot with iPatchwork Éditions.
-                                                Their personalized approach and attention to detail set them apart from
-                                                the rest.
-                                                They took the time to understand my vision and brought it to fruition
-                                                with precision and care. Thanks to their guidance,
-                                                my book is now reaching audiences far and wide. I couldn't be happier
-                                                with the results!"
-                                            </p>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-content text-center">
+                                            <img src="{% static 'assets/images/user-1.png' %}" alt="David H.">
+                                            <h4 class="testimonial-card-title">David H.</h4>
+                                            <h5 class="testimonial-card-subtitle">Customer</h5>
+                                            <p>"As an indie author, finding a reliable publishing partner was crucial for me, and I hit the jackpot with iPatchwork Éditions. Their personalized approach and attention to detail set them apart from the rest. They took the time to understand my vision and brought it to fruition with precision and care. Thanks to their guidance, my book is now reaching audiences far and wide. I couldn't be happier with the results!"</p>
                                         </div>
                                     </div>
                                 </div>

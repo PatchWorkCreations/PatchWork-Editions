@@ -475,7 +475,7 @@ body .bg-one {
 
 /* Unique form wrapper class */
 .form-wrapper-unique {
-  background-color: #3b72ff; /* Solid white background for the form */
+  background-color: #3b72ffd0; /* Solid white background for the form */
   padding: 20px;
   border-radius: 10px;
 }
@@ -676,6 +676,55 @@ right: 20px; /* Space from the right edge */
 background-color: #0d6c00 !important;
 }
 
+.testi-card {
+    height: 400px;
+}
+
+.testimonial-section {
+    padding: 60px 0;
+    background-color: #f8f9fa; /* Adjust as needed */
+}
+
+.testimonial-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+}
+
+.testimonial-content img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.testimonial-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.testimonial-card-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.testimonial-content p {
+    font-size: 0.875rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
 </style>
 
 
@@ -813,7 +862,30 @@ function openChatBox(event) {
     chatButton.style.display = 'none'; // Hide the chat button when the iframe is displayed
 }
 
-
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      }
+    });
+  });
 
 </script>
 
