@@ -48,6 +48,10 @@ urlpatterns = [
     path('single-blog5', single_blog5, name='single-blog5'),
     path('includeblog', includeblog, name='includeblog'),
      path('includeevents', includeevents, name='includeevents'),
+    path('single-blog6', single_blog6, name='single-blog6'),
+    path('single-blog7', single_blog7, name='single-blog7'),
+    path('single-blog8', single_blog8, name='single-blog8'),
+
 
 
 ]

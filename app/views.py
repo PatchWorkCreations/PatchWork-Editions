@@ -353,6 +353,15 @@ def includeblog(request):
 def includeevents(request):
     return render(request, 'includeevents.html')
 
+def single_blog6(request):
+    return render(request, 'single-blog6.html')
+
+def single_blog7(request):
+    return render(request, 'single-blog7.html')
+
+
+def single_blog8(request):
+    return render(request, 'single-blog8.html')
 
 
 
