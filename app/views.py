@@ -332,4 +332,12 @@ def terms_and_condition(request):
 def wfgconvention(request):
     return render(request, 'wfgconvention.html')
 
+def includeblog(request):
+    return render(request, 'includeblog.html')
+
+def includeevents(request):
+    return render(request, 'includeevents.html')
+
+
+
 
