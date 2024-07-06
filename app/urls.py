@@ -9,7 +9,7 @@ urlpatterns = [
     path('publishing', publishing, name='publishing'),
     path('design', design, name='design'),
     path('marketing', marketing, name='marketing'),
-    path('blog', bloglist, name='blog'),
+    path('bloglist', bloglist, name='bloglist'),
     path('contact', contact, name='contact'),
     path('all-events', all_events, name='all-events'),
     path('audiobook', audiobook, name='audiobook'),
@@ -56,3 +56,6 @@ urlpatterns = [
 
 
 ]
+
+
+
