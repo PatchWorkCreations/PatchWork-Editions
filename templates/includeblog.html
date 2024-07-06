@@ -3,29 +3,33 @@
 <style>
     @media (max-width: 767.98px) {
         .section-title-center h2 {
-            font-size: 24px; /* Adjusted font size for mobile */
+            font-size: 20px; /* Smaller font size for mobile */
         }
         .blog__single-post {
             margin-bottom: 20px;
         }
         .blog__single-post__content h2 {
-            font-size: 18px; /* Adjusted font size for mobile */
+            font-size: 16px; /* Smaller font size for mobile */
         }
         .blog__single-post__content p {
-            font-size: 14px; /* Adjusted font size for mobile */
+            font-size: 12px; /* Smaller font size for mobile */
         }
         .blog__single-post__body {
-            padding: 10px; /* Added padding for mobile */
+            padding: 10px; /* Padding for mobile */
         }
         .blog__single-post__image img {
-            max-width: 100%; /* Ensures images are responsive */
-            height: auto; /* Ensures images maintain aspect ratio */
+            width: 100%; /* Ensure images are responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .blog__single-post__image {
+            height: 200px; /* Fixed height for images */
+            overflow: hidden; /* Hide overflow */
         }
     }
 
     /* Faster transition */
     .translateEffect1 {
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
     }
 </style>
 
