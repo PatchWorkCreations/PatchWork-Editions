@@ -363,5 +363,10 @@ def single_blog7(request):
 def single_blog8(request):
     return render(request, 'single-blog8.html')
 
+def testimonial(request):
+    return render(request, 'testimonial.html')
+
+
+
 
 
