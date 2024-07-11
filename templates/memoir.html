@@ -84,7 +84,9 @@
                             Writing Journey!</h2>
                         <p>Fill out the form now to consult our book experts.</p>
                         
-                        <form id="contact-form" method="post" action="#">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="send message" value="hidden_text">
                             <div class="form-group-unique">
                                 <input type="text" class="form-control-unique" id="name" name="name_1"
                                        placeholder="Name" required>

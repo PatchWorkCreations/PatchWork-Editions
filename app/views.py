@@ -179,6 +179,45 @@ iPatchwork Editions Team
 
         messages.success(request, 'Submitted successfully!')
         return redirect('home')
+    
+    elif request.method == 'POST' and request.POST.get('send message'):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        number = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        user_subject = "Thank You for Registering with iPatchwork Editions!"
+        user_content = f"""
+Dear {name},
+
+Thank you for registering with iPatchwork Editions! We are thrilled to have you join our community of writers and authors.
+
+At iPatchwork Editions, we are committed to helping writers like you bring their stories to life and reach a wider audience. Whether you're a seasoned author or just starting on your writing journey, we're here to support you every step of the way.
+
+Here's what you can expect next:
+
+- Confirmation: You will receive an email shortly confirming your registration details. Please review this information to ensure it is accurate. If you have any questions or need to make changes, don't hesitate to reach out to us.
+- Resources: As a registered member, you will gain access to our exclusive resources, including writing tips, publishing guides, and marketing strategies. Be sure to explore our website to make the most of these valuable resources.
+- Support: Our team is here to support you throughout your publishing journey. Whether you need assistance with manuscript formatting, cover design, or marketing strategies, our experts are just a click away. Feel free to contact us anytime with your questions or concerns.
+- Community: Join our vibrant community of writers and authors on social media platforms to connect with fellow writers, share your experiences, and stay updated on the latest industry news and events.
+
+We're excited to embark on this journey with you and help you achieve your publishing goals. Thank you again for choosing iPatchwork Editions!
+
+Best regards,
+iPatchwork Editions Team
+        """
+
+        user_email = EmailMessage(user_subject, user_content, to=[email])
+        user_email.send()
+
+        # Email to feed.teach.love@gmail.com
+        admin_subject = "GET QUOTE"
+        admin_content = f"Name: {name}\nEmail: {email}\nNumber: {number}\nMessage: {message}"
+        admin_email = EmailMessage(admin_subject, admin_content, to=['iriseuppublishing@gmail.com'])
+        admin_email.send()
+
+        messages.success(request, 'Submitted successfully!')
+        return redirect('home')
 
     return render(request, 'iRiseup.html')
 
