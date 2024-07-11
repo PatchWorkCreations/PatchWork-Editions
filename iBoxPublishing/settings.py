@@ -132,6 +132,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'iRiseup Publishing Admin'
+DEFAULT_FROM_EMAIL = 'iPatchWork Edition Admin'
 EMAIL_HOST_USER = 'iriseuppublishing@gmail.com'  # Your Gmail email address
 EMAIL_HOST_PASSWORD = 'qssn droz qmll flaz'  # Your Gmail app password or regular password
