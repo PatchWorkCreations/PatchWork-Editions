@@ -180,7 +180,7 @@ iPatchwork Editions Team
         messages.success(request, 'Submitted successfully!')
         return redirect('home')
     
-    elif request.method == 'POST' and request.POST.get('send message'):
+    elif request.method == 'POST' and request.POST.get('send_message'):
         name = request.POST.get('name')
         email = request.POST.get('email')
         number = request.POST.get('phone')
