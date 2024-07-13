@@ -19,7 +19,8 @@
 
 </style>
 
-
+{% include 'header.html' %}
+{% include 'modal.html' %}
  
 
 <div class="section-wrapper">
@@ -27,8 +28,16 @@
     <div id="preLoader"></div>
     <!-- Tmb loader end -->
 
-    {% include 'header.html' %}
-    {% include 'modal.html' %}
+    <!-- Display messages -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
 
     <!-- ========== Hero section start ========== -->
@@ -83,21 +92,23 @@
                     <div class="form-wrapper-unique" style="padding-right: 20px;">
                         <h2 class="form-heading-unique">Take Control of Your Writing Journey</h2>
                         <p>Fill out the form now to consult our book experts.</p>
-                        <form id="contact-form" method="post" action="#">
+                          <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="send_message" value="hidden_text">
                             <div class="form-group-unique">
-                                <input type="text" class="form-control-unique" id="name" name="name_1"
+                                <input type="text" class="form-control-unique" name="name" id="name" 
                                        placeholder="Name" required>
                             </div>
                             <div class="form-group-unique">
-                                <input type="email" class="form-control-unique" id="email" name="email"
-                                       placeholder="Email Address" required>
+                                <input type="email" class="form-control-unique" name="email" id="email" 
+                                       placeholder="Email" required>
                             </div>
                             <div class="form-group-unique">
-                                <input type="tel" class="form-control-unique" id="phone" name="phone_1"
-                                       placeholder="Phone Number" required>
+                                <input type="text" class="form-control-unique" name="phone" id="phone" 
+                                       placeholder="Number" required>
                             </div>
                             <div class="form-group-unique">
-                                <textarea class="form-control-unique" id="project-details" name="project_details_1"
+                                <textarea class="form-control-unique" id="project-details" name="project_details"
                                           rows="3" placeholder="Project Details" required></textarea>
                             </div>
                             <button type="submit" class="btn-form-primary-unique">SEND MESSAGE</button>
@@ -162,24 +173,27 @@
             <div class="rectangle bg-white" data-aos="fade-up"
             data-aos-duration="1000"
             data-aos-delay="150">
-                <form>
+                <form method="post">
+                {% csrf_token %}
+                    <input type="hidden" name="lets_start" value="hidden_text">
                     <div class="form-row align-items-center">
                         <div class="col">
-                            <input type="text" class="form-control form-control-lg" id="name" placeholder="Name">
+                            <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name">
                         </div>
                         <div class="col">
-                            <input type="email" class="form-control form-control-lg" id="email" placeholder="Email">
+                            <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="Email">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control-lg" id="number" placeholder="Number">
+                            <input type="text" class="form-control form-control-lg" name="number" id="number" placeholder="Number">
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn btn-success btn-lg">Let's Start</button>
+                            <button type="submit" class="btn-successs btn-lg">Let's Start</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+
     </section>
 
 
