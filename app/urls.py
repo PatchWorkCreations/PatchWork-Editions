@@ -52,6 +52,7 @@ urlpatterns = [
     path('single-blog7', single_blog7, name='single-blog7'),
     path('single-blog8', single_blog8, name='single-blog8'),
     path('testimonial', testimonial, name='testimonial'),
+    path('exclusiveoffer/',exclusiveoffer, name='exclusiveoffer'),
 
 
 

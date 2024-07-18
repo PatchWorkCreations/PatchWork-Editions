@@ -23,6 +23,7 @@ background-color: #c1a700 !important;
 
 {% include 'header.html' %}
 {% include 'modal.html' %}
+{% include 'modalexclusiveoffer.html' %}
 
 {% for message in messages %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -1231,8 +1232,9 @@ Don't hesitate – contact iPatchwork Éditions now and watch your ideas come to
 
 
 
-
 <script>
+   
+
 document.getElementById("toggleButton").addEventListener("click", function() {
     var formContainer = document.getElementById("formContainer");
     if (formContainer.style.display === "none" || formContainer.style.display === "") {

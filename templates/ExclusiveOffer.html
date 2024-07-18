@@ -1,0 +1,1538 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <title>iPatchWork Publication | Premier Book Writing Services</title>
+    <meta name="description" content="iPatchWork Publication offers top-tier book writing services. Our expert team ensures your book becomes a bestseller. Get in touch with us today!">
+    <meta name="keywords" content="publishing company, authors, readers, book publishing, Patchwork Editions">
+</head>
+
+<style>
+  .btn-successs {
+
+background-color: #0d6c00 !important;
+}
+
+.btn-successs :hover {
+
+background-color: #c1a700 !important;
+}
+
+.pulsate {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+</style>
+
+
+{% include 'header.html' %}
+{% include 'modalexclusiveoffer.html' %}
+{% include 'modal.html' %}
+
+{% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<section id="formContainer" style="display:none;"> <!-- Initially hide the form -->
+    <div class="bg-gray-100 flex items-center justify-center">
+        <div class="bg-white p-10 rounded-lg shadow-lg">
+            <p style="font-size: 20px;">Sign up now and get started</p>
+            <form method="post" class="mt-2">
+                <input type="text" name="name" class="form-control" placeholder="Enter your name">
+                <br>
+                <input type="email" name="email" class="form-control" placeholder="Enter your email">
+                <br>
+                <input type="number" name="contact" class="form-control" placeholder="Enter your contact">
+                <br>
+                <textarea class="form-control" name="project" placeholder="Talk about your project"></textarea>
+                <br>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+
+</div>
+
+<div class="section-wrapper">
+    <!-- Tmb loader end -->
+    <div id="preLoader"></div>
+    <!-- Tmb loader end -->
+
+    <!-- ========== Hero section start ========== -->
+    <section id="hero" class="hero hero__padding overflow-hidden position-relative bg-one" style="margin-top: -20px;">
+        <div class="circle x1"></div>
+        <div class="circle x2"></div>
+        <div class="circle x3"></div>
+        <div class="circle x4"></div>
+        <div class="circle x5"></div>
+        <div class="container">
+            <div class="row gx-5 align-items-center" style="margin-top: -30px;">
+                <div class="col-md-7 mb-10 mb-md-0 p-10" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="850">
+                    <div class="hero__content position-relative text-center">
+                        <div class="badge-text mb-2 text-uppercase font-size: 7px">
+                            Ready to Publish Your Legacy? <br>
+                        </div>
+                        
+                        <h1 class="display-4 mb-3 text-center" style="font-size: 70px; font-family: 'Playfair Display', serif; margin-top: 10px; margin-bottom: 5px;">
+                            Join the Ranks of Influential Authors
+                        </h1>
+                        
+                        <h1 class="display-4 mb-4 text-center" style="font-size: 50px; font-family: 'Playfair Display', serif; margin-top: 5px; margin-bottom: 10px;">
+                            Share Your Incredible Journey with the World
+                        </h1>
+    
+                        <h2 class="display-4 mb-4 text-capitalize text-center" style="font-size: 25px;">
+                            Your story deserves to be told, and we’re here to help you tell it.
+                        </h2>
+    
+                        <p class="text-muted mb-5 fs-5" style="font-size: 5px;">
+                            Now, turn your story into a powerful book that inspires and educates others.
+                        </p>
+                    </div>
+    
+                    <div class="button-container text-center justify-content-center">
+                        <button type="button" class="chat-now" onclick="openChatBox(event)" style="margin-top: 30px;">CHAT NOW</button>
+                        <button type="button" class="get-a-quote" data-bs-toggle="modal" data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
+                        <a class="get-a-quote pulsate" style="margin-top: 30px;" href="https://square.link/u/A1twdZvc?src=embed" data-url="https://square.link/u/A1twdZvc?src=embed">SIGN UP NOW</a>
+                    </div>
+                </div>
+    
+                <div class="col-md-5 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="850">
+                    <div class="text-absolute" style="color: white;">
+                        <img width="400" class="img-fluid" src="{% static 'assets/images/legacy.png' %}" alt="Exclusive">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== Hero section end ========== -->
+
+    <!-- Banner Logo Start -->
+
+    <section class="banner-logo-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper-container banner-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner1.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner2.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner3.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner4.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner5.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner6.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div class="rectangle bg-white" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+                <form method="post">
+                {% csrf_token %}
+                    <input type="hidden" name="lets_start" value="hidden_text">
+                    <div class="form-row align-items-center">
+                        <div class="col">
+                            <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name">
+                        </div>
+                        <div class="col">
+                            <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control form-control-lg" name="number" id="number" placeholder="Number">
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn-successs btn-lg">Let's Start</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== Author section start ========== -->
+    <section id="author" class="section-padding authorv3 bg-one" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="authorv3__content">
+                        <div class="authorv3__content--badge text-center">The Author</div>
+                        <h3 class="display-5 mb-4 text-center" style="font-family: 'Playfair Display', serif; color: #343a40;">Why Publish Your Book?</h3>
+                        
+                        <div class="m-30px-b text-muted fs-5" style="font-size: 18px;">
+                            <p style="margin-bottom: 15px; text-align: left;">
+                                <i class="icofont-chart-bar-graph" style="font-size: 24px; color: #007bff;"></i>
+                                <b style="font-size: 20px; color: #007bff;"> Amplify Your Influence:</b> Reach a wider audience and establish yourself as an authority in your field.
+                            </p>
+                            <p style="margin-bottom: 15px; text-align: left;">
+                                <i class="icofont-light-bulb" style="font-size: 24px; color: #28a745;"></i>
+                                <b style="font-size: 20px; color: #28a745;"> Inspire Others:</b> Share your unique experiences and insights to motivate and guide others on their journey.
+                            </p>
+                            <p style="margin-bottom: 15px; text-align: left;">
+                                <i class="icofont-history" style="font-size: 24px; color: #dc3545;"></i>
+                                <b style="font-size: 20px; color: #dc3545;"> Leave a Lasting Legacy:</b> Create a lasting impact that extends beyond your immediate network.
+                            </p>
+                            <p style="font-family: 'Georgia', serif; font-size: 18px; text-align: justify;">
+                                <b style="font-size: 20px;">No Time to Write? No Problem!</b> <br>
+                                Picture this: becoming a published author with just a few minutes of your time. All we need are your answers to five simple questions, and our team of professional writers will take it from there. They will craft your story into a captivating book that perfectly showcases your unique journey and insights. Let us transform your experiences into a powerful narrative that will inspire and influence others.
+                            </p>
+                        </div>
+                        
+                        <div class="button-container mt-4 text-center">
+                            <a href="https://square.link/u/A1twdZvc?src=embed" class="get-started-btn pulsate" style="margin-bottom: 20px;">Sign Up Now</a>
+                            <a href="#" class="live-chat-btn" style="margin-bottom: 20px;" onclick="openChatBox(event)">Live Chat</a>
+                        </div>
+                        
+                        <ul class="social-icon mt-4 mb-0 text-center">
+                            <li>
+                                <a href="#"><i class="icofont-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icofont-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icofont-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icofont-youtube-play"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icofont-whatsapp"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== Author section end ========== -->
+    
+    <!-- ========== Publishing Packages section start ========== -->
+    <section id="packages" class="section-padding bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="packages__content text-center">
+                        <h3 class="display-5 mb-4" style="font-family: 'Playfair Display', serif; color: #343a40;">Publishing Package</h3>
+                        
+                        <div class="package p-4 mb-5" style="border: 1px solid #e0e0e0; border-radius: 8px; background: #fff;">
+                            <h4 class="mb-3" style="font-size: 28px; font-family: 'Playfair Display', serif; color: #007bff;">Legacy Coverage Package - $1950</h4>
+                            <ul class="list-unstyled text-left" style="font-size: 18px; line-height: 1.6;">
+                                <li>✅ Professional Writing Services</li>
+                                <li>✅ Editing & Proofreading</li>
+                                <li>✅ Design & Layout</li>
+                                <li>✅ Publishing Assistance</li>
+                                <li>✅ Marketing Support</li>
+                                <li>✅ Distribution</li>
+                                <li>✅ Client Support</li>
+                                <li>✅ Bonus Features</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="taglines mt-5">
+                            <h4 class="mb-4" style="font-size: 24px; font-family: 'Playfair Display', serif; color: #343a40;">Why Choose Us?</h4>
+                            <div class="row text-left">
+                                <div class="col-md-6">
+                                    <p>📚 Unlock Your Story, Leave a Legacy</p>
+                                    <p>📚 From Idea to Bestseller: We’ve Got You Covered</p>
+                                    <p>📚 Your Story Deserves to Be Told – Let’s Make It Happen</p>
+                                    <p>📚 Transform Your Dreams into Published Reality</p>
+                                    <p>📚 Crafting Your Legacy, One Page at a Time</p>
+                                    <p>📚 Your Book, Our Expertise – A Perfect Match</p>
+                                    <p>📚 Write. Publish. Inspire.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>📚 Bringing Your Book to Life with Ease</p>
+                                    <p>📚 Publish Like a Pro, Starting at Just $1950</p>
+                                    <p>📚 Your Story, Professionally Published</p>
+                                    <p>📚 From Manuscript to Masterpiece</p>
+                                    <p>📚 Exceptional Publishing, Tailored for You</p>
+                                    <p>📚 Expert Publishing Services, Simple and Affordable</p>
+                                    <p>📚 Your Vision, Our Mission: Publish with Us</p>
+                                    <p>📚 Making Your Book Dreams a Reality</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="button-container mt-5 d-flex justify-content-center align-items-center">
+                            <a href="https://square.link/u/A1twdZvc?src=embed" class="btn btn-primary btn-lg mr-3 get-a-quote pulsate">SIGN UP NOW</a>
+                            <a href="#" class="btn btn-secondary btn-lg get-a-quote" onclick="openChatBox(event)">Live Chat</a>
+                        </div>
+                        
+                        <ul class="social-icon mt-4 mb-0 text-center list-inline">
+                            <li class="list-inline-item">
+                                <a href="#"><i class="icofont-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="icofont-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="icofont-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="icofont-youtube-play"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="icofont-whatsapp"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    
+    
+    <!-- ========== Author v3 section end ========== -->
+
+    <!-- ========== Benefits v3 section start ========== -->
+
+    {% include 'flipbox.html' %}
+        
+        
+
+        <!-- ========== Chapter section start ========== -->
+        <section id="chapters" class="section-padding chapter bg-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-lg-5 offset-lg-1">
+                        <div class="section-title-center text-center">
+                <span
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                >SERVICES</span
+                >
+                            <h2
+                                    class="display-6"
+                                    data-aos="zoom-in-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="200"
+                            >
+                                WE OFFER PREMIUM BOOK WRITING SERVICES IN THE FOLLOWING GENRES
+                            </h2>
+                            <div
+                                    class="section-divider divider-traingle"
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="300"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mx-auto px-4 py-8">
+                    <div class="row justify-content-center">
+                        <!-- Fiction -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'fiction.png' %}" alt="Placeholder image for the book 'Three Cowboys Baby' by Kate Pearce" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Fiction</h2>
+                                <p class="text-gray-600 text-center">Unleash your plot's potential with our online book writers. Elevate your story with our expertise!</p>
+                            </div>
+                        </div>
+                
+                        <!-- Nonfiction -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'nonfiction.png' %}" alt="Placeholder image for the book 'Essays 2023' by Alexander Chee" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Nonfiction</h2>
+                                <p class="text-gray-600 text-center">Partner with our top nonfiction writers to bring your ideas to life! Contact us today!</p>
+                            </div>
+                        </div>
+                
+                        <!-- Fantasy -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'fantasy.png' %}" alt="Placeholder image for the fantasy book" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Fantasy</h2>
+                                <p class="text-gray-600 text-center">Writing's tough! Let our fantasy wizards create captivating tales. Get in touch!</p>
+                            </div>
+                        </div>
+                
+                        <!-- Autobiography -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center"> <!-- Center the image horizontally -->
+                                    <img src="{% static 'autobiography.png' %}" alt="Placeholder image for the book 'The Secret Lives of Royal Women'" class="mb-4">
+                                </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Autobiography</h2>
+                                <p class="text-gray-600 text-center">Seeking to inspire others with your life story? Reach out today!</p>
+                            </div>
+                        </div>
+                        
+                
+                        <!-- Memoirs -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'memoirs.png' %}" alt="Placeholder image for the book 'Anxiously Ever After' by Clint Edwards" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Memoirs</h2>
+                                <p class="text-gray-600 text-center">Crafting memoirs? Consult with our experts today!</p>
+                            </div>
+                        </div>
+                
+                        <!-- Children's Book -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'childrensbook.png' %}" alt="Placeholder image for the children's book 'ABC Dot-to-Dots'" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Children's Book</h2>
+                                <p class="text-gray-600 text-center">iPatchwork Éditions crafts captivating children's books.</p>
+                            </div>
+                        </div>
+                
+                        <!-- Self-Help -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'selfhelp.png' %}" alt="Placeholder image for the self-help book 'Grief Therapy'" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Self-Help</h2>
+                                <p class="text-gray-600 text-center">Unlock self-help strategies for a better world.</p>
+                            </div>
+                        </div>
+                
+                        <!-- Research-Based -->
+                        <div class="col-md-3">
+                            <div class="flex flex-col items-center">
+                                <div class="d-flex justify-content-center">
+                                <img src="{% static 'researchbased.png' %}" alt="Placeholder image for the research-based book 'Documentary Narrative Film'" class="mb-4">
+                            </div>
+                                <h2 class="text-xl font-bold mb-2 text-center">Research-Based</h2>
+                                <p class="text-gray-600 text-center">Ready to publish your research? We're here to assist! Contact us.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+        </section>
+        <!-- ========== Chapter section end ========== -->
+        <!-- ========== CTA v4 section start ========== -->
+        
+      
+
+        
+        
+        
+        
+        <!-- ========== CTA v4 section end ========== -->
+
+
+<section class="section-padding ctav5">
+            <div class="container">
+                <div class="row">
+                    <div class="ctav5__content">
+                        <h2
+                            class="display-3"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="150"
+                            style="text-align: left;"
+                        >
+                            WHY HIRE THE BEST BOOK PROMOTION EXPERTS?
+                        </h2>
+                        <p
+                            class="fs-5"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="450"
+                            style="text-align: left;"
+                        >
+                            Our book promoters and marketers can promote a book of any genre and ensure the author
+                            reaches their target audience effectively. Hire our experts today and get a chance to improve your book sales online and in bookstores! <br/>
+                        </p>
+                        <div class="button-container text-left">
+                            <button type="button" class="chat-now" onclick="openChatBox(event)" style="margin-top: 30px;">CHAT NOW</button>
+                            <button type="button" class="get-a-quote" data-bs-toggle="modal" data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
+                            <a class="get-a-quote pulsate" style="margin-top: 30px;" href="https://square.link/u/A1twdZvc?src=embed" data-url="https://square.link/u/A1twdZvc?src=embed">SIGN UP NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="preview" class="section-padding chapter-preview">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+                        <div class="section-title-center text-center">
+                <span
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                ></span
+                >
+                            <h2
+                                    class="display-6"
+                                    data-aos="zoom-in-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="200"
+                            >
+                                GET YOUR NAME ENLISTED AMONG OTHER BEST SELLERS
+                            </h2>
+                            <div
+                                    class="section-divider divider-traingle"
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="250"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                        class="chapter__preview2"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="300"
+                >
+                    <div class="chapter__preview2-content">
+                        <div class="chapter__preview2-container">
+                            <div
+                                    class="panel active"
+                                    style="
+                    background-image: url({% static 'assets/images/fiction2.png' %}); "
+                  
+                            >
+                                <a
+                                        data-glightbox=" description: .custom-desc1; descPosition: right;"
+                                        class="glightbox2"
+                                        href="{% static 'assets/images/bestsellerbook/4.png' %}"
+                                >
+                                </a>
+                                <h3>FICTION</h3>
+                            </div>
+                            <div class="chapters__content glightbox-desc custom-desc1">
+                                <div class="content__body">
+                                    <h3 class="mb-4 text-center">Fiction</h3>
+                                    <p class="first-letter">
+                                        At iPatchwork Éditions, we believe that every story deserves to be told in a captivating and
+                                        visually stunning manner.
+                                        Our recent venture into publishing fiction books exemplifies our commitment to
+                                        creativity and excellence in storytelling.
+                                        From the inception of the idea to the final product on bookshelves, our team
+                                        poured their hearts and minds into every aspect of the process.
+                                        We embarked on a journey of imagination, weaving intricate plots, developing
+                                        rich characters, and painting vivid worlds that transport readers to realms
+                                        beyond their wildest dreams.
+                                    </p>
+                                    <p>
+                                        With a keen eye for aesthetics, we spared no effort in ensuring that each page
+                                        of our fiction books is a work of art.
+                                        From the choice of premium paper to the meticulous design of cover
+                                        illustrations,
+                                        every detail was meticulously crafted to evoke a sense of wonder and
+                                        enchantment.
+                                    </p>
+                                    <p>
+                                        Our dedication to quality extends beyond the pages of our books. We collaborated
+                                        with talented authors, illustrators, and designers, fostering an environment of
+                                        collaboration and innovation. Together,
+                                        we pushed the boundaries of conventional storytelling, exploring new genres,
+                                        themes, and narrative techniques to create fiction books that resonate with
+                                        readers of all ages.
+                                    </p>
+                                    <p>
+                                        But our journey does not end with the publication of a beautiful book. We are
+                                        passionate about sharing these stories with the world, igniting imaginations and
+                                        inspiring hearts.
+                                        That's why we invite you to discover the magic of our fiction books and embark
+                                        on an unforgettable adventure with each turn of the page.
+                                    </p>
+                                    <p>
+                                        Join us in celebrating the power of creativity and storytelling.
+                                        Dive into a world where anything is possible and let your imagination soar with
+                                        iPatchwork Éditions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                    class="panel"
+                                    style="
+                    background-image: url({% static 'assets/images/bio1.png' %});
+                  "
+                            >
+                                <a
+                                        data-glightbox=" description: .custom-desc2; descPosition: right;"
+                                        class="glightbox2"
+                                        href="{% static 'assets/images/bestsellerbook/3.png' %}"
+                                >
+                                </a>
+                                <h3>BIOGRAPHY</h3>
+                            </div>
+                            <div class="chapters__content glightbox-desc custom-desc2">
+                                <div class="content__body">
+                                    <h3 class="mb-4 text-center">Biography</h3>
+                                    <p class="first-letter">
+                                        we firmly believe that every life is a story waiting to be told, and our recent
+                                        venture into publishing biographies showcases our unwavering dedication to
+                                        honoring these remarkable narratives.
+                                    </p>
+                                    <p>
+                                        Just as with our fiction books, our journey into the realm of biographies is a
+                                        testament to our commitment to creativity and excellence in storytelling. From
+                                        the initial spark of inspiration to the finished product on bookstore shelves,
+                                        our team pours their passion and expertise into every aspect of the process.
+                                    </p>
+                                    <p>
+                                        We embark on a journey of exploration and discovery, delving deep into the lives
+                                        of our subjects to unearth the essence of their experiences. Through meticulous
+                                        research, heartfelt interviews, and compassionate storytelling, we strive to
+                                        capture the true essence of each individual's journey, painting a vivid portrait
+                                        that resonates with readers.
+                                    </p>
+                                    <p>
+                                        With a discerning eye for detail, we spare no effort in ensuring that every page
+                                        of our biographies is a masterpiece in its own right. From the choice of premium
+                                        paper to the thoughtful selection of photographs and illustrations, every
+                                        element is meticulously curated to evoke a sense of wonder and reverence.
+                                    </p>
+                                    <p>
+                                        Our dedication to quality extends far beyond the printed page. We collaborate
+                                        closely with our authors, subjects, and a team of talented designers, fostering
+                                        an environment of collaboration and innovation. Together, we push the boundaries
+                                        of traditional biography writing, exploring new storytelling techniques and
+                                        narrative approaches to create books that captivate and inspire readers of all
+                                        ages.
+                                        But our mission does not end with the publication of a beautiful book. We are
+                                        passionate about sharing these extraordinary stories with the world, igniting
+                                        imaginations and stirring hearts.
+                                    </p>
+                                    <p>
+                                        That's why we invite you to discover the magic of our biographies and embark on
+                                        a transformative journey with each turn of the page.
+                                    </p>
+                                    <p>
+                                        Join us in celebrating the power of storytelling and the richness of the human
+                                        experience. Dive into the lives of extraordinary individuals and let your
+                                        imagination soar with iPatchwork Éditions.
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div
+                                    class="panel"
+                                    style="
+                    background-image: url({% static 'assets/images/nonfiction2.png' %});
+                  "
+                            >
+                                <a
+                                        data-glightbox=" description: .custom-desc3; descPosition: right;"
+                                        class="glightbox2"
+                                        href="{% static 'assets/images/bestsellerbook/1.png' %}"
+                                >
+                                </a>
+                                <h3>NON-FICTION</h3>
+                            </div>
+                            <div class="chapters__content glightbox-desc custom-desc3">
+                                <div class="content__body">
+                                    <h3 class="mb-4 text-center">Non-Fiction</h3>
+                                    <p class="first-letter">
+                                        At iPatchwork Éditions, we're dedicated to telling captivating stories that inspire and
+                                        enlighten.
+                                        Our recent expansion into non-fiction publishing exemplifies our commitment to
+                                        excellence in storytelling. From inception to publication, our team meticulously
+                                        crafts each narrative,
+                                        delving deep into the subject matter to present compelling and thought-provoking
+                                        content. </p>
+                                    <p>
+                                        With a keen eye for detail, we ensure that every aspect of our non-fiction
+                                        books, from the writing to the design, captivates and engages readers.
+                                        Join us in celebrating the power of knowledge and discovery. Explore our
+                                        collection of non-fiction titles and embark on a journey of enlightenment with
+                                        iPatchwork Éditions.
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div
+                                    class="panel"
+                                    style="
+                    background-image: url({% static 'assets/images/romance7.png' %});
+                  "
+                            >
+                                <a
+                                        data-glightbox=" description: .custom-desc4; descPosition: right;"
+                                        class="glightbox2"
+                                        href="{% static 'assets/images/bestsellerbook/2.png' %}"
+                                >
+                                </a>
+                                <h3>ROMANCE</h3>
+                            </div>
+                            <div class="chapters__content glightbox-desc custom-desc4">
+                                <div class="content__body">
+                                    <h3 class="mb-4 text-center">Romance</h3>
+                                    <p class="first-letter">
+                                        At iPatchwork Éditions, we believe in the magic of love stories and the power they hold to
+                                        captivate hearts. Our recent venture into publishing romance novels reflects our
+                                        passion for crafting tales that sweep readers off their feet.
+                                    </p>
+                                    <p>
+                                        From the initial spark of inspiration to the final heartfelt page, our team
+                                        pours their creativity and dedication into every aspect of the process. We weave
+                                        intricate plots, develop memorable characters, and paint vivid settings that
+                                        transport readers to worlds of passion and desire. With a commitment to
+                                        capturing the essence of love, we spare no effort in ensuring that each romance
+                                        novel is a tale to cherish.
+                                    </p>
+                                    <p>
+                                        Join us in celebrating the beauty of romance and let your heart soar with
+                                        iPatchwork Éditions.
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div
+                                    class="panel"
+                                    style="
+                    background-image: url({% static 'assets/images/thrill4.png' %});
+                  "
+                            >
+                                <a
+                                        data-glightbox=" description: .custom-desc5; descPosition: right;"
+                                        class="glightbox2"
+                                        href="{% static 'assets/images/thriller.png' %}"
+                                >
+                                </a>
+                                <h3>THRILLER</h3>
+                            </div>
+                            <div class="chapters__content glightbox-desc custom-desc5">
+                                <div class="content__body">
+                                    <h3 class="mb-4 text-center">Thriller</h3>
+                                    <p class="first-letter">
+                                        At iPatchwork Éditions, we thrive on the adrenaline rush of a good thriller, and our recent
+                                        foray into publishing gripping suspense novels showcases our dedication to
+                                        keeping readers on the edge of their seats.
+                                    </p>
+                                    <p>
+                                        From the first chilling twist to the heart-pounding climax, our team
+                                        meticulously crafts each thriller to deliver pulse-pounding excitement and
+                                        spine-tingling suspense. With expertly crafted plots, complex characters, and
+                                        atmospheric settings, we ensure that every page is a rollercoaster ride of
+                                        thrills and surprises.
+                                    </p>
+                                    <p>
+                                        Join us in experiencing the excitement of the unknown and dive into the world of
+                                        gripping suspense with iPatchwork Éditions.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== Chapter preview section end ========== -->
+
+        <!-- Banner Logo Start -->
+             <section class="banner-logo-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper-container banner-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner1.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner2.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner3.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner4.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner5.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner6.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- ========== CTA section start ========== -->
+        <section class="cta section-padding" id="cta">
+            <div class="container">
+                <div class="row justify-content-center cta__inner bg-one">
+                    <div class="col-lg-8">
+                        <div class="section-title-center mb-0 text-center">
+                <span
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                >SUBSCRIBE NOW</span
+                >
+                            <h2
+                                    class="display-6"
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="200"
+                            >
+                                HAVE AN IDEA THAT’S
+                                WORTH SHARING?
+
+                        </div>
+
+                        Our book writing company will ensure your story leaves
+                        the world completely spellbound.
+
+                        <div>
+                        </div>
+                        <div class="cta-form-box">
+                            <!-- subscription form start -->
+                            <form method="post" id="subscribe">
+                            {% csrf_token %}
+                                <input type="hidden" name="subscribe" value="hidden_text">
+                                <div
+                                        class="mb13"
+                                        data-aos="fade-up"
+                                        data-aos-duration="1000"
+                                        data-aos-delay="250"
+                                >
+                                    <input
+                                            class="cta-email"
+                                            type="email"
+                                            name="email"
+                                            placeholder="Your Email"
+                                            id="subscriber-email"
+                                    />
+                                </div>
+                                <button
+                                        class="w-100 button button__primary align-items-center"
+                                        id="subscribe-button"
+                                        data-aos="fade-up"
+                                        data-aos-duration="1000"
+                                        data-aos-delay="300"
+                                >
+                    <span
+                    >Subscribe Now <i class="icofont-arrow-right"></i
+                    ></span>
+                                </button>
+                                <div class="result">
+                                    <p
+                                            class="success-msg"
+                                            data-aos="fade-up"
+                                            data-aos-duration="1000"
+                                            data-aos-delay="350"
+                                    >
+                                        <i class="icofont-check"></i> Your email has been stored!
+                                    </p>
+                                    <p
+                                            class="error-msg"
+                                            data-aos="fade-up"
+                                            data-aos-duration="1000"
+                                            data-aos-delay="400"
+                                    >
+                                        <i class="icofont-close"></i> Sorry! Something went wrong!
+                                    </p>
+                                </div>
+                            </form>
+
+
+                            <!-- Mailchimp subscription form -->
+                            <!-- <form
+                              action="#"
+                              id="subscribe-mailchimp"
+                              data-wow-duration="1.5s"
+                            >
+                              <div class="mb13" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250">
+                                <input
+                                  class="cta-email"
+                                  type="email"
+                                  name="email"
+                                  placeholder="Your Email"
+                                />
+                              </div>
+                              <button
+                                type="submit"
+                                class="w-100 button button__primary align-items-center"
+                                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"
+                              >
+                                <span>Subscribe Now <i class="icofont-arrow-right"></i></span>
+                              </button>
+                              <div class="result">
+                                <p class="success-msg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="350">
+                                  <i class="icofont-check"></i> Your email has been stored!
+                                </p>
+                                <p class="error-msg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                                  <i class="icofont-close"></i> Sorry! Something went wrong!
+                                </p>
+                              </div>
+                              <p class="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450">
+                                * eBook includes iBooks, PDF &amp; ePub versions
+                              </p>
+                            </form> -->
+                            <!-- subscription form end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Logo Start -->
+
+             <section class="banner-logo-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper-container banner-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner1.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner2.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner3.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner4.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner5.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-box">
+                                    <img src="{% static 'assets/images/banner6.png' %}" class="img-fluid" alt="i-patchwork-publication">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- ========== CTA section end ========== -->
+
+        <!-- ========== register banner start ========== -->
+        <section>
+
+            <div class="container">
+            <div class="rectangle bg-white" data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="150">
+                <form>
+                    <div class="form-row align-items-center">
+                        <div class="col">
+                            <input type="text" class="form-control form-control-lg" id="name" placeholder="Name">
+                        </div>
+                        <div class="col">
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="Email">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control form-control-lg" id="number" placeholder="Number">
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn-success btn lg">Let's Start</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </section>
+        <!-- ========== CTA section end ========== -->
+
+
+        <!-- ========== CTA v5 section start ========== -->
+        <section class="section-padding ctav5">
+            <div class="container">
+                <div class="row">
+                    <div class="ctav5__content">
+                        <h2
+                                class="display-3"
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="150"
+                        >
+                        Make Your Dream a Reality with Our Premium Book Writing Services!
+                        </h2>
+                        <ul>
+                            <li
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="200"
+                            >
+                                <i class="icofont-star"></i>
+                            </li>
+                            <li
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="250"
+                            >
+                                <i class="icofont-star"></i>
+                            </li>
+                            <li
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="300"
+                            >
+                                <i class="icofont-star"></i>
+                            </li>
+                            <li
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="350"
+                            >
+                                <i class="icofont-star"></i>
+                            </li>
+                            <li
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="400"
+                            >
+                                <i class="icofont-star"></i>
+                            </li>
+                        </ul>
+                        <p
+                                class="fs-5"
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="450"
+                        >
+                        Hire our expert book writers today! <br/>
+
+                        </p>
+
+                        <div class="button-container text-center justify-content-center">
+                        <button type="button" class="chat-now" onclick="openChatBox(event)"
+                            style="margin-top: 30px;">CHAT NOW</button>
+                            <button type="button" class="get-a-quote" data-bs-toggle="modal"
+                            data-bs-target="#getAQuoteModal" style="margin-top: 30px;" onclick="openModal()">CONTACT US</button>
+                            <a class="get-a-quote pulsate" style="margin-top: 30px;" href="https://square.link/u/A1twdZvc?src=embed" data-url="https://square.link/u/A1twdZvc?src=embed">SIGN UP NOW</a>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== CTA v5 section end ========== -->
+        <!-- ========== Events section end ========== -->
+       <!--
+        <section id="events" class="section-padding event">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+                        <div class="section-title-center text-center">
+                <span
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                >Events</span
+                >
+                            <h2
+                                    class="display-6"
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="200"
+                            >
+                                Upcoming Events & Programs
+                            </h2>
+                            <div
+                                    class="section-divider divider-traingle"
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="250"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div
+                            class="col-md-6 col-lg-4 mb-4"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="200"
+                    >
+                        <article class="events__single-event h-100 translateEffect1">
+                            <div class="events__single-event__image">
+                                <a href="{% url 'single-event' %}">
+                                    <img
+                                            class="img-fluid"
+                                            src="{% static 'assets/images/event1.png' %}"
+                                            alt="events 01"
+                                    />
+                                </a>
+                            </div>
+                            <div class="events__single-event__body">
+                                <div class="events__single-event__content">
+                                    <h2 class="fs-4">
+                                        <a href="{% url 'single-event' %}"
+                                        >Discussion</a
+                                        >
+                                    </h2>
+                                    <p class="m-0">
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                        Maxime provident, in tempore incidunt laudantium.
+                                    </p>
+                                </div>
+                                <div class="events__single-event__meta">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="icofont-calendar"></i>
+                                        <a href="#">3 June, 2021</a>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="icofont-location-pin"></i> <a href="#">Milan</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    -->
+                    <!-- End single event -->
+                    <!--
+                    <div
+                            class="col-md-6 col-lg-4 mb-4"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="300"
+                    >
+                        <article class="events__single-event h-100 translateEffect1">
+                            <div class="events__single-event__image">
+                                <a href="{% url 'single-event' %}">
+                                    <img
+                                            class="img-fluid"
+                                            src="{% static 'assets/images/event1.png' %}"
+                                            alt="events 01"
+                                    />
+                                </a>
+                            </div>
+                            <div class="events__single-event__body">
+                                <div class="events__single-event__content">
+                                    <h2 class="fs-4">
+                                        <a href="{% url 'single-event' %}"
+                                        >Discussion</a
+                                        >
+                                    </h2>
+                                    <p class="m-0">
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                        Maxime provident, in tempore incidunt laudantium.
+                                    </p>
+                                </div>
+                                <div class="events__single-event__meta">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="icofont-calendar"></i>
+                                        <a href="#">3 June, 2021</a>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="icofont-location-pin"></i>
+                                        <a href="#">Boston</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- End single event -->
+                <!--
+                    <div
+                            class="col-md-6 col-lg-4 mb-4"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                            data-aos-delay="400"
+                    >
+                        <article class="events__single-event h-100 translateEffect1">
+                            <div class="events__single-event__image">
+                                <a href="{% url 'single-event' %}">
+                                    <img
+                                            class="img-fluid"
+                                            src="{% static 'assets/images/event1.png' %}"
+                                            alt="events 02"
+                                    />
+                                </a>
+                            </div>
+                            <div class="events__single-event__body">
+                                <div class="events__single-event__content">
+                                    <h2 class="fs-4">
+                                        <a href="{% url 'single-event' %}"
+                                        >Discussion</a
+                                        >
+                                    </h2>
+                                    <p class="m-0">
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                        Maxime provident, in tempore incidunt laudantium.
+                                    </p>
+                                </div>
+                                <div class="events__single-event__meta">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="icofont-calendar"></i>
+                                        <a href="#">3 June, 2021</a>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="icofont-location-pin"></i>
+                                        <a href="#">Juventus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    -->
+        <!-- ========== Events section end ========== -->
+        <!-- ========== Testimonial section start ========== -->
+   {% include 'testimonial.html' %}
+        
+        
+        
+        <!-- ========== Testimonial section end ========== -->
+        <!-- ========== Blog section start ========== -->
+{% include 'includeblog.html' %}
+        <!-- ========== Blog section end ========== -->
+        <!-- ========== CTA v3 section start ========== -->
+        <section id="ctav3" class="ctav3 bg-one section-padding">
+            <div class="container bg-one">
+                <div class="row">
+                    <div class="ctav3__content">
+                        <h2
+                                class="m-25px-b"
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="150"
+                        >
+                            Do you have a question? <br/>
+
+                        </h2> 
+                         <!--
+                        <h2
+                                class="display-4 m-25px-b"
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="200"
+                        >
+                       
+                            <a href="email:610383766284"></a>
+                        </h2> -->
+                        <a
+                                href="#contact"
+                                class="smooth button button__primary"
+                                data-aos="fade-up"
+                                data-aos-duration="1000"
+                                data-aos-delay="250"
+                        ><span>Send us a message</span></a
+                        >
+                        <div class="ctav3__content__icon">
+                            <i class="icofont-read-book"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== CTA v3 section end ========== -->
+        <!-- ========== Contact section start ========== -->
+        <section id="contact" class="p-80px-tb bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+                        <div class="section-title-center text-center">
+                <span
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay="150"
+                >Contact Us</span
+                >
+                            <h2
+                                    class="display-6"
+                                    data-aos="zoom-in-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="200"
+                            >
+                                Write Your Dream Book with Us!
+                            </h2>
+                            <h2
+                                    data-aos="zoom-in-up"
+                                    data-aos-duration="1000"
+                                    data-aos-delay="250"
+                            >
+                                At iPatchwork Éditions Publishing, we're your full-service book partner.
+                                we're here for you. Connect with us today and embark on your publishing journey!
+                                <br/>
+                                <div
+                                        class="section-divider divider-traingle"
+                                        data-aos="fade-up"
+                                        data-aos-duration="1000"
+                                        data-aos-delay="250"
+                                ></div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div
+                            class="col-lg-8 col-md-6 col-sm-12 m-25px-b"
+                    >
+                        <div class="contact-form-box" data-aos="fade-right"
+                        data-aos-duration="1000"
+                        data-aos-delay="250">
+                            <form method="post">
+                            {% csrf_token %}
+                                <input type="hidden" name="reaching_out" value="hidden_text">
+                                <div class="mb13">
+                                    <input
+                                            name="name"
+                                            class="contact-name"
+                                            id="contact-name"
+                                            type="text"
+                                            placeholder="Your Name"
+                                            required
+                                    />
+                                </div>
+                                <div class="mb13">
+                                    <input
+                                            name="email"
+                                            class="contact-email"
+                                            id="contact-email"
+                                            type="email"
+                                            placeholder="Your Email"
+                                            required
+                                    />
+                                </div>
+                                <div class="mb13">
+                                    <input
+                                            name="subject"
+                                            class="contact-subject"
+                                            id="contact-subject"
+                                            type="text"
+                                            placeholder="Subject"
+                                            required
+                                    />
+                                </div>
+                                <div class="mb30">
+                    <textarea
+                            name="message"
+                            class="contact-message"
+                            id="contact-message"
+                            placeholder="Your Message"
+                            required
+                    ></textarea>
+                                </div>
+                                <button type="submit" class="button button__primary align-items-center">
+                                    <span>Send Now</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End contact form area-->
+                    <div
+                            class="col-lg-4 col-md-6 col-sm-12 m-25px-b"
+                            data-aos="fade-left"
+                            data-aos-duration="1000"
+                            data-aos-delay="200"
+                    >
+                        <div class="contact__address p-30px">
+                            <ul class="contact__address__content">
+                                <li>
+                                    <span>Address:</span>11065 wood haven rd <br/>
+                                    Johnstown OH 43031
+                                </li>
+                                <li>
+                                    <span>Phone:</span><a href="tel:6145628583">6145628583</a>
+                                </li>
+                                <li>
+                                    <span>Email:</span><a href="#">hello@i-patchwork.com</a>
+                                </li>
+                            </ul>
+                            <h4>Connect book socials</h4>
+                            <ul class="social-icon mt-3">
+                                <li>
+                                    <a href="#"><i class="icofont-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-youtube-play"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icofont-whatsapp"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== Contact section end ========== -->
+
+
+
+
+
+<script>
+document.getElementById("toggleButton").addEventListener("click", function() {
+    var formContainer = document.getElementById("formContainer");
+    if (formContainer.style.display === "none" || formContainer.style.display === "") {
+        formContainer.style.display = "block";
+    } else {
+        formContainer.style.display = "none";
+    }
+});
+
+$(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:2000, // Adjust autoplay speed
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        });
+    });
+
+
+    document.getElementById('openChatNowModal').addEventListener('click', function() {
+    // Show the modal
+    var myModal = new bootstrap.Modal(document.getElementById('chatNowModal'));
+    myModal.show();
+
+    // Dynamically create and set the iframe source
+    var iframe = document.getElementById('chatbotFrame');
+    iframe.src = 'https://www.chatbase.co/embed.html?chatbotId=38LUjIhuRzNAhpBQH5Jxg&domain=www.chatbase.co';
+});
+
+function showCheckoutWindow(e) {
+        e.preventDefault();
+
+        const url = e.target.getAttribute('data-url');
+        const title = 'Square Payment Links';
+
+        // Some platforms embed in an iframe, so we want to top window to calculate sizes correctly
+        const topWindow = window.top ? window.top : window;
+
+        // Fixes dual-screen position                                Most browsers          Firefox
+        const dualScreenLeft = topWindow.screenLeft !==  undefined ? topWindow.screenLeft : topWindow.screenX;
+        const dualScreenTop = topWindow.screenTop !==  undefined   ? topWindow.screenTop  : topWindow.screenY;
+
+        const width = topWindow.innerWidth ? topWindow.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        const height = topWindow.innerHeight ? topWindow.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+        const h = height * .75;
+        const w = 500;
+
+        const systemZoom = width / topWindow.screen.availWidth;
+        const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+        const top = (height - h) / 2 / systemZoom + dualScreenTop;
+        const newWindow = window.open(url, title, `scrollbars=yes, width=${w / systemZoom}, height=${h / systemZoom}, top=${top}, left=${left}`);
+
+        if (window.focus) newWindow.focus();
+    }
+
+    // This overrides the default checkout button click handler to show the embed modal
+    // instead of opening a new tab with the given link url
+    document.querySelector('.btn-primary[data-url]').addEventListener('click', function (e) {
+        showCheckoutWindow(e);
+    });
+
+
+
+
+</script>
+
+
+{% include 'footer.html' %}
+{% endblock %}

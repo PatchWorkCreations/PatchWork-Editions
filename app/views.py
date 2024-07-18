@@ -402,6 +402,11 @@ def csrf_failure(request, reason=""):
     return render(request, 'csrf_failure.html', {"reason": reason})
 
 
+def exclusiveoffer(request):
+    if request.method == 'POST':
+        return handle_post_request(request, 'exclusiveoffer')
+    return render(request, 'ExclusiveOffer.html')
+
 
 
 
