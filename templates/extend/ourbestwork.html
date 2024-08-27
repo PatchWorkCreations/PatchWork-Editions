@@ -1,0 +1,107 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+<style>
+    
+</style>
+
+<section id="preview" class="section-padding chapter-preview">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+                <div class="section-title-center text-center">
+                    <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">OUR BEST WORK</span>
+                    <h2 class="display-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="200">
+                        GET YOUR NAME ENLISTED AMONG OTHER BEST SELLERS
+                    </h2>
+                    <div class="section-divider divider-traingle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250"></div>
+                </div>
+            </div>
+        </div>
+        <div class="chapter__preview2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="chapter__preview2-content">
+                <div class="chapter__preview2-container">
+                    <!-- Panel 1: Fiction -->
+                    <div class="panel active" style="background-image: url({% static 'assets/images/fiction2.png' %});">
+                        <a data-glightbox="description: .custom-desc1; descPosition: right;" class="glightbox2" href="{% static 'assets/images/bestsellerbook/4.png' %}"></a>
+                        <h3>FICTION</h3>
+                    </div>
+                    <div class="chapters__content glightbox-desc custom-desc1">
+                        <div class="content__body">
+                            <h3 class="mb-4 text-center">The Beginning</h3>
+                            <p class="first-letter">At iPatchwork Éditions, we believe that every story deserves to be told in a captivating and visually stunning manner. Our recent venture into publishing fiction books exemplifies our commitment to creativity and excellence in storytelling...</p>
+                            <!-- More content... -->
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Biography -->
+                    <div class="panel" style="background-image: url({% static 'assets/images/bio1.png' %});">
+                        <a data-glightbox="description: .custom-desc2; descPosition: right;" class="glightbox2" href="{% static 'assets/images/bestsellerbook/3.png' %}"></a>
+                        <h3>BIOGRAPHY</h3>
+                    </div>
+                    <div class="chapters__content glightbox-desc custom-desc2">
+                        <div class="content__body">
+                            <h3 class="mb-4 text-center">Main Story</h3>
+                            <p class="first-letter">We firmly believe that every life is a story waiting to be told, and our recent venture into publishing biographies showcases our unwavering dedication to honoring these remarkable narratives...</p>
+                            <!-- More content... -->
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Non-Fiction -->
+                    <div class="panel" style="background-image: url({% static 'assets/images/nonfiction2.png' %});">
+                        <a data-glightbox="description: .custom-desc3; descPosition: right;" class="glightbox2" href="{% static 'assets/images/bestsellerbook/1.png' %}"></a>
+                        <h3>NON-FICTION</h3>
+                    </div>
+                    <div class="chapters__content glightbox-desc custom-desc3">
+                        <div class="content__body">
+                            <h3 class="mb-4 text-center">Describe Story</h3>
+                            <p class="first-letter">At iPatchwork Éditions, we're dedicated to telling captivating stories that inspire and enlighten. Our recent expansion into non-fiction publishing exemplifies our commitment to excellence in storytelling...</p>
+                            <!-- More content... -->
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Romance -->
+                    <div class="panel" style="background-image: url({% static 'assets/images/romance7.png' %});">
+                        <a data-glightbox="description: .custom-desc4; descPosition: right;" class="glightbox2" href="{% static 'assets/images/bestsellerbook/2.png' %}"></a>
+                        <h3>ROMANCE</h3>
+                    </div>
+                    <div class="chapters__content glightbox-desc custom-desc4">
+                        <div class="content__body">
+                            <h3 class="mb-4 text-center">Story Part 03</h3>
+                            <p class="first-letter">At iPatchwork Éditions, we believe in the magic of love stories and the power they hold to captivate hearts. Our recent venture into publishing romance novels reflects our passion for crafting tales that sweep readers off their feet...</p>
+                            <!-- More content... -->
+                        </div>
+                    </div>
+
+                    <!-- Panel 5: Thriller -->
+                    <div class="panel" style="background-image: url({% static 'assets/images/thrill4.png' %});">
+                        <a data-glightbox="description: .custom-desc5; descPosition: right;" class="glightbox2" href="{% static 'assets/images/thriller.png' %}"></a>
+                        <h3>THRILLER</h3>
+                    </div>
+                    <div class="chapters__content glightbox-desc custom-desc5">
+                        <div class="content__body">
+                            <h3 class="mb-4 text-center">History & Pride</h3>
+                            <p class="first-letter">At iPatchwork Éditions, we thrive on the adrenaline rush of a good thriller, and our recent foray into publishing gripping suspense novels showcases our dedication to keeping readers on the edge of their seats...</p>
+                            <!-- More content... -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.panel').forEach(panel => {
+            panel.addEventListener('click', function() {
+                // Remove active class from all panels and hide their content
+                document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.chapters__content').forEach(content => content.style.display = 'none');
+
+                // Add active class to clicked panel and show its content
+                this.classList.add('active');
+                this.nextElementSibling.style.display = 'block';
+            });
+        });
+    });
+</script>
