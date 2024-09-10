@@ -1,0 +1,247 @@
+
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Blog Classic{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<body>
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		<div class="page-title-icon"></div>
+			<div class="page-title-icon-two"></div>
+			<div class="page-title-shadow"></div>
+			<div class="page-title-shadow-two"></div>
+        <div class="auto-container">
+			<h2>Blog classic</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="{% url 'index' %}"">Home</a></li>
+				<li>Blog classic</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- Sidebar Page Container -->
+    <div class="sidebar-page-container">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+				
+				<!-- Content Side -->
+                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+					<div class="blog-classic">
+
+						<!-- News Block Three -->
+						<div class="news-block_three">
+							<div class="news-block_three-inner">
+								<div class="news-block_three-image">
+									<a href="{% url 'newsdetail' %}"><img src="{% static 'the_patchwork/images/resource/news-16.jpg' %}" alt="" /></a>
+								</div>
+								<div class="news-block_three-content">
+									<ul class="news-block_three-meta">
+										<li><i class="fa-regular fa-user fa-fw"></i>Morens Otem</li>
+										<li><i class="fa-regular fa-comment fa-fw"></i>03 Comments</li>
+									</ul>
+									<h3 class="news-block_three-title"><a href="{% url 'newsdetail' %}">Transforming industries and shaping the future</a></h3>
+									<div  class="news-block_three-text">We are a team of the dedicat patent professionals, unity by our commitment toour  excellence patent protection. With years of collective experience</div>
+									<div class="news-block_three-button">
+										<a href="{% url 'blog' %}" class="template-btn btn-style-one">
+											<span class="btn-wrap">
+												<span class="text-one">Read more</span>
+												<span class="text-two">Read more</span>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Block Three -->
+						<div class="news-block_three">
+							<div class="news-block_three-inner">
+								<div class="news-block_three-image">
+									<a href="{% url 'newsdetail' %}"><img src="{% static 'the_patchwork/images/resource/news-17.jpg' %}" alt="" /></a>
+								</div>
+								<div class="news-block_three-content">
+									<ul class="news-block_three-meta">
+										<li><i class="fa-regular fa-user fa-fw"></i>Morens Otem</li>
+										<li><i class="fa-regular fa-comment fa-fw"></i>03 Comments</li>
+									</ul>
+									<h3 class="news-block_three-title"><a href="{% url 'newsdetail' %}">Exploring the cutting-edge of artificial intelligence</a></h3>
+									<div  class="news-block_three-text">We are a team of the dedicat patent professionals, unity by our commitment toour  excellence patent protection. With years of collective experience</div>
+									<div class="news-block_three-button">
+										<a href="{% url 'blog' %}" class="template-btn btn-style-one">
+											<span class="btn-wrap">
+												<span class="text-one">Read more</span>
+												<span class="text-two">Read more</span>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Block Three -->
+						<div class="news-block_three">
+							<div class="news-block_three-inner">
+								<div class="news-block_three-image">
+									<a href="{% url 'newsdetail' %}"><img src="{% static 'the_patchwork/images/resource/news-18.jpg' %}" alt="" /></a>
+								</div>
+								<div class="news-block_three-content">
+									<ul class="news-block_three-meta">
+										<li><i class="fa-regular fa-user fa-fw"></i>Morens Otem</li>
+										<li><i class="fa-regular fa-comment fa-fw"></i>03 Comments</li>
+									</ul>
+									<h3 class="news-block_three-title"><a href="{% url 'newsdetail' %}">Understanding the basics of artificial intelligence</a></h3>
+									<div  class="news-block_three-text">We are a team of the dedicat patent professionals, unity by our commitment toour  excellence patent protection. With years of collective experience</div>
+									<div class="news-block_three-button">
+										<a href="{% url 'blog' %}" class="template-btn btn-style-one">
+											<span class="btn-wrap">
+												<span class="text-one">Read more</span>
+												<span class="text-two">Read more</span>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Styled Pagination -->
+						<ul class="styled-pagination text-center">
+							<li><a href="#" class="active">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li class="next"><a href="#"><span class="fa-solid fa-angle-right fa-fw"></span></a></li>
+						</ul>
+						<!-- End Styled Pagination -->
+
+					</div>
+				</div>
+
+				<!-- Sidebar Side -->
+                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                	<aside class="sidebar">
+						<div class="sidebar-inner">
+
+							<!-- Search Widget -->
+							<div class="sidebar-widget search-box">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Search here</h5>
+									<form method="post" action="{% url 'contact' %}">
+										<div class="form-group">
+											<input type="search" name="search-field" value="" placeholder="Search..." required>
+											<button type="submit"><span class="icon fa fa-search"></span></button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- Post Widget -->
+							<div class="sidebar-widget post-widget">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Latest post</h5>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="{% static 'the_patchwork/images/resource/post-thumb-1.png' %}" alt=""></a></div>
+										<h6><a href="blog-detail.html">Redefining tomorrow adventures in ai and technology</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> Mar 18, 2028</div>
+									</div>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="{% static 'the_patchwork/images/resource/post-thumb-2.png' %}" alt=""></a></div>
+										<h6><a href="blog-detail.html">Beyond binary navigating the ai landscape</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> Mar 18, 2028</div>
+									</div>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="{% static 'the_patchwork/images/resource/post-thumb-3.png' %}" alt=""></a></div>
+										<h6><a href="blog-detail.html">Algorithmic horizons a glimpse into our ai world</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> Mar 18, 2028</div>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- Service Widget -->
+							<div class="sidebar-widget category-widget">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Categories</h5>
+									<ul class="service-list">
+										<li><a href="#">TechLeadership <span>(03)</span></a></li>
+										<li><a href="#">TechTalks <span>(04)</span></a></li>
+										<li><a href="#">TechTrends <span>(02)</span></a></li>
+										<li><a href="#">Innovate <span>(05)</span></a></li>
+										<li><a href="#">MLTech <span>(02)</span></a></li>
+									</ul>
+								</div>
+							</div>
+
+							<!-- Popular tags -->
+							<div class="sidebar-widget popular-tags">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Popular tags</h5>
+									<a href="#">DigitalAI</a>
+									<a href="#">TechInnovate</a>
+									<a href="#">FutureAI</a>
+									<a href="#">TechBlog</a>
+									<a href="#">CodingAI</a>
+								</div>
+							</div>
+
+						</div>
+
+					</aside>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar Page Container -->
+	{% include 'the_patchwork/ctaone.html' %}
+
+	<!-- CTA One -->
+	<!-- End CTA One -->
+
+	{% include 'the_patchwork/footer.html' %}
+
+
+</div>
+<!-- End PageWrapper -->
+
+ 
+
+
+{% endblock %}

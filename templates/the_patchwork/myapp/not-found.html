@@ -1,0 +1,89 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Not Found{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<body>
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		<div class="page-title-icon"></div>
+			<div class="page-title-icon-two"></div>
+			<div class="page-title-shadow"></div>
+			<div class="page-title-shadow-two"></div>
+        <div class="auto-container">
+			<h2>Error 404</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="{% url 'index' %}"">Home</a></li>
+				<li>Error 404</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- Error One -->
+	<section class="error-one"></section>
+
+		<div class="auto-container">
+			<h1>404</h1>
+			<h2>Oops! that page can't be found.</h2>
+			<div class="text">We're really sorry but we can't seem to find the page you <br> were looking for.</div>
+			<!-- Button Box -->
+			<div class="button-box text-center">
+				<a href="{% url 'index' %}"" class="template-btn btn-style-one">
+					<span class="btn-wrap">
+						<span class="text-one">Go back home now</span>
+						<span class="text-two">Go back home now</span>
+					</span>
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- End Error One -->
+	
+	<!-- CTA One -->
+	{% include 'the_patchwork/ctaone.html' %}
+
+	<!-- End CTA One -->
+
+	{% include 'the_patchwork/footer.html' %}
+
+<!-- End PageWrapper -->
+
+ 
+
+
+{% endblock %}

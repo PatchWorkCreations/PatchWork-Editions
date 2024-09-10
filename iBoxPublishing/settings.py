@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app.context_processors.global_services'
             ],
         },
     },
@@ -132,6 +133,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'iRiseup Publishing Admin'
-EMAIL_HOST_USER = 'iriseuppublishing@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'qssn droz qmll flaz'  # Your Gmail app password or regular password
+DEFAULT_FROM_EMAIL = 'i-patchwork'
+EMAIL_HOST_USER = 'ilightproducts@gmail.com'  # Your Gmail email address
+EMAIL_HOST_PASSWORD = 'umsn bqxy thxk kldx'  # Your Gmail app password or regular password
+
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

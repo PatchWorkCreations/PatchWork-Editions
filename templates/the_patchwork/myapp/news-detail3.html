@@ -1,0 +1,287 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}News Details{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<body>
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		<div class="page-title-icon"></div>
+			<div class="page-title-icon-two"></div>
+			<div class="page-title-shadow"></div>
+			<div class="page-title-shadow-two"></div>
+        <div class="auto-container">
+			<h2>News detail</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="{% url 'index' %}"">Home</a></li>
+				<li>News detail</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- Sidebar Page Container -->
+<div class="sidebar-page-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+            
+            <!-- Content Side -->
+<div class="content-side col-lg-8 col-md-12 col-sm-12">
+    <div class="blog-detail">
+        <div class="blog-detail_inner">
+            <div class="blog-detail_image">
+                <img src="{% static 'the_patchwork/images/resource/news-19.jpg' %}" alt="" />
+            </div>
+            <div class="blog-detail_content">
+                <h3 class="blog-detail_heading">Real-Life AI Success Stories: How Small Businesses Are Winning Big</h3>
+                <div class="blog-detail_author-outer d-flex align-items-center flex-wrap">
+                    <div class="blog-detail-author d-flex align-items-center flex-wrap">
+                        <div class="blog-detail-author-image">
+                            <img src="{% static 'the_patchwork/images/resource/author-6.png' %}" alt="" />
+                        </div>
+                        <i>By Ellena M.Rice</i>
+                    </div>
+                    <ul class="blog-detail-meta d-flex align-items-center flex-wrap">
+                        <li><span class="icon fa-regular fa-calendar fa-fw"></span>20 Jan, 2024</li>
+                        <li><span class="icon fa-regular fa-comment-dots fa-fw"></span>03 Comments</li>
+                    </ul>
+                </div>
+                <p>Feeling stuck and wondering how AI can transform your small business? Look no further! Here are some real-life success stories that show how small businesses are leveraging AI to achieve incredible results. 🌟</p>
+                <h3>From Local to Global: The Coffee Shop That Went Digital</h3>
+                <p>Meet Joe, the owner of a cozy coffee shop in a small town. Joe wanted to expand his reach but didn't have the resources to open new locations. Enter i-PatchWork™. By integrating AI-driven online ordering and personalized marketing campaigns, Joe was able to attract customers from all over the country. His sales skyrocketed, and his coffee shop gained a loyal, nationwide customer base—all without leaving his original location.</p>
+                <h3>Streamlining Operations: The Boutique That Boosted Efficiency</h3>
+                <p>Samantha runs a boutique that specializes in unique, handcrafted clothing. She found herself overwhelmed with inventory management and customer inquiries. Using AI tools, Samantha automated her inventory tracking and implemented a chatbot for customer service. This not only saved her countless hours but also improved customer satisfaction. Her boutique's efficiency soared, and she had more time to focus on designing new collections.</p>
+                <h3>Personalized Marketing: The Fitness Studio That Packed Classes</h3>
+                <p>Tom owns a fitness studio and wanted to increase class attendance. By leveraging AI to analyze member data and create personalized marketing campaigns, he was able to target the right audience with the right offers. The result? Packed classes and a significant increase in membership renewals. Tom's studio became the go-to place for fitness enthusiasts in the area.</p>
+                <h3>Customer Engagement: The Local Restaurant That Became a Community Favorite</h3>
+                <p>Linda's restaurant was known for its delicious food, but she struggled with customer engagement. Using AI-powered loyalty programs and personalized email marketing from i-PatchWork™, Linda created a buzz around her restaurant. Customers felt valued and kept coming back, bringing friends and family along. Her restaurant became a beloved community hub, and her profits soared.</p>
+                <h3>Why AI Works for Small Businesses</h3>
+                <p>These success stories share a common thread: the strategic use of AI to solve specific business challenges. Here’s how AI can help your small business win big:</p>
+                <ul class="blog-detail_list">
+                    <li><i class="fa-solid fa-check fa-fw"></i>Automate Repetitive Tasks: Free up your time to focus on strategic growth.</li>
+                    <li><i class="fa-solid fa-check fa-fw"></i>Enhance Customer Experience: Provide personalized and timely interactions.</li>
+                    <li><i class="fa-solid fa-check fa-fw"></i>Improve Efficiency: Streamline operations and reduce manual errors.</li>
+                    <li><i class="fa-solid fa-check fa-fw"></i>Boost Marketing Efforts: Target the right audience with precision.</li>
+                </ul>
+                <h3>Ready to Create Your Own Success Story?</h3>
+                <p>Your business has the potential to achieve great things, and AI can be the catalyst. By integrating AI tools like i-PatchWork™, you can streamline your operations, enhance customer experiences, and drive growth like never before.</p>
+                <h3>Get Inspired and Take Action</h3>
+                <p>Let these real-life AI success stories inspire you to take the next step. Embrace AI, leverage its power, and watch your small business win big.</p>
+                <p>So, are you ready to transform your business with AI? The next success story could be yours! 🚀</p>
+                <!-- Post Share Options-->
+                <div class="post-share-options">
+                    <div class="post-share-inner d-flex justify-content-between flex-wrap">
+                        <div class="post-tags"><a href="#">AI</a> <a href="#">Productivity</a> <a href="#">The PatchWork™</a></div>
+                        <ul class="social-links">
+                            <li><a href="#" class="fa-brands fa-facebook-f fa-fw"></a></li>
+                            <li><a href="#" class="fa-brands fa-twitter fa-fw"></a></li>
+                            <li><a href="#" class="fa-brands fa-google fa-fw"></a></li>
+                            <li><a href="#" class="fa-brands fa-dribbble fa-fw"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                            <!-- Author Box -->
+                            <div class="blog-author_box">
+                                <div class="blog-author-box_inner">
+                                    <div class="blog-author-box_content">
+                                        <div class="blog-author-box_image">
+                                            <img src="{% static 'the_patchwork/images/resource/author-7.png' %}" alt="" />
+                                        </div>
+                                        <h5>Ellena M. Rice</h5>
+                                        <div class="blog-author_box-designation">UI/UX Instructor</div>
+                                        <div class="blog-author_box-text">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut massa mi. Aliquam in hendrerit Pellentesque sit amet sapien fringilla.</div>
+                                        <ul class="author-social_links">
+                                            <li><a href="#" class="fa-brands fa-facebook-f fa-fw"></a></li>
+                                            <li><a href="#" class="fa-brands fa-twitter fa-fw"></a></li>
+                                            <li><a href="#" class="fa-brands fa-google fa-fw"></a></li>
+                                            <li><a href="#" class="fa-brands fa-dribbble fa-fw"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+								<!-- Comment Form -->
+								<div class="comment-form_outer">
+									<div class="group-title">
+										<h3>Leave a comment</h3>
+										<div class="form-text">Your email address will not be published. Required fields are marked *</div>
+									</div>
+									<!-- Comment Form -->
+									<div class="comment-form">
+										<form method="post" action="{% url 'blog' %}">
+											<div class="row clearfix">
+												
+												<div class="col-lg-6 col-md-6 col-sm-12 form-group">
+													<label>Name*</label>
+													<input type="text" name="username" >
+												</div>
+												
+												<div class="col-lg-6 col-md-6 col-sm-12 form-group">
+													<label>Email*</label>
+													<input type="text" name="username" >
+												</div>
+												
+												<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+													<label>Type Comment here*</label>
+													<textarea class="" name="message"></textarea>
+												</div>
+												
+												<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+													<!-- Button Box -->
+													<button type="submit" class="template-btn btn-style-one">
+														<span class="btn-wrap">
+															<span class="text-one">Submit now</span>
+															<span class="text-two">Submit now</span>
+														</span>
+													</button>
+												</div>
+												
+											</div>
+										</form>
+									</div>
+									<!-- End Default Form -->
+								</div>
+								<!--End Comment Form -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Sidebar Side -->
+                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                	<aside class="sidebar">
+						<div class="sidebar-inner">
+
+							<!-- Search Widget -->
+							<div class="sidebar-widget search-box">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Search here</h5>
+									<form method="post" action="{% url 'contact' %}">
+										<div class="form-group">
+											<input type="search" name="search-field" value="" placeholder="Search..." required>
+											<button type="submit"><span class="icon fa fa-search"></span></button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- Post Widget -->
+							<div class="sidebar-widget post-widget">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Latest post</h5>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="{% static 'the_patchwork/images/resource/post-thumb-1.png' %}" alt=""></a></div>
+										<h6><a href="blog-detail.html">Redefining tomorrow adventures in ai and technology</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> Mar 18, 2028</div>
+									</div>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="{% static 'the_patchwork/images/resource/post-thumb-2.png' %}" alt=""></a></div>
+										<h6><a href="blog-detail.html">Beyond binary navigating the ai landscape</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> Mar 18, 2028</div>
+									</div>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="{% static 'the_patchwork/images/resource/post-thumb-3.png' %}" alt=""></a></div>
+										<h6><a href="blog-detail.html">Algorithmic horizons a glimpse into our ai world</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> Mar 18, 2028</div>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- Service Widget -->
+							<div class="sidebar-widget category-widget">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Categories</h5>
+									<ul class="service-list">
+										<li><a href="#">TechLeadership <span>(03)</span></a></li>
+										<li><a href="#">TechTalks <span>(04)</span></a></li>
+										<li><a href="#">TechTrends <span>(02)</span></a></li>
+										<li><a href="#">Innovate <span>(05)</span></a></li>
+										<li><a href="#">MLTech <span>(02)</span></a></li>
+									</ul>
+								</div>
+							</div>
+
+							<!-- Popular tags -->
+							<div class="sidebar-widget popular-tags">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Popular tags</h5>
+									<a href="#">DigitalAI</a>
+									<a href="#">TechInnovate</a>
+									<a href="#">FutureAI</a>
+									<a href="#">TechBlog</a>
+									<a href="#">CodingAI</a>
+								</div>
+							</div>
+
+						</div>
+
+					</aside>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar Page Container -->
+	
+	<!-- CTA One -->
+	{% include 'the_patchwork/ctaone.html' %}
+
+	<!-- End CTA One -->
+
+	{% include 'the_patchwork/footer.html' %}
+
+	<!-- End Main Footer -->
+
+</div>
+<!-- End PageWrapper -->
+
+ 
+
+
+{% endblock %}

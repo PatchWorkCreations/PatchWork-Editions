@@ -1,0 +1,326 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+
+{% load static %}
+{% block content %}
+
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		
+		<div class="page-title-icon"></div>
+			<div class="page-title-icon-two"></div>
+			<div class="page-title-shadow"></div>
+			<div class="page-title-shadow-two"></div>
+        <div class="auto-container">
+			<h2>About us</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="{% url 'index' %}"">Home</a></li>
+				<li>About us</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- Story One -->
+	<section class="story-one" id="our-story">
+		<div class="auto-container">
+			<div class="row clearfix">
+	
+				<!-- Image Column -->
+				<div class="story-one_image-column col-lg-6 col-md-12 col-sm-12">
+					<div class="story-one_image-outer">
+						<div class="story-one_image">
+							<img src="{% static 'the_patchwork/images/resource/story.png' %}" alt="Our Story Image" />
+						</div>
+					</div>
+				</div>
+	
+				<!-- Content Column -->
+				<div class="story-one_content-column col-lg-6 col-md-12 col-sm-12">
+					<div class="story-one_content-outer">
+						<!-- Sec Title -->
+						<div class="sec-title style-four">
+							<div class="sec-title_title">Our Story</div>
+							<h2 class="sec-title_heading">How The PatchWork™ Began: A Journey of Helping People and Businesses Grow</h2>
+						</div>
+						<p>In 2017, Patch Wetzel started The PatchWork™ with a big dream: to help businesses become the best they can be and to support people who need a hand. Our story is about more than just business—it’s about making a real difference in the world. We started with a simple goal: to help everyone, everywhere, reach their highest potential.</p>
+						<p>From our first project to our global reach today, we’ve been working hard to bring smiles and success to people and businesses all around the world. Join us on this exciting journey and see how we’re making a positive impact everywhere we go!</p>
+						<div class="story-one_button">
+							<a href="#" class="template-btn btn-style-one">
+								<span class="btn-wrap">
+									<span class="text-one">Learn More</span>
+									<span class="text-two">Learn More</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+		</div>
+	</section>
+	
+	<!-- End Assistance One -->
+
+	<!-- Value One -->
+	<section class="value-one">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title style-four centered">
+				<div class="sec-title_title">Core Values</div>
+				<h2 class="sec-title_heading">Unveiling Our <span>Core Values</span> <br> for Lasting Impact.</h2>
+			</div>
+			<div class="row clearfix">
+	
+				<!-- Value Block One -->
+				<div class="value-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="value-block_one-inner">
+						<div class="value-block_one-icon">
+							<i class="icon-users-4"></i>
+						</div>
+						<h5 class="value-block_one-title">People</h5>
+						<div class="value-block_one-text">At The PatchWork™, we prioritize our people—our clients, team members, and community. We are dedicated to creating a positive impact by fostering growth, collaboration, and support.</div>
+					</div>
+				</div>
+	
+				<!-- Value Block Two -->
+				<div class="value-block_one active col-lg-4 col-md-6 col-sm-12">
+					<div class="value-block_one-inner">
+						<div class="value-block_one-icon">
+							<i class="icon-bulb1"></i>
+						</div>
+						<h5 class="value-block_one-title">Innovation</h5>
+						<div class="value-block_one-text">Innovation drives us at The PatchWork™. We strive to continuously evolve and bring creative solutions to our clients, ensuring we stay at the forefront of industry trends and deliver exceptional value.</div>
+					</div>
+				</div>
+	
+				<!-- Value Block Three -->
+				<div class="value-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="value-block_one-inner">
+						<div class="value-block_one-icon">
+							<i class="fa-solid fa-bullseye fa-fw"></i>
+						</div>
+						<h5 class="value-block_one-title">Mission</h5>
+						<div class="value-block_one-text">Our mission at The PatchWork™ is to empower businesses and individuals through our expertise in web development and design. We are committed to making a lasting difference in every project we undertake.</div>
+					</div>
+				</div>
+	
+			</div>
+	
+			<!-- Button Box -->
+			<div class="value-one_button text-center">
+				<a href="#" class="template-btn btn-style-two">
+					<span class="btn-wrap">
+						<span class="text-one">Join The PatchWork™ Today</span>
+						<span class="text-two">Join The PatchWork™ Today</span>
+					</span>
+				</a>
+			</div>
+	
+		</div>
+	</section>
+	
+	<!-- End Value One -->
+
+	<!-- Team One -->
+
+	<!-- End Team One -->
+
+	<!-- Testimonial Three -->
+	<section class="testimonial-three" id="success-story">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title style-four centered">
+				<div class="sec-title_title">Success Stories</div>
+				<h2 class="sec-title_heading">What Our Clients Say About <br> The PatchWork™</h2>
+			</div>
+			
+			<div class="three-item_carousel">
+				<div class="swiper-wrapper">
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<!-- Testimonial Block One -->
+						<div class="testimonial-block_one">
+							<div class="testimonial-block_one-inner">
+								<div class="testimonial-block_one-rating">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</div>
+								<div class="testimonial-block_one-text">
+									"The PatchWork™ transformed our online presence with their exceptional web design services. Their attention to detail and customer service are second to none. Highly recommend!"
+								</div>
+								<div class="testimonial-block_one-author_box">
+									<div class="testimonial-block_one-author-image">
+										<img src="{% static 'the_patchwork/images/resource/author-2.png' %}" alt="Client Photo" />
+									</div>
+									Jessica M. Smith <span>Marketing Director</span>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<!-- Testimonial Block One -->
+						<div class="testimonial-block_one">
+							<div class="testimonial-block_one-inner">
+								<div class="testimonial-block_one-rating">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</div>
+								<div class="testimonial-block_one-text">
+									"Working with The PatchWork™ was a game-changer for our e-commerce site. Their innovative approach and dedication resulted in a significant increase in our online sales."
+								</div>
+								<div class="testimonial-block_one-author_box">
+									<div class="testimonial-block_one-author-image">
+										<img src="{% static 'the_patchwork/images/resource/author-3.png' %}" alt="Client Photo" />
+									</div>
+									Michael T. Davis <span>CEO</span>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<!-- Testimonial Block One -->
+						<div class="testimonial-block_one">
+							<div class="testimonial-block_one-inner">
+								<div class="testimonial-block_one-rating">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</div>
+								<div class="testimonial-block_one-text">
+									"The PatchWork™ provided outstanding support during our website redesign project. Their expertise and professionalism exceeded our expectations."
+								</div>
+								<div class="testimonial-block_one-author_box">
+									<div class="testimonial-block_one-author-image">
+										<img src="{% static 'the_patchwork/images/resource/author-4.png' %}" alt="Client Photo" />
+									</div>
+									Emily R. Johnson <span>Product Manager</span>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+				</div>
+	
+				<!-- If we need pagination -->
+				<div class="three-item_carousel-pagination"></div>
+	
+			</div>
+	
+		</div>
+	</section>
+	<!-- End Testimonial Three -->
+	
+	<!-- Clients Two -->
+	<section class="clients-two">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="sec-title_title">Our Valued Partners</div>
+			</div>
+			<div class="clients_slider swiper-container">
+				<div class="swiper-wrapper">
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<div class="client-image">
+							<a href="#"><img src="{% static 'the_patchwork/images/clients/1.png' %}" alt="Client Logo" /></a>
+						</div>
+					</div>
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<div class="client-image">
+							<a href="#"><img src="{% static 'the_patchwork/images/clients/2.png' %}" alt="Client Logo" /></a>
+						</div>
+					</div>
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<div class="client-image">
+							<a href="#"><img src="{% static 'the_patchwork/images/clients/3.png' %}" alt="Client Logo" /></a>
+						</div>
+					</div>
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<div class="client-image">
+							<a href="#"><img src="{% static 'the_patchwork/images/clients/4.png' %}" alt="Client Logo" /></a>
+						</div>
+					</div>
+	
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<div class="client-image">
+							<a href="#"><img src="{% static 'the_patchwork/images/clients/5.png' %}" alt="Client Logo" /></a>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Clients Two -->
+	
+	<!-- End Clients Two -->
+
+	<!-- CTA One -->
+	{% include 'the_patchwork/ctaone.html' %}
+
+	<!-- End CTA One -->
+
+	{% include 'the_patchwork/footer.html' %}
+
+	<!-- End PageWrapper -->
+
+ 
+
+
+{% endblock %}

@@ -1,9 +1,11 @@
 from django.urls import path
 from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-
-    path('', home_page, name='home'),
+    path('',  index2, name='index2'),
+    path('iPatchWork-Edition', home_page, name='home'),
     path('about', about, name='about'),
     path('editing', editing, name='editing'),
     path('publishing', publishing, name='publishing'),
@@ -52,10 +54,34 @@ urlpatterns = [
     path('single-blog7', single_blog7, name='single-blog7'),
     path('single-blog8', single_blog8, name='single-blog8'),
     path('testimonial', testimonial, name='testimonial'),
+    path('about/',  about, name='about'),
+    path('blog-classic/',  blogclassic, name='blogclassic'),
+    
+    path('contact/',  contact, name='contact'),
+    path('faq/',  faq, name='faq'),
+    
+    path('index-3/',  index3, name='index3'),
+    
+    path('not-found/',  notfound, name='notfound'),
+    path('pricing/',  pricing, name='pricing'),
+    path('register/',  register, name='register'),
+    path('reset/',  reset, name='reset'),
+    path('team/',  team, name='team'),
+    path('testimonial/',  testimonial, name='testimonial'),
+    path('news-detail1/',  newsdetail1, name='newsdetail1'),
+    path('news-detail2/',  newsdetail2, name='newsdetail2'),
+    path('news-detail3/',  newsdetail3, name='newsdetail3'),
+    path('news-detail4/',  newsdetail4, name='newsdetail4'),
+    path('news-detail5/',  newsdetail5, name='newsdetail5'),
+    path('news-detail6/',  newsdetail6, name='newsdetail6'),
+    path('news-detail7/',  newsdetail7, name='newsdetail7'),
+    path('news-detail8/',  newsdetail8, name='newsdetail8'),
+    path('services/', services, name='services'),
+    path('services/<slug:slug>/', service_detail, name='service_detail'),
 
 
+    path('blog/', blog, name='blog'),
+    path('blog/<slug:slug>/', blog_detail, name='blog_detail'),
+    path('get-quote/', get_quote, name='get_quote'),
 
-]
-
-
-
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

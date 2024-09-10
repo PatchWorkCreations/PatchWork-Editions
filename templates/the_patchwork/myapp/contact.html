@@ -1,0 +1,195 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<style>
+    /* Contact Form Section */
+.contact-form-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.contact-form-section .sec-title h2 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-form-section .sec-title_text {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    line-height: 1.8;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Form Styling */
+/* Form Styling */
+.contact-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-gap: 20px; /* Space between the columns */
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #555;
+    background-color: #f7f7f7;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #6c63ff;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+    grid-column: span 2; /* Span across both columns */
+}
+
+/* Button Styling */
+.contact-form button[type="submit"] {
+    background-color: #6c63ff;
+    background-image: linear-gradient(135deg, #6c63ff 0%, #574bbb 100%);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.2);
+    grid-column: span 2; /* Make button full-width */
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #574bbb;
+    box-shadow: 0 8px 15px rgba(87, 75, 187, 0.3);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .contact-form {
+        grid-template-columns: 1fr; /* Full-width inputs on mobile */
+    }
+}
+
+</style>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Main Header -->
+	{% load static %}
+    {% include 'the_patchwork/header.html' %}
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="auto-container">
+            <h2>Contact Us</h2>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="info-block_one col-lg-4 col-md-6 col-sm-12">
+                    <div class="info-block_one-inner">
+                        <div class="info-block_one-icon">
+                            <i class="icon-phone"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <a href="tel:+6145628583">+614-562-8583</a>
+                    </div>
+                </div>
+                <div class="info-block_one active col-lg-4 col-md-6 col-sm-12">
+                    <div class="info-block_one-inner">
+                        <div class="info-block_one-icon">
+                            <i class="icon-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <a href="mailto:hello@i-patchwork.com">hello@i-patchwork.com</a>
+                    </div>
+                </div>
+                <div class="info-block_one col-lg-4 col-md-6 col-sm-12">
+                    <div class="info-block_one-inner">
+                        <div class="info-block_one-icon">
+                            <i class="icon-map"></i>
+                        </div>
+                        <h4>Our Location</h4>
+                        <div class="text">11065 Wood Haven Rd, <br> Johnstown OH 43031, USA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Info -->
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="sec-title">
+            <h2>Send Us a Message</h2>
+            <p class="sec-title_text">We’d love to hear from you! Feel free to reach out for any inquiries or questions.</p>
+        </div>
+        <form method="post" action="{% url 'contact' %}" class="contact-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Send Message</button>
+        </form>
+        <br>
+    </section>
+    <br>
+    <br>
+    
+    <!-- End Contact Form Section -->
+
+    <!-- Main Footer -->
+    {% include 'the_patchwork/footer.html' %}
+</div>
+
+{% endblock %}

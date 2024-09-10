@@ -1,0 +1,86 @@
+{% load static %}
+
+<footer class="main-footer">
+    <div class="footer-pattern"></div>
+    <div class="auto-container">
+        <div class="inner-container">
+            <!-- Widgets Section -->
+            <div class="widgets-section">
+                <div class="row clearfix">
+                    
+                    <!-- Big Column -->
+                    <div class="big-column col-lg-5 col-md-12 col-sm-12">
+                        <div class="footer-newsletter">
+                            <h5 class="footer-title">Newsletter</h5>
+                            <div class="footer-newsletter_text">Stay updated with our latest insights, business tips, and exclusive offers. Subscribe to our newsletter and never miss a beat!</div>
+                            <div class="newsletter-box">
+                                <form method="post" action="{% url 'contact' %}">
+                                    <div class="form-group">
+                                        <span class="icon fa-regular fa-envelope fa-fw"></span>
+                                        <input type="email" name="email" value="" placeholder="Enter your email" required>
+                                        <button type="submit" class="template-btn btn-style-one">
+                                            <span class="btn-wrap">
+                                                <span class="text-one">Subscribe</span>
+                                                <span class="text-two">Subscribe</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Big Column -->
+                    <div class="big-column col-lg-7 col-md-12 col-sm-12">
+                        <div class="footer-lists_outer">
+                            <div class="row clearfix">
+                                <!-- Column -->
+                                <div class="column col-lg-5 col-md-4 col-sm-6">
+                                    <h5 class="footer-title">Services</h5>
+                                    <ul class="footer-pages_list">
+                                        {% for service in services %}
+                                            <li><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                                                                          
+                                <!-- Column -->
+                                <div class="column col-lg-3 col-md-4 col-sm-6">
+                                    <h5 class="footer-title">Resources</h5>
+                                    <ul class="footer-pages_list">
+                                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column -->
+                                <div class="column col-lg-4 col-md-4 col-sm-6">
+                                    <h5 class="footer-title">About Us</h5>
+                                    <ul class="footer-pages_list">
+                                        <li><a href="{% url 'about' %}#our-story">Our Story</a></li>
+                                        <li><a href="{% url 'about' %}#success-story">Testimonial</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="inner-container d-flex justify-content-between align-items-center flex-wrap">
+                <div class="footer-logo"><a href="{% url 'index' %}"><img src="{% static 'the_patchwork/images/logo.svg' %}" alt="" title=""></a></div>
+                <div class="footer-copyright">&copy; 2024 <a href="{% url 'index' %}">The PatchWork™.</a> All rights reserved.</div>
+                <!-- Social Box -->
+                <div class="footer-social_box">
+                    <a href="https://facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

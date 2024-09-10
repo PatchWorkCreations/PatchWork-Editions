@@ -1,0 +1,909 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+
+<body>
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	
+	{% load static %}
+
+	<!-- Slider One -->
+	<section class="slider-one">
+		<div class="main-slider swiper-container">
+			<div class="swiper-wrapper">
+
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<div class="slider-one_icon"></div>
+						<div class="slider-one_icon-two"></div>
+						<div class="slider-one_pattern"></div>
+						<div class="slider-one_pattern-two"></div>
+						<div class="slider-one_pattern-four"></div>
+						<div class="auto-container">
+							<div class="row clearfix">
+								<!-- Content Column -->
+								<div class="slider-one_content col-lg-7 col-md-12 col-sm-12">
+									<div class="slider-one_content-inner">
+										<div class="slider-one_title">
+											<i><img src="{% static 'the_patchwork/images//main-slider/hand.png' %}" alt="" /></i> 
+											Empowering Your Business, One Task at a Time
+										</div>
+										<h1 class="slider-one_heading">
+											Don't Do It Alone<br> <span>Let i-Patchwork™</span>
+										</h1>
+										
+										<h1 class="slider-one_heading">Bring Your Vision to Life</h1>
+										<div class="slider-one_text">
+											At The PatchWork™, we provide a comprehensive suite of services, from video creation to virtual assistance, helping you streamline your operations and focus on growth. Whether you need creative content, administrative support, or anything in between, our team is here to make it happen.
+										</div>
+										<div class="slider-one_button d-flex align-items-center flex-wrap">
+											<a href="{% url 'about' %}" class="template-btn btn-style-one">
+												<span class="btn-wrap">
+													<span class="text-one">Get started today</span>
+													<span class="text-two">Get started today</span>
+												</span>
+											</a>
+											<div class="slider-one_video">
+												<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-video play-box">
+													<span class="fa fa-play"></span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Image Column -->
+								<div class="slider-one_image-column col-lg-5 col-md-12 col-sm-12">
+									<div class="slider-one_pattern-three"></div>
+									<div class="slider-one_image-outer">
+										<!-- Slider One Author -->
+										<div class="slider-one_author">
+											<i><img src="{% static 'the_patchwork/images//main-slider/icon-2.png' %}" alt="" /></i>
+											<h5 class="slider-one_author-name"></h5>
+											<div class="slider-one_author-text"></div>
+										</div>
+										<div class="slider-one_graph">
+											<div class="slider-one_graph-title">
+												Annual Goal <span>$98,541 <sup><i class="fa-solid fa-caret-up fa-fw"></i>110%</sup></span>
+											</div>
+											<img src="{% static 'the_patchwork/images//main-slider/graph.png' %}" alt="" />
+										</div>
+										<div class="slider-one_image">
+											<img src="{% static 'the_patchwork/images//main-slider/image-1.png' %}" alt="" />
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+			
+	
+				<!-- Additional slides here -->
+	
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+			<!-- Add Navigation -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</section>
+	<!-- End Main Slider Section -->
+	
+
+	<!-- Services One -->
+	<section class="services-one">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="sec-title_title">Our Services</div>
+				<h2 class="sec-title_heading">Experience Our Latest <br> <span>Business Solutions</span></h2>
+			</div>
+			<div class="row clearfix">
+	
+				<!-- Service Block One -->
+				<div class="service-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="service-block_one-inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="service-block_one-icon">
+							<i class="icon-speaker1"></i>
+						</div>
+						<h5 class="service-block_one-heading"><a href="{% url 'service_detail2' %}">Digital Marketing</a></h5>
+						<div class="service-block_one-text">Elevate your marketing campaigns with expert strategies that save you time and expand your reach.</div>
+						<div class="lower-box d-flex justify-content-between align-items-center flex-wrap">
+							<div class="service-block_one-number">01</div>
+							<a class="service-block_one-join" href="{% url 'service_detail2' %}">Join now <i class="fa-solid fa-plus fa-fw"></i></a>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Service Block Two -->
+				<div class="service-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="service-block_one-inner wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="service-block_one-icon">
+							<i class="icon-marketing"></i>
+						</div>
+						<h5 class="service-block_one-heading"><a href="{% url 'service_detail1' %}">Content Creation</a></h5>
+						<div class="service-block_one-text">Produce engaging content that drives your message home and resonates with your audience.</div>
+						<div class="lower-box d-flex justify-content-between align-items-center flex-wrap">
+							<div class="service-block_one-number">02</div>
+							<a class="service-block_one-join" href="{% url 'service_detail1' %}">Join now <i class="fa-solid fa-plus fa-fw"></i></a>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Service Block Three -->
+				<div class="service-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="service-block_one-inner wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="service-block_one-icon">
+							<i class="icon-users"></i>
+						</div>
+						<h5 class="service-block_one-heading"><a href="{% url 'service_detail3' %}">Virtual Assistance</a></h5>
+						<div class="service-block_one-text">Streamline your operations with professional virtual assistance tailored to your business needs.</div>
+						<div class="lower-box d-flex justify-content-between align-items-center flex-wrap">
+							<div class="service-block_one-number">03</div>
+							<a class="service-block_one-join" href="{% url 'service_detail3' %}">Join now <i class="fa-solid fa-plus fa-fw"></i></a>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Service Block Four -->
+				<div class="service-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="service-block_one-inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="service-block_one-icon">
+							<i class="icon-copyright"></i>
+						</div>
+						<h5 class="service-block_one-heading"><a href="{% url 'service_detail4' %}">Copywriting</a></h5>
+						<div class="service-block_one-text">Create high-quality, persuasive copy that engages your audience and boosts conversions.</div>
+						<div class="lower-box d-flex justify-content-between align-items-center flex-wrap">
+							<div class="service-block_one-number">04</div>
+							<a class="service-block_one-join" href="{% url 'service_detail4' %}">Join now <i class="fa-solid fa-plus fa-fw"></i></a>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Service Block Five -->
+				<div class="service-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="service-block_one-inner wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="service-block_one-icon">
+							<i class="icon-tag"></i>
+						</div>
+						<h5 class="service-block_one-heading"><a href="{% url 'service_detail5' %}">SEO Optimization</a></h5>
+						<div class="service-block_one-text">Improve your website’s search engine rankings with expert SEO strategies that deliver results.</div>
+						<div class="lower-box d-flex justify-content-between align-items-center flex-wrap">
+							<div class="service-block_one-number">05</div>
+							<a class="service-block_one-join" href="{% url 'service_detail5' %}">Join now <i class="fa-solid fa-plus fa-fw"></i></a>
+						</div>
+					</div>
+				</div>
+	
+				<!-- More Services Block -->
+				<div class="service-block_two col-lg-4 col-md-6 col-sm-12">
+					<div class="service-block_two-inner wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="service-block_two-sideicon"></div>
+	
+						<div class="service-block_two-icon">
+							<img src="{% static 'the_patchwork/images/icons/service.png' %}" alt="" />
+						</div>
+						<h5 class="service-block_two-heading"><a href="{% url 'service_detail' %}">More Services</a></h5>
+						<div class="service-block_two-text">Explore additional business solutions tailored to your needs.</div>
+						<div class="service-block_two-button">
+							<a href="{% url 'services' %}" class="template-btn btn-style-one">
+								<span class="btn-wrap">
+									<span class="text-one">Learn more</span>
+									<span class="text-two">Learn more</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+		</div>
+	</section>
+	
+	
+	<!-- End Services One -->
+	
+<!-- About One -->
+<section class="about-one">
+	<div class="about-one_pattern"></div>
+	<div class="about-one_icon"></div>
+	<div class="about-one_icon-two"></div>
+
+	<div class="auto-container">
+		<div class="row clearfix">
+
+			<!-- Tab Column -->
+			<div class="about-one_tab-column col-xl-6 col-lg-6 col-md-12 col-sm-12">
+				<div class="about-one_tab-outer">
+					<div class="about-one_tab-shadow"></div>
+
+					<div class="about-one_tab-image">
+						<img src="{% static 'the_patchwork/images//resource/tabs.png' %}" alt="" />
+					</div>
+				</div>
+			</div>
+
+			<!-- Content Column -->
+			<div class="about-one_content-column col-xl-6 col-lg-6 col-md-12 col-sm-12">
+				<div class="about-one_content-outer">
+					<!-- Sec Title -->
+					<div class="sec-title">
+						<div class="sec-title_title">About Us</div>
+						<h2 class="sec-title_heading">Crafting Your Digital <span>Narrative</span><br> Discover Our Journey</h2>
+					</div>
+					<p>Founded in 2017, The PatchWork™ is a global company with a singular mission: to help businesses unlock their full potential. We understand that every business is unique, which is why we offer a tailored suite of services designed to elevate your brand and streamline your operations. From creative content to virtual support, we are your partner in growth, committed to driving your success.</p>
+					<p>Our journey has been defined by passion, innovation, and an unwavering dedication to our clients. Whether you're a start-up or an established enterprise, we are here to transform your challenges into opportunities, crafting solutions that propel your business forward.</p>
+					<div class="about-one_options d-flex align-items-center flex-wrap">
+						<a href="{% url 'about' %}" class="template-btn btn-style-one">
+							<span class="btn-wrap">
+								<span class="text-one">Know more</span>
+								<span class="text-two">Know more</span>
+							</span>
+						</a>
+						<div class="about-one_rating-box d-flex align-items-center flex-wrap">
+							4.7
+							<div class="about-one_rating">
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<i>Customer rating</i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+	<!-- End About One -->
+	
+	<!-- Choose One -->
+	<section class="choose-one">
+		<div class="auto-container">
+			<div class="inner-container">
+				<!-- Sec Title -->
+				<div class="sec-title light centered">
+					<div class="sec-title_title">Why Choose Us</div>
+					<h2 class="sec-title_heading">Reasons to Choose <br> <span>The PatchWork™</span></h2>
+				</div>
+				<div class="row clearfix">
+	
+					<!-- Counter Block One -->
+					<div class="counter-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="counter-block_one-inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+							<div class="counter-block_one-icon fa-solid fa-users fa-fw"></div>
+							<div class="counter-block_one-count"><span class="odometer" data-count="8000"></span><i>+</i></div>
+							<div class="counter-block_one-text">More than 8,000 businesses have trusted The PatchWork™</div>
+						</div>
+					</div>
+	
+					<!-- Counter Block Two -->
+					<div class="counter-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="counter-block_one-inner wow fadeInLeft" data-wow-delay="150ms" data-wow-duration="1500ms">
+							<div class="counter-block_one-icon fa-solid fa-chart-line fa-fw"></div>
+							<div class="counter-block_one-count"><span class="odometer" data-count="500000"></span><i>+</i></div>
+							<div class="counter-block_one-text">Over 500,000 hours saved through our streamlined services</div>
+						</div>
+					</div>
+	
+					<!-- Counter Block Three -->
+					<div class="counter-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="counter-block_one-inner wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+							<div class="counter-block_one-icon fa-solid fa-dollar-sign fa-fw"></div>
+							<div class="counter-block_one-count"><span class="odometer" data-count="200000"></span><i>+</i></div>
+							<div class="counter-block_one-text">Over $200,000 in increased revenue for our clients</div>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- End Choose One -->
+
+	<!-- Answer One -->
+	<section class="answer-one">
+		<div class="auto-container">
+			<div class="row clearfix">
+	
+				<!-- Tab Column -->
+				<div class="answer-one_title-column col-lg-5 col-md-12 col-sm-12">
+					<div class="answer-one_title-outer">
+						<!-- Sec Title -->
+						<div class="sec-title title-anim">
+							<div class="sec-title_title">The PatchWork™ Solutions</div>
+							<h2 class="sec-title_heading">Gain <span>full control</span> of your business documents and resources</h2>
+						</div>
+						<ul class="answer-one_list">
+							<li><i class="fa-solid fa-check fa-fw"></i>Create a personalized knowledge base in your PatchWork™ library</li>
+							<li><i class="fa-solid fa-check fa-fw"></i>Access reliable resources to find the information you need</li>
+							<li><i class="fa-solid fa-check fa-fw"></i>Stay informed with efficient content management and search features</li>
+						</ul>
+						<div class="answer-one_button">
+							<a href="{% url 'about' %}" class="template-btn btn-style-one">
+								<span class="btn-wrap">
+									<span class="text-one">Know more</span>
+									<span class="text-two">Know more</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Tab Column -->
+				<div class="answer-one_content-column col-lg-7 col-md-12 col-sm-12">
+					<div class="answer-one_content-outer">
+						<div class="answer-one_pattern"></div>
+	
+						<div class="answer-one_image">
+							<img src="{% static 'the_patchwork/images/resource/faq.png' %}" alt="" />
+						</div>		
+					</div>
+				</div>
+	
+			</div>
+		</div>
+	</section>
+	
+	<!-- End Answer One -->
+
+	<!-- Testimonial One -->
+	<section class="testimonial-one">
+		<div class="auto-container">
+			<div class="inner-container"></div>
+	
+				<!-- Sec Title -->
+				<div class="sec-title centered">
+					<div class="sec-title_title">Testimonials</div>
+					<h2 class="sec-title_heading">What Our Valued <br> <span>Clients Say</span></h2>
+				</div>
+				<div class="three-item_carousel swiper-container">
+					<div class="swiper-wrapper">
+	
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<!-- Testimonial Block One -->
+							<div class="testimonial-block_one">
+								<div class="testimonial-block_one-inner">
+									<div class="testimonial-block_one-rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<div class="testimonial-block_one-text">"Working with The PatchWork™ has transformed how we handle our business tasks. Their services have allowed us to streamline operations, saving us both time and money. Truly a game-changer!"</div>
+									<div class="testimonial-block_one-author_box">
+										<div class="testimonial-block_one-author-image">
+											<img src="{% static 'the_patchwork/images/resource/author-2.png' %}" alt="" />
+										</div>
+										Larry K. Lund <span>Social Media Manager</span>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<!-- Testimonial Block One -->
+							<div class="testimonial-block_one">
+								<div class="testimonial-block_one-inner">
+									<div class="testimonial-block_one-rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<div class="testimonial-block_one-text">"The PatchWork™ has been instrumental in elevating our content marketing. Their services are top-notch, and we’ve seen a noticeable improvement in engagement and conversions since partnering with them."</div>
+									<div class="testimonial-block_one-author_box">
+										<div class="testimonial-block_one-author-image">
+											<img src="{% static 'the_patchwork/images/resource/author-3.png' %}" alt="" />
+										</div>
+										Marian R. Vieira <span>Content Marketer</span>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<!-- Testimonial Block One -->
+							<div class="testimonial-block_one">
+								<div class="testimonial-block_one-inner">
+									<div class="testimonial-block_one-rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<div class="testimonial-block_one-text">"As a founder, every minute counts. The PatchWork™ has helped us optimize our processes, freeing up time for us to focus on growth and strategy. They’ve truly become an extension of our team."</div>
+									<div class="testimonial-block_one-author_box">
+										<div class="testimonial-block_one-author-image">
+											<img src="{% static 'the_patchwork/images/resource/author-4.png' %}" alt="" />
+										</div>
+										Bob E. Wiggins <span>Founder</span>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+	
+					<!-- If we need pagination -->
+					<div class="three-item_carousel-pagination"></div>
+	
+				</div>
+	
+			</div>
+		</div>
+	</section>
+	
+
+	<!-- End Testimonial One -->
+
+	<!-- Steps One -->
+	<!-- Steps One -->
+<!-- Steps One -->
+<section class="steps-one">
+    <div class="steps-one_bg"></div>
+    <div class="steps-one_icon"></div>
+
+    <div class="auto-container">
+        <div class="inner-container">
+            <div class="circle-layer"></div>
+            <div class="dots-layer">
+                <span class="dot-one"></span>
+                <span class="dot-two"></span>
+            </div>
+
+            <!-- Sec Title -->
+            <div class="sec-title">
+				<div class="sec-title_title">How It Works</div>
+				<h2 class="sec-title_heading">How <span>The PatchWork™</span><br> Delivers Results in <br> Three Simple Steps</h2>
+			</div>			
+            <div class="steps-one_button">
+                <a href="{% url 'about' %}" class="template-btn btn-style-two">
+                    <span class="btn-wrap">
+                        <span class="text-one">Know more</span>
+                        <span class="text-two">Know more</span>
+                    </span>
+                </a>
+            </div>
+            <div class="row clearfix">
+                <!-- Column -->
+                <div class="column col-lg-6 col-md-12 col-sm-12">
+                    <!-- Step Block One -->
+                    <div class="step-block_one">
+                        <div class="step-block_one-inner">
+                            <div class="step-block_one-steps">Step 01</div>
+                            <h5 class="step-block_one-title">Understanding Your Needs</h5>
+                            <div class="step-block_one-text">We begin by closely listening to your business goals and challenges. Through consultations and research, we gather all the necessary insights to understand your vision.</div>
+                            <div class="step-block_one-content">
+                                <div class="image">
+                                    <img src="{% static 'the_patchwork/images//resource/step-1.png' %}" alt="Understanding Needs" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column -->
+                <div class="column col-lg-6 col-md-12 col-sm-12">
+                    <!-- Step Block Two -->
+                    <div class="step-block_one">
+                        <div class="step-block_one-inner">
+                            <div class="step-block_one-steps">Step 02</div>
+                            <h5 class="step-block_one-title">Tailored Strategy & Research</h5>
+                            <div class="step-block_one-text">We conduct in-depth research and develop a customized strategy that aligns with your business objectives. Every solution we propose is crafted to meet your specific needs.</div>
+                            <div class="step-block_one-content">
+                                <div class="image">
+                                    <img src="{% static 'the_patchwork/images//resource/step-2.png' %}" alt="Strategy and Research" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step Block Three -->
+                    <div class="step-block_one">
+                        <div class="step-block_one-inner">
+                            <div class="step-block_one-steps">Step 03</div>
+                            <h5 class="step-block_one-title">Delivering Exceptional Results</h5>
+                            <div class="step-block_one-text">With a clear understanding and a solid plan, we execute our solutions, delivering high-quality content and services that resonate with your audience and drive your business forward.</div>
+                            <div class="step-block_one-content">
+                                <div class="image">
+                                    <img src="{% static 'the_patchwork/images//resource/step-3.png' %}" alt="Delivering Results" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+	
+	<!-- End Steps One -->
+
+	<!-- Price One -->
+ 
+
+<!-- Faq One -->
+<section class="faq-one style-two">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!-- Tab Column -->
+            <div class="faq-one_title-column col-lg-5 col-md-12 col-sm-12">
+                <div class="faq-one_title-outer">
+                    <!-- Sec Title -->
+                    <div class="sec-title style-three title-anim light">
+                        
+                        <h2 class="sec-title_heading">Frequently Asked <span>Questions</span></h2>
+                        <div class="sec-title_text">Got questions? We've got answers. Learn more about our services and how The PatchWork™ can support your business growth and operational efficiency.</div>
+                    </div>
+                    <div class="faq-one_button">
+                        <a href="{% url 'contact' %}" class="template-btn btn-style-one">
+                            <span class="btn-wrap">
+                                <span class="text-one">Contact now</span>
+                                <span class="text-two">Contact now</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Accordian Column -->
+            <div class="faq-one_accordian-column col-lg-7 col-md-12 col-sm-12">
+                <div class="faq-one_accordian-outer">
+                    <!-- Accordion Box -->
+                    <ul class="accordion-box_two">
+                        <!-- Block -->
+                        <li class="accordion block active-block">
+                            <div class="acc-btn active">
+                                <div class="icon-outer">
+                                    <span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+                                </div>
+                                How can The PatchWork™ help streamline my business operations?
+                            </div>
+                            <div class="acc-content current">
+                                <div class="content">
+                                    <div class="text">The PatchWork™ offers comprehensive virtual assistance, content creation, and digital marketing services that allow you to focus on growth while we handle the operational tasks, saving you valuable time and resources.</div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Block -->
+                        <li class="accordion block">
+                            <div class="acc-btn">
+                                <div class="icon-outer">
+                                    <span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+                                </div>
+                                What services does The PatchWork™ provide?
+                            </div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">We provide a wide range of services, including virtual assistance, content marketing, SEO optimization, digital marketing strategies, and more, all designed to help businesses operate efficiently and grow effectively.</div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Block -->
+                        <li class="accordion block">
+                            <div class="acc-btn">
+                                <div class="icon-outer">
+                                    <span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+                                </div>
+                                How do I get started with The PatchWork™?
+                            </div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Simply contact us via our website, and our team will set up a consultation to understand your business needs. From there, we’ll tailor a package of services to support your objectives and streamline your operations.</div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Block -->
+                        <li class="accordion block">
+                            <div class="acc-btn">
+                                <div class="icon-outer">
+                                    <span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+                                </div>
+                                Can The PatchWork™ help with content creation?
+                            </div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Absolutely! We specialize in creating high-quality, engaging content that resonates with your target audience, whether you need blog posts, social media content, or marketing materials.</div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Block -->
+                        <li class="accordion block">
+                            <div class="acc-btn">
+                                <div class="icon-outer">
+                                    <span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+                                </div>
+                                What is your pricing structure?
+                            </div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Our pricing is flexible and depends on the services you need. We offer customized packages to fit your budget and business requirements. Contact us for more details, and we’ll be happy to provide a tailored quote.</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+	
+	<!-- End Faq One -->
+
+	<!-- Social One -->
+	<section class="social-one">
+		<div class="social-one_bg-shadow"></div>
+
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="sec-title_title">Integrations</div>
+				<h2 class="sec-title_heading">Seamlessly integrate The PatchWork™ <br> <span>into your daily operations</span></h2>
+			</div>			
+			<div class="social-one_logo">
+				<span><img src="{% static 'the_patchwork/images//icons/social-logo.png' %}" alt="" /></span>
+			</div>
+			<div class="inner-container">
+				<<div class="social-one_bg"></div>
+				<div class="social-one_bg-two"></div>	
+				
+				<div class="social-box_one">
+					<div class="animation_mode">
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-1.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-2.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-3.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-4.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-5.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-6.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-7.png' %}" alt="" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="social-box">
+					<div class="animation_mode_two">
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-8.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-9.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-10.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-11.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-12.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-13.png' %}" alt="" />
+							</a>
+						</div>
+						<!-- Icon -->
+						<div class="social_icon-box">
+							<a href="#">
+								<img src="{% static 'the_patchwork/images//icons/social-14.png' %}" alt="" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- End Social One -->
+
+	<!-- News One -->
+	<section class="news-one">
+		<div class="news-one_shadow"></div>
+		<div class="news-one_shadow-two"></div>
+	
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title title-anim centered">
+				<div class="sec-title_title">our blog</div>
+				<h2 class="sec-title_heading">Read our latest <span>blogs</span></h2>
+			</div>
+			<div class="three-item_carousel swiper-container">
+				<div class="swiper-wrapper">
+	
+					<!-- Slide 1 -->
+					<div class="swiper-slide">
+						<!-- News Block One -->
+						<div class="news-block_one">
+							<div class="news-block_one-inner">
+								<div class="news-block_one-image">
+									<a href="{% url 'newsdetail' %}"><img src="{% static 'the_patchwork/images//resource/news-1.jpg' %}" alt="" /></a>
+								</div>
+								<div class="news-block_one-content">
+									<h5 class="news-block_one-title"><a href="{% url 'newsdetail' %}">Bye-Bye Busy Work: How AI Can Take Over Tedious Tasks So You Don’t Have To</a></h5>
+									<div class="news-block_one-text">Discover how AI can handle the boring stuff, leaving you free to focus on what you love about your business.</div>
+									<div class="news-block_one-button">
+										<a href="{% url 'blog' %}" class="template-btn btn-style-two">
+											<span class="btn-wrap">
+												<span class="text-one">Read more</span>
+												<span class="text-two">Read more</span>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Slide 2 -->
+					<div class="swiper-slide">
+						<!-- News Block One -->
+						<div class="news-block_one">
+							<div class="news-block_one-inner">
+								<div class="news-block_one-image">
+									<a href="{% url 'newsdetail' %}"><img src="{% static 'the_patchwork/images//resource/news-2.jpg' %}" alt="" /></a>
+								</div>
+								<div class="news-block_one-content">
+									<h5 class="news-block_one-title"><a href="{% url 'newsdetail' %}">Less Grind, More Growth: Using AI to Free Up Your Time</a></h5>
+									<div class="news-block_one-text">Learn how AI tools can save you hours every week, giving you more time to grow your startup and enjoy life.</div>
+									<div class="news-block_one-button">
+										<a href="{% url 'blog' %}" class="template-btn btn-style-two">
+											<span class="btn-wrap">
+												<span class="text-one">Read more</span>
+												<span class="text-two">Read more</span>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Slide 3 -->
+					<div class="swiper-slide">
+						<!-- News Block One -->
+						<div class="news-block_one">
+							<div class="news-block_one-inner">
+								<div class="news-block_one-image">
+									<a href="{% url 'newsdetail' %}"><img src="{% static 'the_patchwork/images//resource/news-3.jpg' %}" alt="" /></a>
+								</div>
+								<div class="news-block_one-content">
+									<h5 class="news-block_one-title"><a href="{% url 'newsdetail' %}">Start Smart: Integrate AI into Your New Business from Day One</a></h5>
+									<div class="news-block_one-text">Tips on setting up your startup with AI right from the beginning to stay ahead of the game.</div>
+									<div class="news-block_one-button">
+										<a href="{% url 'blog' %}" class="template-btn btn-style-two">
+											<span class="btn-wrap">
+												<span class="text-one">Read more</span>
+												<span class="text-two">Read more</span>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+				</div>
+				<!-- If we need pagination -->
+				<div class="three-item_carousel-pagination"></div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- End News One -->
+
+	{% include 'the_patchwork/ctaone.html' %}
+
+
+	{% include 'the_patchwork/footer.html' %}
+
+<!-- End PageWrapper -->
+
+ 
+
+
+{% endblock %}

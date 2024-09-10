@@ -34,10 +34,10 @@ iPatchwork Editions Team
         user_email = EmailMessage(user_subject, user_content, to=[email])
         user_email.send()
 
-        # Email to feed.teach.love@gmail.com
+        # Email to ilightproducts@gmail.com
         admin_subject = "SIGN UP FORM"
         admin_content = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
-        admin_email = EmailMessage(admin_subject, admin_content, to=['iriseuppublishing@gmail.com'])
+        admin_email = EmailMessage(admin_subject, admin_content, to=['ilightproducts@gmail.com'])
         admin_email.send()
 
         messages.success(request, 'Submitted successfully!')
@@ -56,7 +56,7 @@ Thank you for registering with iPatchwork Editions! We're thrilled to have you o
 
 Your registration is confirmed, and you're now part of our community of authors and creators. Whether you're an aspiring writer or an experienced author, we're here to support you on your publishing journey.
 
-Stay tuned for updates, tips, and exclusive offers tailored just for you. If you have any questions or need assistance, feel free to reach out to our team at iriseuppublishing@gmail.com .
+Stay tuned for updates, tips, and exclusive offers tailored just for you. If you have any questions or need assistance, feel free to reach out to our team at ilightproducts@gmail.com .
 
 We look forward to helping you achieve your publishing goals!
 
@@ -67,10 +67,10 @@ iPatchwork Editions Team
         user_email = EmailMessage(user_subject, user_content, to=[email])
         user_email.send()
 
-        # Email to feed.teach.love@gmail.com
+        # Email to ilightproducts@gmail.com
         admin_subject = "SIGN UP FORM"
         admin_content = f"Name: {name}\nEmail: {email}\nNumber: {number}"
-        admin_email = EmailMessage(admin_subject, admin_content, to=['iriseuppublishing@gmail.com'])
+        admin_email = EmailMessage(admin_subject, admin_content, to=['ilightproducts@gmail.com'])
         admin_email.send()
 
         messages.success(request, 'Submitted successfully!')
@@ -98,10 +98,10 @@ iPatchwork Editions Team
         user_email = EmailMessage(user_subject, user_content, to=[email])
         user_email.send()
 
-        # Email to feed.teach.love@gmail.com
+        # Email to ilightproducts@gmail.com
         admin_subject = "SUBSCRIBE"
         admin_content = f"Email: {email}"
-        admin_email = EmailMessage(admin_subject, admin_content, to=['iriseuppublishing@gmail.com'])
+        admin_email = EmailMessage(admin_subject, admin_content, to=['ilightproducts@gmail.com'])
         admin_email.send()
 
         messages.success(request, 'Submitted successfully!')
@@ -132,10 +132,10 @@ iPatchwork Editions Team
         user_email = EmailMessage(user_subject, user_content, to=[email])
         user_email.send()
 
-        # Email to feed.teach.love@gmail.com
+        # Email to ilightproducts@gmail.com
         admin_subject = "CONTACT US"
         admin_content = f"Name: {name}\nEmail: {email}\nSubject: {subject_field}\nMessage: {message}"
-        admin_email = EmailMessage(admin_subject, admin_content, to=['iriseuppublishing@gmail.com'])
+        admin_email = EmailMessage(admin_subject, admin_content, to=['ilightproducts@gmail.com'])
         admin_email.send()
 
         messages.success(request, 'Submitted successfully!')
@@ -171,10 +171,10 @@ iPatchwork Editions Team
         user_email = EmailMessage(user_subject, user_content, to=[email])
         user_email.send()
 
-        # Email to feed.teach.love@gmail.com
+        # Email to ilightproducts@gmail.com
         admin_subject = "GET QUOTE"
         admin_content = f"Name: {name}\nEmail: {email}\nNumber: {number}\nMessage: {message}"
-        admin_email = EmailMessage(admin_subject, admin_content, to=['iriseuppublishing@gmail.com'])
+        admin_email = EmailMessage(admin_subject, admin_content, to=['ilightproducts@gmail.com'])
         admin_email.send()
 
         messages.success(request, 'Submitted successfully!')
@@ -366,7 +366,177 @@ def single_blog8(request):
 def testimonial(request):
     return render(request, 'testimonial.html')
 
+from django.shortcuts import render, get_object_or_404
+from .models import Blog
+
+from django.shortcuts import render, get_object_or_404
+from .models import Blog
+
+def newsdetail(request, slug):
+    blog = get_object_or_404(Blog, slug=slug)
+    latest_blogs = Blog.objects.order_by('-publish_date')[:3]  # Fetch latest 3 blogs
+
+    return render(request, 'the_patchwork/myapp/news-detail.html', {
+        'blog': blog,
+        'latest_blogs': latest_blogs,
+    })
+
+# Blog List View
+def blog(request):
+    blogs = Blog.objects.all().order_by('-publish_date')
+    return render(request, 'the_patchwork/myapp/blog.html', {'blogs': blogs})
+
+# views.py
+def blog_detail(request, slug):
+    blog = get_object_or_404(Blog, slug=slug)
+    latest_blogs = Blog.objects.order_by('-publish_date')[:3]
+
+    return render(request, 'the_patchwork/myapp/news-detail.html', {
+        'blog': blog,
+        'latest_blogs': latest_blogs,
+    })
+
+
+def about(request):
+    return render(request, 'the_patchwork/myapp/about.html')
+
+def blogclassic(request):
+    return render(request, 'the_patchwork/myapp/blog-classic.html')
+
+
+def contact(request):
+    return render(request, 'the_patchwork/myapp/contact.html')
+
+def faq(request):
+    return render(request, 'the_patchwork/myapp/faq.html')
+
+from django.shortcuts import render
+from .models import Service
+
+from django.shortcuts import render
+from .models import Service, Blog
+
+def index2(request):
+    services = Service.objects.all()  # Fetch all services from the database
+    blogs = Blog.objects.all()  # Fetch all blogs from the database
+    return render(request, 'the_patchwork/myapp/index-2.html', {'services': services, 'blogs': blogs})
+
+
+def index3(request):
+    return render(request, 'the_patchwork/myapp/index-3.html')
+
+def index(request):
+    return render(request, 'the_patchwork/myapp/index.html')
 
 
 
+def notfound(request):
+    return render(request, 'the_patchwork/myapp/not-found.html')
 
+def pricing(request):
+    return render(request, 'the_patchwork/myapp/pricing.html')
+
+def register(request):
+    return render(request, 'the_patchwork/myapp/register.html')
+
+def reset(request):
+    return render(request, 'the_patchwork/myapp/reset.html')
+
+
+def team(request):
+    return render(request, 'the_patchwork/myapp/team.html')
+
+def testimonial(request):
+    return render(request, 'the_patchwork/myapp/testimonial.html')
+
+
+def newsdetail1(request):
+    return render(request, 'the_patchwork/myapp/news-detail1.html')
+
+def newsdetail2(request):
+    return render(request, 'the_patchwork/myapp/news-detail2.html')
+
+def newsdetail3(request):
+    return render(request, 'the_patchwork/myapp/news-detail3.html')
+
+def newsdetail4(request):
+    return render(request, 'the_patchwork/myapp/news-detail4.html')
+
+def newsdetail5(request):
+    return render(request, 'the_patchwork/myapp/news-detail5.html')
+
+def newsdetail6(request):
+    return render(request, 'the_patchwork/myapp/news-detail6.html')
+
+def newsdetail7(request):
+    return render(request, 'the_patchwork/myapp/news-detail7.html')
+
+def newsdetail8(request):
+    return render(request, 'the_patchwork/myapp/news-detail8.html')
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import Service
+
+# View for displaying all services
+def services(request):
+    services = Service.objects.all().order_by('order')
+    return render(request, 'the_patchwork/myapp/services.html', {'services': services})
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import Service
+
+def service_detail(request, slug):
+    service = get_object_or_404(Service, slug=slug)
+    
+    # Split the benefits into a list
+    benefits = service.benefits.split("\n") if service.benefits else []
+    
+    return render(request, 'the_patchwork/myapp/service-detail.html', {
+        'service': service,
+        'benefits': benefits
+    })
+
+
+def footer(request):
+    services = Service.objects.all() 
+    return render(request, 'the_patchwork/footer.html', {'services': services})
+
+def header(request):
+    services = Service.objects.all() 
+    return render(request, 'the_patchwork/header.html', {'services': services})
+
+
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
+def get_quote(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        concern = request.POST.get('concern')
+
+        # Send an email to the admin
+        send_mail(
+            subject='New Quote Request',
+            message=f'Name: {name}\nEmail: {email}\nConcern: {concern}',
+            from_email='your-email@example.com',  # Replace this with your "from" email
+            recipient_list=['ilightproducts@gmail.com'],  # Your email
+            fail_silently=False,
+        )
+
+        # Optionally, send a confirmation email to the user
+        send_mail(
+            subject='Thank you for your Quote Request',
+            message=f'Thank you, {name}, for your request. We’ll get back to you shortly with a 20% discount on our services.',
+            from_email='your-email@example.com',  # Replace this with your "from" email
+            recipient_list=[email],
+            fail_silently=False,
+        )
+
+        # Redirect to the same page with a success message
+        return render(request, 'the_patchwork/myapp/service-detail.html', {'success': True})
+
+    return redirect('services')  # Or render a specific page if needed

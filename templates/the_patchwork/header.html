@@ -1,0 +1,94 @@
+{% load static %}
+<style>
+
+</style>
+<header class="main-header header-style-two alternate">
+    <div class="header-lower">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="d-flex align-items-center justify-content-between flex-wrap">
+                    <div class="nav-outer d-flex align-items-center flex-wrap">
+                        <div class="logo-box">
+                            <div class="logo">
+                                <a href="{% url 'index2' %}">
+                                    <img src="{% static 'the_patchwork/images/mobile-logo.svg' %}" alt="" title="">
+                                </a>
+                            </div>
+                        </div>
+                        <nav class="main-menu navbar-expand-md">
+                            <div class="navbar-header">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li class="dropdown">
+                                        <a href="#">Home</a>
+                                        <ul>
+                                            <!-- Linking to the home page of The PatchWork™ -->
+                                            <li><a href="{% url 'index2' %}">The PatchWork™</a></li>
+                                    
+                                            <!-- Dropdown for additional pages -->
+                                            <li class="dropdown">
+                                                <a href="#">Our Projects</a>
+                                                <ul>
+                                                    <!-- Linking to The PatchWork Editions page -->
+                                                    <li><a href="{% url 'home' %}">The PatchWork Editions</a></li>
+                                    
+                                                    <!-- External link to Patch Wetzel's website -->
+                                                    <li><a href="https://patchwetzel.com/" target="_blank">Patch Wetzel</a></li>
+                                    
+                                                    <!-- External link to The 0K Foundation's website -->
+                                                    <li><a href="https://www.0kfoundation.org/" target="_blank">The 0K Foundation</a></li>
+                                    
+                                                    <!-- Local template link for i-Patchwork Publishing -->
+                                                    <li><a href="{% static 'PatchWork-Editions/templates/about.html' %}">i-Patchwork Publishing</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'about' %}">About</a></li>
+                                    <li class="dropdown">
+                                        <a href="{% url 'services' %}">Services</a>
+                                        <ul>
+                                            {% for service in services %}
+                                                <li><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li> <a href="{% url 'blog' %}">Blog</a> </li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="outer-box d-flex align-items-center flex-wrap">
+                        <div class="main-header_buttons">
+                
+                            <a href="{% url 'register' %}" class="template-btn btn-style-one">
+                                <span class="btn-wrap">
+                                    <span class="text-one">Start Now</span>
+                                    <span class="text-two">Start Now</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="mobile-nav-toggler">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <div class="close-btn"><span class="icon fa-solid fa-xmark fa-fw"></span></div>
+        <nav class="menu-box">
+            <div class="nav-logo"><a href="{% url 'index' %}"><img src="{% static 'the_patchwork/images/mobile-logo.svg' %}" alt="" title=""></a></div>
+            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+        </nav>
+    </div>
+</header>

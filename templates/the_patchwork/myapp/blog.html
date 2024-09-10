@@ -1,0 +1,117 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Our Blog{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<style>
+	.news-block_one-content p {
+    	color: rgb(136, 134, 134) !important;
+	}
+
+	.news-block_one-content a {
+    	color: rgb(0, 0, 0) !important; 
+	}
+</style>
+
+<body>
+<div class="page-wrapper">
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		<div class="page-title-icon"></div>
+		<div class="page-title-icon-two"></div>
+		<div class="page-title-shadow"></div>
+		<div class="page-title-shadow-two"></div>
+        <div class="auto-container">
+			<h2>Our Blog</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="{% url 'index' %}">Home</a></li>
+				<li>Blog</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- News Three -->
+	<section class="news-three">
+		<div class="auto-container">
+			<div class="row clearfix">
+
+				{% for blog in blogs %}
+				<!-- News Block One -->
+				<div class="news-block_one col-lg-4 col-md-6 col-sm-12">
+					<div class="news-block_one-inner">
+						<div class="news-block_one-image">
+							<a href="{{ blog.get_absolute_url }}"><img src="{{ blog.image.url }}" alt="{{ blog.title }}" /></a>
+						</div>
+						<div class="news-block_one-content">
+							<div class="news-block_one-time">{{ blog.author }} <span>{{ blog.read_time }} min read</span></div>
+							<h5 class="news-block_one-title">
+								<a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
+							</h5>
+							<p>{{ blog.excerpt|truncatewords:30 }}</p>
+							
+							<a class="news-block_one-more" href="{{ blog.get_absolute_url }}">Read more <i class="fa-solid fa-plus fa-fw"></i></a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+
+			<!-- Pagination (optional, depending on blog count) -->
+			{% if is_paginated %}
+			<ul class="styled-pagination text-center">
+				{% if page_obj.has_previous %}
+					<li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+				{% endif %}
+				{% for num in page_obj.paginator.page_range %}
+					<li><a href="?page={{ num }}" class="{% if page_obj.number == num %}active{% endif %}">{{ num }}</a></li>
+				{% endfor %}
+				{% if page_obj.has_next %}
+					<li class="next"><a href="?page={{ page_obj.next_page_number }}"><span class="fa-solid fa-angle-right fa-fw"></span></a></li>
+				{% endif %}
+			</ul>
+			{% endif %}
+			<!-- End Pagination -->
+		</div>
+	</section>
+	<!-- End News Three -->
+	
+	<!-- CTA One -->
+	{% include 'the_patchwork/ctaone.html' %}
+	<!-- End CTA One -->
+
+	{% include 'the_patchwork/footer.html' %}
+<!-- End PageWrapper -->
+{% endblock %}

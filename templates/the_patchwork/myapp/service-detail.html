@@ -1,0 +1,646 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Service Details{% endblock %}
+
+{% load static %}
+{% block content %}
+<style>
+    /* General Styling */
+    section {
+        padding: 70px 0;
+    }
+
+    /* Page Title */
+    .page-title {
+        text-align: center;
+        padding: 50px 0;
+        background: #f4f4f4;
+        margin-bottom: 50px;
+    }
+
+    .page-title h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #333;
+        position: relative;
+    }
+
+    .page-title h2::after {
+        content: '';
+        width: 80px;
+        height: 4px;
+        background-color: #6c63ff;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Service Overview */
+    .services-detail {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .services-detail h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .services-detail h4 {
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .service-detail-image img {
+        border-radius: 10px;
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .service-detail-image img:hover {
+        transform: scale(1.05);
+    }
+
+    .benefits-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.benefits-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+    position: relative;
+}
+
+.benefits-section h2::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: #6c63ff;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Flipbox styling */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+    position: relative;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.card-front {
+    background: linear-gradient(120deg, #ffffff 30%, #eeeeee 88%, #dddddd 40%, #091a39 48%);
+    color: black;
+}
+
+.card-back {
+    background: linear-gradient(120deg, #ffffff 30%, #eeeeee 88%, #dddddd 40%, #091a39 78%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front h3, .card-back h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+	color: #666;
+}
+
+.card-front p, .card-back p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-top: 15px;
+	color: #091a39;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(100% - 20px); 
+        margin: 10px;
+    }
+}
+
+    /* FAQ Section */
+    .faq-one {
+        padding: 60px 0;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .faq-one h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #333;
+        position: relative;
+    }
+
+    .faq-one h2::after {
+        content: '';
+        width: 60px;
+        height: 4px;
+        background-color: #6c63ff;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .faq-one_list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .faq-one_list li {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .faq-one_list li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-one_list li i {
+        color: #6c63ff;
+        margin-right: 12px;
+        font-size: 1.5rem;
+    }
+
+    /* CTA Button Styling */
+	.cta-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 2.4rem;
+        color: #333;
+        margin-bottom: 10px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .cta-section p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+/* General form styling */
+	/* General form styling */
+	/* General Styling for the quote section */
+	/* General Styling for the quote section */
+.quote-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Styling the form section */
+.quote-form-section {
+    background-color: #d8c5f4;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote-form-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.quote-form-section p {
+    margin-bottom: 30px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #6c63ff;
+    outline: none;
+}
+
+.cta-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the contact section */
+/* Styling for the contact section */
+.contact-info-section {
+    background-color: #d8c5f4;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Slightly larger shadow */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px; /* Add space below */
+}
+
+.contact-info {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for the inner box */
+}
+
+.contact-info h4 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Darker shade on hover */
+}
+
+.contact-info .social-icons {
+    margin-top: 20px;
+}
+
+.contact-info .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.contact-info .social-icons a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-info-section {
+        padding: 20px;
+    }
+
+    .contact-info h4 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+}
+
+</style>
+
+<div class="page-wrapper">
+	{% include 'the_patchwork/header.html' %}
+	<!-- Page Title -->
+    <section class="page-title">
+        <div class="auto-container">
+            <h2>{{ service.name }}</h2>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li>Service Details</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="services-detail">
+        <div class="auto-container">
+            <h2>{{ service.name }}</h2>
+            <h4>{{ service.description }}</h4>
+            {% if service.image %}
+            <div class="service-detail-image">
+                <img src="{{ service.image.url }}" alt="{{ service.name }}">
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Service Benefits Section -->
+	<section class="benefits-section">
+		<div class="auto-container">
+			<h2 class="sec-title_heading">Benefits of <span>{{ service.name }}</span></h2>
+			<div class="card-container">
+				{% for benefit in benefits %}
+				<div class="card">
+					<div class="card-inner">
+						<!-- Front side of the card -->
+						<div class="card-front">
+							<p>{{ benefit|truncatewords:8 }}</p>
+						</div>
+						<!-- Back side of the card -->
+						<div class="card-back">
+							<h3 class="title">{{ benefit|truncatewords:12 }}</h3>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		
+	</section>
+	
+	<section class="quote-section">
+		<div class="container">
+			<div class="row">
+				<!-- Quote Form Section -->
+				<div class="col-lg-7 col-md-12 quote-form-section">
+					<h2>Start Your {{ service.name }} Journey Today!</h2>
+					<p>Unlock the potential of your business with our expert {{ service.name }} services. Fill out the form below to get a personalized quote and enjoy a 20% discount on your next service!</p>
+	
+					<form method="post" action="{% url 'get_quote' %}" class="quote-form">
+						{% csrf_token %}
+						<div class="form-group">
+							<input type="text" name="name" placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<input type="email" name="email" placeholder="Your Email" required>
+						</div>
+						<div class="form-group">
+							<textarea name="concern" placeholder="Your Concern" required></textarea>
+						</div>
+						<button type="submit" class="cta-btn">Get a Quote Now & Save 20%</button>
+					</form>
+	
+					<!-- Success Message Display -->
+					{% if success %}
+					<p class="success-message">Thank you for your quote request! We’ve applied a 20% discount on your next service.</p>
+					{% endif %}
+				</div>
+	
+				<!-- Contact Information Section -->
+				<div class="col-lg-4 col-md-12 offset-lg-1 contact-info-section">
+					<div class="contact-info">
+						<h4>Contact Us</h4>
+						<p><strong>Address:</strong><br>11065 Wood Haven Rd<br>Johnstown OH 43031</p>
+						<p><strong>Phone:</strong><br>6145628583</p>
+						<p><strong>Email:</strong><br><a href="mailto:hello@i-patchwork.com">hello@i-patchwork.com</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+    <!-- FAQ Section -->
+    <section class="faq-one style-three">
+		<div class="auto-container">
+			<div class="row clearfix">
+
+				<!-- Tab Column -->
+				<div class="faq-one_title-column col-lg-5 col-md-12 col-sm-12">
+					<div class="faq-one_title-outer">
+						<!-- Sec Title -->
+						<div class="sec-title">
+							<div class="sec-title_title">faq</div>
+							<h2 class="sec-title_heading">Frequently asked <span>questions</span></h2>
+							<div class="sec-title_text">Got questions? We've got answers. Learn more about how our services can benefit your business and drive your online growth.</div>
+						</div>
+						<div class="faq-one_button">
+							<a href="{% url 'contact' %}" class="template-btn btn-style-one">
+								<span class="btn-wrap">
+									<span class="text-one">Contact now</span>
+									<span class="text-two">Contact now</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Accordion Column -->
+				<div class="faq-one_accordian-column col-lg-7 col-md-12 col-sm-12">
+					<div class="faq-one_accordian-outer">
+
+						<!-- Accordion Box -->
+						<ul class="accordion-box_two">
+									
+							<!-- Block 1 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									How does your web development service work?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Our web development service starts by understanding your business needs and goals. We build fully responsive websites that work on all devices. After development, we conduct testing to ensure smooth functionality across platforms. Once everything is approved, we launch your site and provide ongoing support.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 2 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									What services are included in your social media management package?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Our social media management package includes content creation, scheduling, engagement with followers, performance monitoring, and detailed reporting. We also optimize your profiles to align with your brand’s goals and run targeted social media ad campaigns to help boost your online presence.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 3 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									What is SEO, and how does it help my business?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">SEO, or Search Engine Optimization, is the process of improving your website’s visibility on search engines like Google. By optimizing your website’s content and structure, we help your site rank higher for relevant keywords, driving organic traffic to your site and ultimately increasing leads and sales.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 4 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									Can I trust the content generated by your copywriting service?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Absolutely! Our copywriting service combines creativity with data-driven insights to ensure that the content is not only engaging but also aligned with your brand's tone and objectives. Every piece of content we create is reviewed and optimized for SEO, helping you connect with your audience and rank higher on search engines.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 5 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									How long does it take to see results from your email marketing campaigns?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Typically, you can start seeing results from our email marketing campaigns within the first few weeks. We track key performance metrics such as open rates, click-through rates, and conversions, providing regular reports and making necessary adjustments to maximize effectiveness.</div>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="assistance-one">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title style-two centered">
+				<div class="sec-title_title">Our Expertise</div>
+				<h2 class="sec-title_heading">Explore the Range of <br> <span>Services We Offer</span></h2>
+			</div>
+			<div class="three-item_carousel swiper-container">
+				<div class="swiper-wrapper">
+	
+					<!-- Loop through services dynamically -->
+					{% for service in services %}
+					<!-- Slide -->
+					<div class="swiper-slide">
+						<!-- Service Block Three -->
+						<div class="service-block_three">
+							<div class="service-block_three-inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+								<!-- Check if the service has an image -->
+								{% if service.image %}
+								<div class="service-block_three-dots" style="background-image: url({{ service.image.url }})"></div>
+								{% else %}
+								<!-- Provide a default image or leave it blank -->
+								<div class="service-block_three-dots" style="background-image: url('/static/the_patchwork/images/default-service-image.jpg')"></div>
+								{% endif %}
+								<div class="service-block_three-circles" style="background-image: url(css/images/icons/service-three_circle.png)"></div>
+								<div class="color-layer"></div>
+								<div class="service-block_three-icon">
+									<i class="{{ service.icon }}"></i> <!-- Ensure that 'icon' field in Service model holds relevant icon classes -->
+								</div>
+								<h5 class="service-block_three-heading">
+									<a href="{{ service.get_absolute_url }}">{{ service.name }}</a>
+								</h5>
+								<div class="service-block_three-text">{{ service.description }}</div>
+								<a class="service-block_three-more" href="{{ service.get_absolute_url }}">Learn more <i class="fa-solid fa-arrow-right fa-fw"></i></a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+	
+				</div>
+	
+				<!-- Pagination (optional) -->
+				<div class="three-item_carousel-pagination"></div>
+			</div>
+		</div>
+	</section>
+
+    <!-- CTA -->
+    {% include 'the_patchwork/ctaone.html' %}
+    <!-- Footer -->
+    {% include 'the_patchwork/footer.html' %}
+</div>
+
+{% endblock %}

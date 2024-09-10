@@ -1,0 +1,394 @@
+{% extends "the_patchwork/myapp/base.html" %}
+
+{% block title %}Services{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<body>
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="D" class="letters-loading">D</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="N" class="letters-loading">N</span>
+						<span data-text-preloader="G" class="letters-loading">G</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	{% include 'the_patchwork/header.html' %}
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		<div class="page-title-icon"></div>
+			<div class="page-title-icon-two"></div>
+			<div class="page-title-shadow"></div>
+			<div class="page-title-shadow-two"></div>
+        <div class="auto-container">
+			<h2>Our services</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="{% url 'index' %}"">Home</a></li>
+				<li>Services</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- Services One -->
+	<section class="services-one style-two">
+		<div class="auto-container">
+			<div class="row clearfix">
+				{% for service in services %}
+					<div class="service-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="service-block_one-inner">
+							<div class="service-block_one-icon">
+								<i class="{{ service.icon }}"></i>
+							</div>
+							<h5 class="service-block_one-heading">
+								<a href="{{ service.get_absolute_url }}">{{ service.name }}</a>
+							</h5>
+							<div class="service-block_one-text">
+								{{ service.description|truncatewords:20 }}
+							</div>
+							<div class="lower-box d-flex justify-content-between align-items-center flex-wrap">
+								<div class="service-block_one-number">{{ forloop.counter|add:1 }}</div>
+								<a class="service-block_one-join" href="{{ service.get_absolute_url }}">
+									Join now <i class="fa-solid fa-plus fa-fw"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- End Services One -->
+
+	<!-- Video One -->
+	<section class="video-one">
+		<div class="video-one_image">
+			<img src="{% static 'the_patchwork/images/background/video-bg.jpg' %}" alt="" />
+			<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-video video-one_play"><span class="fa-solid fa-play fa-fw"><i class="ripple"></i></span></a>
+		</div>
+	</section>
+	<!-- End Video One -->
+
+	<!-- Choose Three -->
+	<section class="choose-three">
+		<div class="auto-container">
+			<div class="inner-container">
+				<div class="row clearfix">
+
+					<!-- Counter Block One -->
+					<div class="counter-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="counter-block_one-inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+							<div class="counter-block_one-icon fa-brands fa-instagram fa-fw"></div>
+							<div class="counter-block_one-count"><span class="odometer" data-count="8000"></span><i>+</i></div>
+							<div class="counter-block_one-text">More than 8,000 customers have experimented with The PatchWork™.AI</div>
+						</div>
+					</div>
+
+					<!-- Counter Block One -->
+					<div class="counter-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="counter-block_one-inner wow fadeInLeft" data-wow-delay="150ms" data-wow-duration="1500ms">
+							<div class="counter-block_one-icon fa-brands fa-instagram fa-fw"></div>
+							<div class="counter-block_one-count"><span class="odometer" data-count="500000"></span><i>+</i></div>
+							<div class="counter-block_one-text">More than 8,000 customers have experimented with The PatchWork™.AI</div>
+						</div>
+					</div>
+
+					<!-- Counter Block One -->
+					<div class="counter-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="counter-block_one-inner wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+							<div class="counter-block_one-icon fa-brands fa-instagram fa-fw"></div>
+							<div class="counter-block_one-count"><span class="odometer" data-count="200000"></span><i>+</i></div>
+							<div class="counter-block_one-text">More than 8,000 customers have experimented with The PatchWork™.AI</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Choose Three -->
+
+	<!-- Price Three -->
+	<section class="price-two">
+		<div class="auto-container">
+			<div class="inner-container">
+				<!-- Sec Title -->
+				<div class="sec-title style-two">
+					<div class="sec-title_title">GET A QUOTE</div>
+					<h2 class="sec-title_heading">Get a <span>customized quote</span> today</h2>
+				</div>
+				<div class="pricing-tabs tabs-box">
+					
+					<!--Tab Btns-->
+					<div class="buttons-outer">
+						<ul class="tab-buttons clearfix">
+							<li data-tab="#prod-monthly" class="tab-btn active-btn">Small Business</li>
+							<li data-tab="#prod-yearly" class="tab-btn">Enterprise</li>
+						</ul>
+					</div>
+	
+					<!--Tabs Container-->
+					<div class="tabs-content">
+						
+						<!-- Tab -->
+						<div class="tab active-tab" id="prod-monthly">
+							<div class="content">
+								<div class="row clearfix">
+	
+									<!-- Quote Block One -->
+									<div class="price-block_one style-two col-lg-4 col-md-6 col-sm-12">
+										<div class="price-block_one-inner">
+											<div class="price-one_stars"></div>
+											<div class="price-block_one-title">Starter Package</div>
+											<div class="price-block_one-subtitle">Ideal for small businesses</div>
+											<div class="price-block_one-content">
+												<ul class="price-block_one-list">
+													<li><i class="fa-solid fa-check fa-fw"></i>Custom web development solutions</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Professional graphic design & branding</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Social media management</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Email support</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>And more tailored to your needs</li>
+												</ul>
+												<div class="price-block_one-button">
+													<a class="template-btn price-one_button" href="#">Get Your Quote</a>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+									<!-- Quote Block Two -->
+									<div class="price-block_one style-two active col-lg-4 col-md-6 col-sm-12">
+										<div class="price-block_one-inner">
+											<div class="price-one_stars"></div>
+											<div class="price-block_one-title">Professional Package</div>
+											<div class="price-block_one-subtitle">Perfect for growing businesses</div>
+											<div class="price-block_one-content">
+												<ul class="price-block_one-list">
+													<li><i class="fa-solid fa-check fa-fw"></i>Comprehensive web and app development</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Advanced digital marketing strategies</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>SEO optimization & management</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>24/7 support</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Tailored to your specific goals</li>
+												</ul>
+												<div class="price-block_one-button">
+													<a class="template-btn price-one_button" href="#">Get Your Quote</a>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+									<!-- Quote Block Three -->
+									<div class="price-block_one style-two col-lg-4 col-md-6 col-sm-12">
+										<div class="price-block_one-inner">
+											<div class="price-one_stars"></div>
+											<div class="price-block_one-title">Enterprise Package</div>
+											<div class="price-block_one-subtitle">Best for large enterprises</div>
+											<div class="price-block_one-content">
+												<ul class="price-block_one-list">
+													<li><i class="fa-solid fa-check fa-fw"></i>Complete business solutions</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Custom app and software development</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Advanced security features</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Dedicated support team</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Tailored to meet your corporate needs</li>
+												</ul>
+												<div class="price-block_one-button">
+													<a class="template-btn price-one_button" href="#">Get Your Quote</a>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+	
+						<!-- Tab -->
+						<div class="tab" id="prod-yearly">
+							<div class="content">
+								<div class="row clearfix">
+									
+									<!-- Custom Package Block -->
+									<div class="price-block_one style-two col-lg-4 col-md-6 col-sm-12">
+										<div class="price-block_one-inner">
+											<div class="price-one_stars"></div>
+											<div class="price-block_one-title">Custom Package</div>
+											<div class="price-block_one-subtitle">Fully customizable to suit any business</div>
+											<div class="price-block_one-content">
+												<ul class="price-block_one-list">
+													<li><i class="fa-solid fa-check fa-fw"></i>Build your own package</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Includes all services you need</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Flexible pricing based on your scope</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>24/7 support included</li>
+													<li><i class="fa-solid fa-check fa-fw"></i>Get started today!</li>
+												</ul>
+												<div class="price-block_one-button">
+													<a class="template-btn price-one_button" href="#">Get Your Quote</a>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Price Three -->
+
+	<!-- Faq One -->
+	<section class="faq-one style-three">
+		<div class="auto-container">
+			<div class="row clearfix">
+
+				<!-- Tab Column -->
+				<div class="faq-one_title-column col-lg-5 col-md-12 col-sm-12">
+					<div class="faq-one_title-outer">
+						<!-- Sec Title -->
+						<div class="sec-title">
+							<div class="sec-title_title">faq</div>
+							<h2 class="sec-title_heading">Frequently asked <span>questions</span></h2>
+							<div class="sec-title_text">Got questions? We've got answers. Learn more about how our services can benefit your business and drive your online growth.</div>
+						</div>
+						<div class="faq-one_button">
+							<a href="{% url 'contact' %}" class="template-btn btn-style-one">
+								<span class="btn-wrap">
+									<span class="text-one">Contact now</span>
+									<span class="text-two">Contact now</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Accordion Column -->
+				<div class="faq-one_accordian-column col-lg-7 col-md-12 col-sm-12">
+					<div class="faq-one_accordian-outer">
+
+						<!-- Accordion Box -->
+						<ul class="accordion-box_two">
+									
+							<!-- Block 1 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									How does your web development service work?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Our web development service starts by understanding your business needs and goals. We build fully responsive websites that work on all devices. After development, we conduct testing to ensure smooth functionality across platforms. Once everything is approved, we launch your site and provide ongoing support.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 2 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									What services are included in your social media management package?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Our social media management package includes content creation, scheduling, engagement with followers, performance monitoring, and detailed reporting. We also optimize your profiles to align with your brand’s goals and run targeted social media ad campaigns to help boost your online presence.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 3 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									What is SEO, and how does it help my business?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">SEO, or Search Engine Optimization, is the process of improving your website’s visibility on search engines like Google. By optimizing your website’s content and structure, we help your site rank higher for relevant keywords, driving organic traffic to your site and ultimately increasing leads and sales.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 4 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									Can I trust the content generated by your copywriting service?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Absolutely! Our copywriting service combines creativity with data-driven insights to ensure that the content is not only engaging but also aligned with your brand's tone and objectives. Every piece of content we create is reviewed and optimized for SEO, helping you connect with your audience and rank higher on search engines.</div>
+									</div>
+								</div>
+							</li>
+
+							<!-- Block 5 -->
+							<li class="accordion block">
+								<div class="acc-btn">
+									<div class="icon-outer">
+										<span class="icon icon-plus fa-solid fa-plus fa-fw"></span>
+									</div>
+									How long does it take to see results from your email marketing campaigns?
+								</div>
+								<div class="acc-content">
+									<div class="content">
+										<div class="text">Typically, you can start seeing results from our email marketing campaigns within the first few weeks. We track key performance metrics such as open rates, click-through rates, and conversions, providing regular reports and making necessary adjustments to maximize effectiveness.</div>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- End Faq One -->
+
+	<!-- CTA One -->
+	{% include 'the_patchwork/ctaone.html' %}
+
+	<!-- End CTA One -->
+
+	{% include 'the_patchwork/footer.html' %}
+
+<!-- End PageWrapper -->
+
+ 
+
+
+{% endblock %}
