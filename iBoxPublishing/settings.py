@@ -74,15 +74,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'iBoxPublishing.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+import os
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',  # The database name from the connection string
+        'USER': 'postgres',  # The username from the connection string
+        'PASSWORD': 'elwLBqfnPHALocRyaAnbaasmzfNHTzeE',  # The password from the connection string
+        'HOST': 'autorack.proxy.rlwy.net',  # The host from the connection string
+        'PORT': '29184',  # The port from the connection string
     }
 }
+
+
 
 
 # Password validation
