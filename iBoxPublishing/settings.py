@@ -79,14 +79,13 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',  # The database name from the connection string
-        'USER': 'postgres',  # The username from the connection string
-        'PASSWORD': 'elwLBqfnPHALocRyaAnbaasmzfNHTzeE',  # The password from the connection string
-        'HOST': 'autorack.proxy.rlwy.net',  # The host from the connection string
-        'PORT': '29184',  # The port from the connection string
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'elwLBqfnPHALocRyaAnbaasmzfNHTzeE',  # Update this password
+        'HOST': 'autorack.proxy.rlwy.net',  # Ensure the host is correct
+        'PORT': '29184',  # Ensure the port is correct
     }
 }
-
 
 
 
