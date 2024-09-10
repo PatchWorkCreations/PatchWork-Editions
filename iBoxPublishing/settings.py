@@ -26,8 +26,16 @@ SECRET_KEY = 'django-insecure-u-z0@@2p70h*+5qop_adieh7l9y)selde*if_7iq8ot@5u^rad
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://i-iPatchwork-production.up.railway.app', 'https://www.i-iPatchwork.com']
+# Security and CSRF settings
+CSRF_TRUSTED_ORIGINS = [
+    'https://i-iPatchwork-production.up.railway.app',
+    'https://www.i-patchwork.com',  # Fix the URL format (match casing)
+    'https://i-patchwork.com'  # Ensure all relevant domains are covered
+]
 
+# Ensure this is enabled if you're on HTTPS
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
