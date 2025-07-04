@@ -84,4 +84,22 @@ urlpatterns = [
     path('blog/<slug:slug>/', blog_detail, name='blog_detail'),
     path('get-quote/', get_quote, name='get_quote'),
 
+
+    path('carmela-ai/', carmela_ai, name='carmela-ai'),
+    path('chatbot/', chatbot, name='chat'),
+    
+    path('login/', login_view, name='login'),  # if using custom login
+    path('signup/', signup_view, name='signup'),  # same
+    path('logout/', logout_view, name='logout'),
+
+    path('dashboard/', dashboard, name='dashboard'),
+    path('save-journal/', save_journal, name='save_journal'),
+    path('write/', writing_tool, name='writing_tool'),
+    path('rewrite/', rewrite_tool, name='rewrite_tool'),
+
+
+
+    path('api/chat/', chat_api, name='chat_api'),
+    path('chatbot-response/', chatbot_response, name='chatbot_response'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

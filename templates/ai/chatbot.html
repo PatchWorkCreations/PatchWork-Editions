@@ -1,0 +1,392 @@
+{% extends "myapp/base_chat.html" %}
+{% block title %}Chat Assistant - Carmela{% endblock %}
+{% block content %}
+
+<style>
+.preloader-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #f0fdfa, #ccf5f2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.preloader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+    text-align: center;
+}
+
+.orb-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+
+.carmela-orb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    animation: floatGlow 2.5s infinite ease-in-out;
+    margin: 0 auto;
+}
+
+@keyframes floatGlow {
+    0% { transform: translateY(0) scale(1); opacity: 0.9; }
+    50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 0.9; }
+}
+
+
+#preloader-message {
+    font-size: 16px;
+    color: #0f766e; /* Tailwind teal-700 */
+    font-weight: 500;
+    animation: fadeInText 1.2s ease-in-out;
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 15px rgba(13, 148, 136, 0.4); /* teal-600 */
+ }
+    50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 30px rgba(94, 25, 179, 0.6); }
+    100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 15px rgba(13, 148, 136, 0.4); /* teal-600 */
+ }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+
+</style>
+
+<div id="preloader" class="preloader-overlay" style="display: none;">
+    <div class="preloader-inner">
+        <div class="orb-wrapper">
+            <div class="carmela-orb"></div>
+        </div>
+        <p id="preloader-message">Carmela’s shifting her energy… hang tight 💫</p>
+    </div>
+    
+</div>
+
+
+<div id="main-page" style="opacity: 1; transition: opacity 0.5s ease;"> 
+    <div class="chat-container">
+        <div class="chat-header">
+            <div>Carmela, Your Personal Assistant</div>
+            <div class="mode-selector">
+                <label for="mode" style="font-size: 14px; margin-right: 6px;">Mode:</label>
+                <select id="mode" style="padding: 6px 8px; border-radius: 6px; font-size: 14px;">
+                    <option value="breathe">🧘‍♀️ Breathe</option>
+                    <option value="boss">💼 Strategist</option>
+                    <option value="heart">❤️ Confidant </option>
+                    <option value="sparkle">✨ BFF</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="chatbox"></div>
+
+        <div class="typing-indicator" id="typing-indicator">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="message" placeholder="Type your message..." autocomplete="off">
+            <button id="send">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const chatbox = document.getElementById('chatbox');
+    const typingIndicator = document.getElementById('typing-indicator');
+
+    function addMessage(sender, text, type = 'bot') {
+    const messageClass = sender === 'You' ? 'user' : 'bot';
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('message', messageClass);
+
+    const messageTime = document.createElement('div');
+    messageTime.classList.add('message-time');
+    messageTime.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    if (sender === 'Carmela') {
+        const messageContent = document.createElement('div');
+        messageContainer.appendChild(messageContent);
+        
+        chatbox.appendChild(messageContainer);
+        chatbox.scrollTop = chatbox.scrollHeight;
+
+        typeWriterMessage(messageContent, formatResponse(text));
+    } else {
+        messageContainer.innerHTML = `
+            ${formatResponse(text)}
+            
+        `;
+        chatbox.appendChild(messageContainer);
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+}
+
+
+function typeWriterMessage(element, htmlText, delay = 25, done = null) {
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlText;
+
+    const nodes = Array.from(tempDiv.childNodes);
+    element.innerHTML = '';
+
+    function typeNodes(i = 0) {
+        if (i >= nodes.length) {
+            if (done) done();
+            return;
+        }
+
+        const node = nodes[i];
+
+        if (node.nodeType === Node.TEXT_NODE) {
+            typeText(node.textContent, 0, () => typeNodes(i + 1), element);
+        } else {
+            const clone = node.cloneNode();
+            element.appendChild(clone);
+            typeWriterMessage(clone, node.innerHTML, delay, () => typeNodes(i + 1));
+        }
+    }
+
+    typeNodes();
+}
+
+function typeText(text, index, callback, parent) {
+    if (index < text.length) {
+        parent.innerHTML += text.charAt(index);
+        chatbox.scrollTop = chatbox.scrollHeight;
+
+        const slowDown = ['.', ',', '!', '?', '…'].includes(text.charAt(index)) ? 60 : 25;
+        setTimeout(() => {
+            typeText(text, index + 1, callback, parent);
+        }, slowDown);
+    } else {
+        callback();
+    }
+}
+
+
+
+    function showSeenStatus() {
+        const seenStatus = '<div id="seenStatus" class="seen">Seen ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) + '</div>';
+        chatbox.innerHTML += seenStatus;
+    }
+
+    function removeSeenStatus() {
+        const seenElement = document.getElementById('seenStatus');
+        if (seenElement) {
+            seenElement.remove();
+        }
+    }
+
+    function formatResponse(text) {
+        if (text.includes('\n-') || text.includes('\n1.')) {
+            let listItems = text.split('\n').map(line => {
+                if (line.startsWith('- ')) {
+                    return `<li>${line.slice(2)}</li>`;
+                } else if (/^\d+\./.test(line)) {
+                    return `<li>${line}</li>`;
+                }
+                return line;
+            });
+            return `<ul>${listItems.join('')}</ul>`;
+        }
+        text = text.replace(/(Header:|Title:)(.*?)(\n|$)/g, '<strong>$1$2</strong><br>');
+        return text.replace(/\n/g, '<br>');
+    }
+
+    function showTypingIndicator() {
+        typingIndicator.style.display = 'flex';
+    }
+
+    function hideTypingIndicator() {
+        typingIndicator.style.display = 'none';
+    }
+
+    function initiateBotMessage() {
+    const mode = localStorage.getItem('carmelaMode') || 'breathe';
+    let greeting = "";
+
+    switch (mode) {
+        case 'breathe':
+            greeting = "Hey there! Let's take a deep breath 🍃 — in through the nose… hold… and exhale. Ready to begin?";
+            break;
+        case 'boss':
+            greeting = "Let’s get into it, boss 💼 Today’s a great day to take bold steps. What’s our first move?";
+            break;
+        case 'heart':
+            greeting = "I'm here for you 💜 Tell me what you're feeling or dreaming today ☺️";
+            break;
+        case 'sparkle':
+            greeting = "Hi there! Are you ready to spread some joy and get things done? ";
+            break;
+        default:
+            greeting = "Hey there! I’m Carmela, your personal assistant. How’s your day going?";
+    }
+
+    addMessage('Carmela', greeting);
+}
+
+
+    document.getElementById('message').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        document.getElementById('send').click();
+    }
+});
+
+    document.getElementById('send').addEventListener('click', function() {
+        const message = document.getElementById('message').value;
+        if (message.trim() === '') return;
+
+        addMessage('You', message, 'user');
+
+        showSeenStatus();
+        showTypingIndicator();
+
+        fetch('/api/chat/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: new URLSearchParams({
+                'message': message,
+                'mode': document.getElementById('mode').value
+            })
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            hideTypingIndicator();
+            removeSeenStatus();
+            addMessage('Carmela', data.response, 'bot');
+            document.getElementById('message').value = '';
+        })
+        .catch(error => {
+            hideTypingIndicator();
+            console.error('Error:', error);
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const modeFromUrl = urlParams.get('mode');
+    const modeSelect = document.getElementById('mode');
+
+    if (modeFromUrl) {
+        localStorage.setItem('carmelaMode', modeFromUrl);
+        modeSelect.value = modeFromUrl;
+    } else {
+        const savedMode = localStorage.getItem('carmelaMode') || 'breathe';
+        modeSelect.value = savedMode;
+    }
+
+    initiateBotMessage();
+});
+
+
+
+document.getElementById('mode').addEventListener('change', () => {
+    const selectedMode = document.getElementById('mode').value;
+    const currentMode = localStorage.getItem('carmelaMode') || 'breathe';
+
+    if (selectedMode === currentMode) return; // avoid reload if mode is the same
+
+    localStorage.setItem('carmelaMode', selectedMode);
+
+    const messageEl = document.getElementById('preloader-message');
+    const orb = document.querySelector('.carmela-orb');
+    const preloader = document.getElementById('preloader');
+    const mainPage = document.getElementById('main-page');
+
+    // Update message + orb style
+    const modes = {
+        breathe: {
+            message: "Inhale... exhale... Carmela is resetting her breath 🌬️",
+            bg: "radial-gradient(circle, #9be3d1, #3da18d)",
+            shadow: "0 0 20px #3da18d88"
+        },
+        boss: {
+            message: "Carmela’s grabbing her blazer 💼 One moment!",
+            bg: "radial-gradient(circle, #ffd56b, #e09800)",
+            shadow: "0 0 20px #e0980088"
+        },
+        heart: {
+            message: "Lighting a candle... Carmela is tuning into heartspace 🕯️",
+            bg: "radial-gradient(circle, #f3a6c0, #c03c77)",
+            shadow: "0 0 20px #c03c7788"
+        },
+        sparkle: {
+            message: "Glitter incoming ✨ Carmela’s getting sparkly!",
+            bg: "radial-gradient(circle, #f9e1ff, #d55be2)",
+            shadow: "0 0 20px #d55be288"
+        },
+        default: {
+            message: "Carmela is shifting her energy… hang tight 💫",
+            bg: "radial-gradient(circle, #a470ff, #5e19b3)",
+            shadow: "0 0 15px #5e19b388"
+        }
+    };
+
+    const modeData = modes[selectedMode] || modes.default;
+    messageEl.textContent = modeData.message;
+    orb.style.background = modeData.bg;
+    orb.style.boxShadow = modeData.shadow;
+
+    // Show preloader and fade out main content
+    preloader.style.display = 'flex';
+    preloader.style.opacity = 1;
+
+    setTimeout(() => {
+        if (mainPage) {
+            mainPage.style.opacity = 0;
+        }
+    }, 1200);
+
+    setTimeout(() => {
+        // Reload with selected mode in URL
+        const url = new URL(window.location.href);
+        url.searchParams.set('mode', selectedMode);
+        url.searchParams.set('showPreloader', 'true');
+        window.location.href = url.toString();
+    }, 2000);
+});
+
+
+
+</script>
+{% endblock %}

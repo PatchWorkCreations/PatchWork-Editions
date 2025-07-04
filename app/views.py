@@ -540,3 +540,299 @@ def get_quote(request):
         return render(request, 'the_patchwork/myapp/service-detail.html', {'success': True})
 
     return redirect('services')  # Or render a specific page if needed
+
+
+
+from django.shortcuts import render
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
+def carmela_ai(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')  # or wherever your logged-in users should go
+    return render(request, 'ai/index.html')  # path to your index.html
+
+
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
+def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')  # or chat, or wherever you want
+        else:
+            messages.error(request, 'Invalid credentials. Try again.')
+
+    return render(request, 'ai/login.html')
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib import messages
+
+def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm = request.POST.get('confirm_password')
+
+        if password != confirm:
+            messages.error(request, "Passwords don't match.")
+            return redirect('signup')
+
+        if User.objects.filter(username=email).exists():
+            messages.error(request, "Email already registered.")
+            return redirect('signup')
+
+        user = User.objects.create_user(username=email, email=email, password=password)
+        user.first_name = full_name
+        user.save()
+        return redirect('login')
+
+    return render(request, 'ai/signup.html')
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')  # or wherever you want to send them after logout
+
+
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .models import JournalEntry
+
+@login_required
+def dashboard(request):
+    if request.method == 'POST':
+        mood = request.POST.get('mood')
+        if mood:
+            request.session['mood'] = mood
+        return redirect('dashboard')
+
+    # Fetch user's journal entries (latest 10 for now)
+    journal_entries = JournalEntry.objects.filter(user=request.user).order_by('-created_at')[:10]
+
+    return render(request, 'ai/dashboard.html', {
+        'journal_entries': journal_entries
+    })
+
+
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .models import JournalEntry
+
+@login_required
+def save_journal(request):
+    if request.method == 'POST':
+        entry = request.POST.get('entry', '').strip()
+        if entry:
+            JournalEntry.objects.create(user=request.user, entry=entry)
+    return redirect('dashboard')  # or wherever your dashboard lives
+
+
+def chatbot(request):
+    return render(request, 'ai/chatbot.html')
+
+# views.py
+import os
+from dotenv import load_dotenv
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from openai import OpenAI
+
+# Load environment variables
+load_dotenv()
+
+# Initialize OpenAI client with API key from .env
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.html import strip_tags
+
+
+@csrf_exempt
+def chat_api(request):
+    if request.method == 'POST':
+        message = request.POST.get('message', '').strip()
+        mode = request.POST.get('mode', 'breathe')
+        mood = request.session.get('mood', 'calm')  # get the saved mood
+
+        persona_intro = {
+            "breathe": "You're in Breathe & Be mode. Speak like a gentle breath coach and spiritual guide.",
+            "boss": "You're in Strategist mode. Be a bold, strategic, yet kind coach helping users take focused action.",
+            "heart": "You're in Confidant  mode. Speak with soul, reflection, and emotional presence.",
+            "sparkle": "You're in BFF mode. Be bubbly, joyful, and full of affirmations and emojis."
+        }
+
+        try:
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": f"""
+                        You are Carmela, a joyful and intuitive assistant. 
+                        You speak with warmth, breath-centered presence, and emotional attunement.
+                        Current mood of the user: '{mood}'.
+                        {persona_intro.get(mode, '')}
+                        Always reflect back the user's emotional state with empathy and clarity.
+                        End your responses with a question or breath-based encouragement.
+                    """},
+                    {"role": "user", "content": message}
+                ]
+            )
+            ai_response = response.choices[0].message.content.strip()
+            return JsonResponse({'response': ai_response})
+
+        except Exception as e:
+            return JsonResponse({'response': f"Oops, something went wrong: {str(e)}"}, status=500)
+
+
+from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from openai import OpenAI
+
+client = OpenAI()
+@login_required
+def writing_tool(request):
+    writing_type = request.GET.get('type', 'email')
+    result = None
+    regenerated_result = None
+    prompt = None
+    original_result = None
+
+    if request.method == 'POST':
+        prompt = request.POST.get('prompt')
+        original_result = request.POST.get('original_result')
+        action = request.POST.get('action')
+
+        role_map = {
+            "email": "You are a warm and clear communicator. Write an email based on the following notes.",
+            "caption": "You are a social media expert with sparkle and soul. Write a short caption.",
+            "affirmation": "You are Carmela, a gentle guide. Write a short affirmation to inspire someone feeling low."
+        }
+        system_msg = role_map.get(writing_type, role_map['email'])
+
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": prompt}
+            ]
+        )
+
+        if action == "regenerate" and original_result:
+            regenerated_result = response.choices[0].message.content.strip()
+            result = original_result  # First draft
+        else:
+            result = response.choices[0].message.content.strip()
+            original_result = result
+
+    return render(request, 'ai/writing_tool.html', {
+        'writing_type': writing_type,
+        'prompt': prompt,
+        'original_result': original_result,
+        'regenerated_result': regenerated_result
+    })
+
+
+# ai/views.py
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from openai import OpenAI
+
+client = OpenAI()
+
+@login_required
+def rewrite_tool(request):
+    result = None
+    prompt = ''
+    tone = ''
+
+    if request.method == 'POST':
+        prompt = request.POST.get('original_text')
+        tone = request.POST.get('tone')
+        if prompt and tone:
+            tone_map = {
+                'empathetic': 'Make this sound empathetic and understanding.',
+                'calm': 'Rewrite this with a calm, grounded tone.',
+                'professional': 'Make this sound professional and polished.',
+                'direct': 'Rewrite this in a direct and assertive tone.',
+                'loving': 'Make this sound loving and warm-hearted.'
+            }
+            system_msg = tone_map.get(tone, 'Rewrite the text in a clearer tone.')
+
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_msg},
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            result = response.choices[0].message.content.strip()
+
+    return render(request, 'ai/rewrite_tool.html', {
+        'result': result,
+        'prompt': prompt,
+        'tone': tone
+    })
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+@csrf_exempt
+def chatbot_response(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            prompt = data.get('message', '')
+
+            if not prompt:
+                return JsonResponse({'reply': 'No message provided.'})
+
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are Carmela AI – a bubbly, breath-centered assistant for solopreneurs. Be warm, strategic, and a little sparkly ✨."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                temperature=0.8
+            )
+
+            reply = response.choices[0].message.content.strip()
+            return JsonResponse({'reply': reply})
+
+        except Exception as e:
+            return JsonResponse({'reply': f'Sorry, an error occurred: {str(e)}'})

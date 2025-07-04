@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Write with Carmela</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0fdfa;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-800">
+
+  <!-- Header -->
+  <header class="w-full px-6 py-4 flex justify-between items-center bg-white shadow">
+    <div class="text-lg font-semibold text-teal-700">Carmela AI</div>
+    
+    <a href="{% url 'dashboard' %}" class="text-sm text-gray-500 hover:text-teal-600 transition">← Back to Dashboard</a>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-14">
+
+    <!-- Preloader -->
+<div id="writingPreloader" class="fixed inset-0 z-50 bg-[#f0fdfa] bg-opacity-80 flex-col items-center justify-center hidden">
+    <div class="flex flex-col items-center justify-center h-full">
+      <div class="w-12 h-12 rounded-full border-4 border-teal-400 border-t-transparent animate-spin mb-4"></div>
+      <p class="text-teal-700 font-medium text-sm">Carmela’s crafting your words... 💫</p>
+    </div>
+  </div>
+
+  
+  
+
+    <!-- Page Title -->
+    <div class="text-center mb-12 space-y-2">
+        <h1 class="text-3xl font-semibold text-gray-800">Write with Carmela 📝</h1>
+        
+        <div class="flex justify-center">
+            <form method="get" action="{% url 'writing_tool' %}" class="inline-block ml-2">
+                <select name="type" onchange="this.form.submit()" class="text-xs bg-white border border-teal-200 rounded px-2 py-1 text-teal-600">
+                  <option value="email" {% if writing_type == "email" %}selected{% endif %}>✉️ Email</option>
+                  <option value="caption" {% if writing_type == "caption" %}selected{% endif %}>📱 Caption</option>
+                  <option value="affirmation" {% if writing_type == "affirmation" %}selected{% endif %}>🌞 Affirmation</option>
+                </select>
+              </form>
+              
+        </div>
+      
+        <p class="text-gray-500 text-sm">Pour your thoughts below — she'll help you shape them gently.</p>
+      </div>
+      
+
+    <!-- Form Section -->
+    <!-- Form Section -->
+<form method="POST" class="bg-white rounded-xl shadow-md border border-teal-100 p-6 max-w-3xl mx-auto space-y-4">
+    {% csrf_token %}
+    <label for="prompt" class="block text-sm text-gray-600">What do you need help writing?</label>
+    <textarea
+  name="prompt"
+  rows="6"
+  placeholder="{% if writing_type == 'email' %}e.g., Help me write a warm follow-up email to a client...{% elif writing_type == 'caption' %}e.g., Write a caption for a product launch with sparkle...{% elif writing_type == 'affirmation' %}e.g., Write an uplifting affirmation for someone feeling anxious...{% else %}What do you need help writing?{% endif %}"
+  class="w-full p-4 text-base rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition resize-none"
+  required
+>{{ prompt|default_if_none:'' }}</textarea>
+
+    <!-- Hidden fields -->
+    <input type="hidden" id="lastPrompt" value="{{ prompt }}">
+    <input type="hidden" name="original_result" value="{{ original_result }}">
+  
+    <button
+      type="submit"
+      class="w-full py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition font-medium text-sm tracking-wide"
+    >
+      ✨ Let Carmela Write It
+    </button>
+  </form>
+  
+
+  <!-- Result Section -->
+{% if regenerated_result %}
+<!-- Two-column layout if regenerated_result exists -->
+<div class="max-w-5xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+  <!-- First Draft Column -->
+  <div class="bg-[#fffdf8] border border-teal-200 rounded-xl shadow p-6">
+    <h2 class="text-teal-700 text-lg font-semibold mb-3">💌 First Draft</h2>
+    <div id="carmela-output" class="text-gray-700 text-base sm:text-lg whitespace-pre-line font-['Nanum_Pen_Script',_cursive] leading-[36px] tracking-wide">
+      {{ original_result }}
+    </div>
+  </div>
+
+  <!-- Regenerated Draft Column -->
+  <!-- Regenerated Draft Column -->
+    <div class="bg-[#fffdf8] border border-yellow-200 rounded-xl shadow p-6">
+        <h2 class="text-yellow-600 text-lg font-semibold mb-3">🔁 Regenerated</h2>
+        <div 
+        class="text-gray-700 text-base sm:text-lg whitespace-pre-line font-['Nanum_Pen_Script',_cursive] leading-[36px] tracking-wide"
+        data-output="regenerated"
+        >
+        {{ regenerated_result }}
+        </div>
+    </div>
+    
+</div>
+
+<!-- Action Buttons -->
+<div class="mt-6 flex flex-wrap gap-3 sm:gap-4 justify-center">
+  <button onclick="copyToClipboard()" class="...">📋 Copy to Clipboard</button>
+  <button onclick="downloadDocx()" class="...">📝 Download as .docx</button>
+  <button onclick="downloadPDF()" class="...">📄 Download as PDF</button>
+  <button type="button" onclick="regenerate()" class="...">🔄 Regenerate</button>
+</div>
+
+{% elif original_result %}
+<!-- Single-column layout if only original_result exists -->
+<div class="max-w-3xl mx-auto mt-10 bg-[#fffdf8] border border-teal-200 rounded-xl shadow p-6">
+  <h2 class="text-teal-700 text-lg font-semibold mb-3">💌 Here’s what Carmela wrote:</h2>
+  <div id="carmela-output" class="text-gray-700 text-base sm:text-lg whitespace-pre-line font-['Nanum_Pen_Script',_cursive] leading-[36px] tracking-wide">
+    {{ original_result }}
+  </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="mt-6 flex flex-wrap gap-3 sm:gap-4 justify-center">
+  <button onclick="copyToClipboard()" class="...">📋 Copy to Clipboard</button>
+  <button onclick="downloadDocx()" class="...">📝 Download as .docx</button>
+  <button onclick="downloadPDF()" class="...">📄 Download as PDF</button>
+  <button type="button" onclick="regenerate()" class="...">🔄 Regenerate</button>
+</div>
+{% endif %}
+
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    const form = document.querySelector('form');
+    const preloader = document.getElementById('writingPreloader');
+  
+    form.addEventListener('submit', function () {
+      preloader.classList.remove('hidden');
+    });
+
+
+    function copyToClipboard() {
+  let text = "";
+
+  const regenerated = document.querySelector('[data-output="regenerated"]');
+  const original = document.getElementById('carmela-output');
+
+  if (regenerated) {
+    text = regenerated.innerText;
+  } else if (original) {
+    text = original.innerText;
+  }
+
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Copied to clipboard! 💫");
+  });
+}
+
+
+  function downloadDocx() {
+    const content = document.getElementById('carmela-output').innerHTML;
+    const converted = htmlDocx.asBlob(`<div>${content}</div>`);
+    saveAs(converted, 'Carmela_Draft.docx');
+  }
+
+  async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const content = document.getElementById('carmela-output').innerText;
+
+    const lines = doc.splitTextToSize(content, 180);
+    doc.setFont('helvetica');
+    doc.setFontSize(12);
+    doc.text(lines, 15, 20);
+    doc.save('Carmela_Draft.pdf');
+  }
+
+  function regenerate() {
+  const prompt = document.getElementById('lastPrompt').value;
+  const originalResult = document.getElementById('carmela-output')?.innerText || '';
+  const csrfToken = document.querySelector('input[name=csrfmiddlewaretoken]').value;
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+
+  form.innerHTML = `
+    <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+    <input type="hidden" name="prompt" value="${prompt}">
+    <input type="hidden" name="original_result" value="${originalResult}">
+    <input type="hidden" name="action" value="regenerate">
+  `;
+
+  document.body.appendChild(form);
+  document.getElementById('writingPreloader').classList.remove('hidden');
+  form.submit();
+}
+
+
+  </script>
+  
+</body>
+</html>

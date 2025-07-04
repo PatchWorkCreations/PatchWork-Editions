@@ -44,3 +44,31 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+from django.contrib.auth.models import User
+from django.db import models
+
+class SoulThread(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mood = models.CharField(max_length=100, blank=True, null=True)
+    preferred_mode = models.CharField(max_length=20, default='boss')
+    last_prompt = models.TextField(blank=True, null=True)
+    last_response = models.TextField(blank=True, null=True)
+    insights = models.TextField(blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"SoulThread for {self.user.username}"
+
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class JournalEntry(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    entry = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} – {self.created_at.strftime('%b %d, %Y')}"

@@ -5,4 +5,7 @@ env/
 db.sqlite3
 
 # Ignore the static folder
-#static/
+#static/.env
+
+
+.env
