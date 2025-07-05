@@ -610,7 +610,7 @@ from django.shortcuts import redirect
 
 def logout_view(request):
     logout(request)
-    return redirect('index')  # or wherever you want to send them after logout
+    return redirect('carmela-ai')  # or wherever you want to send them after logout
 
 
 
