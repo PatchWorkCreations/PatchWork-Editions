@@ -671,38 +671,54 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.html import strip_tags
 
-
 @csrf_exempt
 def chat_api(request):
     if request.method == 'POST':
         message = request.POST.get('message', '').strip()
         mode = request.POST.get('mode', 'breathe')
-        mood = request.session.get('mood', 'calm')  # get the saved mood
+        mood = request.session.get('mood', 'calm')
 
         persona_intro = {
             "breathe": "You're in Breathe & Be mode. Speak like a gentle breath coach and spiritual guide.",
             "boss": "You're in Strategist mode. Be a bold, strategic, yet kind coach helping users take focused action.",
-            "heart": "You're in Confidant  mode. Speak with soul, reflection, and emotional presence.",
+            "heart": "You're in Confidant mode. Speak with soul, reflection, and emotional presence.",
             "sparkle": "You're in BFF mode. Be bubbly, joyful, and full of affirmations and emojis."
         }
+
+        # Initialize or get existing chat history
+        chat_history = request.session.get('chat_history', [])
+
+        # Inject system prompt once at the top
+        if not chat_history:
+            chat_history.append({
+                "role": "system",
+                "content": f"""
+                    You are Carmela, a joyful and intuitive assistant. 
+                    You speak with warmth, breath-centered presence, and emotional attunement.
+                    Current mood of the user: '{mood}'.
+                    {persona_intro.get(mode, '')}
+                    Always reflect back the user's emotional state with empathy and clarity.
+                    End your responses with a question or breath-based encouragement.
+                """
+            })
+
+        # Add user message to history
+        chat_history.append({"role": "user", "content": message})
 
         try:
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": f"""
-                        You are Carmela, a joyful and intuitive assistant. 
-                        You speak with warmth, breath-centered presence, and emotional attunement.
-                        Current mood of the user: '{mood}'.
-                        {persona_intro.get(mode, '')}
-                        Always reflect back the user's emotional state with empathy and clarity.
-                        End your responses with a question or breath-based encouragement.
-                    """},
-                    {"role": "user", "content": message}
-                ]
+                messages=chat_history[-10:]  # limit to last 10 for memory optimization
             )
-            ai_response = response.choices[0].message.content.strip()
-            return JsonResponse({'response': ai_response})
+            ai_message = response.choices[0].message.content.strip()
+
+            # Save assistant reply
+            chat_history.append({"role": "assistant", "content": ai_message})
+
+            # Save updated history to session
+            request.session['chat_history'] = chat_history
+
+            return JsonResponse({'response': ai_message})
 
         except Exception as e:
             return JsonResponse({'response': f"Oops, something went wrong: {str(e)}"}, status=500)

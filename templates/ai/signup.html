@@ -10,8 +10,13 @@
 <body class="bg-gradient-to-b from-[#e6fdfc] to-[#ccf5f2] min-h-screen flex items-center justify-center font-sans">
 
   <div class="bg-white shadow-lg rounded-xl p-8 max-w-md w-full mx-4">
-    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Create Your Calm Space</h2>
-
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-2">
+      Create an Account
+    </h2>
+    <p class="text-sm text-center text-gray-500 mb-6 tracking-tight">
+      Let’s set up your calm space
+    </p>
+    
     <form method="post" class="space-y-5">
       {% csrf_token %}
       
@@ -27,6 +32,7 @@
         <label for="email" class="block text-sm font-medium text-gray-600">Email Address</label>
         <input type="email" name="email" id="email" required
                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 bg-gray-50"/>
+               <label for="email" class="block text-sm font-medium text-gray-400">We’ll never spam you - only mindful nudges😃</label>
       </div>
 
       <!-- Password -->

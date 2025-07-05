@@ -6,35 +6,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carmela AI – Breath Before Hustle</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
   <link rel="icon" href="{% static 'images/logo.png' %}">
 </head>
+<style>
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spinCube 18s linear infinite;
+  }
+  
+  /* Increased spacing between faces by pushing them further out */
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .face img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Space between images (increase translateZ) */
+  .front  { transform: rotateY(0deg) translateZ(90px); }
+  .right  { transform: rotateY(90deg) translateZ(90px); }
+  .back   { transform: rotateY(180deg) translateZ(90px); }
+  .left   { transform: rotateY(-90deg) translateZ(90px); }
+  
+  /* Animation */
+  @keyframes spinCube {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+  }
+  </style>
+  
 <body class="bg-gradient-to-b from-[#e6fdfc] to-[#ccf5f2] text-gray-700 font-sans">
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+  <section class="min-h-screen flex flex-col items-center justify-center text-center bg-white px-6">
+    <!-- 3D Spinner -->
+    <div class="relative w-72 h-72 perspective mb-6">
+      <div class="cube animate-spin-slow">
+        <div class="face front"><img src="{% static 'ai/1.png' %}" /></div>
+        <div class="face right"><img src="{% static 'ai/2.png' %}" /></div>
+        <div class="face back"><img src="{% static 'ai/3.png' %}" /></div>
+        <div class="face left"><img src="{% static 'ai/4.png' %}" /></div>
+      </div>
+    </div>
+  
     <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
       Meet <span class="text-teal-600">Carmela AI</span>
     </h1>
+    <p class="italic text-gray-600 -mt-2 mb-6 tracking-tight">
+      Your Calm in the Chaos
+    </p>
     <p class="text-lg sm:text-xl text-gray-600 max-w-xl">
-      Your breath-based virtual assistant for clarity, calm, and soulful productivity.
+      A breath-first sidekick designed to help you reset, refocus, and get things done — with purpose.
     </p>
     <a href="{% url 'login' %}" class="mt-8 px-6 py-3 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition">
-      Start with Breath
+      Let's Breathe Together
     </a>
   </section>
+  
+  
 
   <!-- About Section -->
-  <section class="py-20 px-6 bg-white">
+  <section class="py-20 px-6" style="background-color: #eefdfa;">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-semibold text-gray-800 mb-4">Why Carmela?</h2>
-      <p class="text-gray-600 text-lg">
-        Carmela was born from the breath — not to speed things up, but to help you slow down and realign. She’s part coach, part cheerleader, and part mission-driven Chief Operating Officer(COO).
+      <h2 class="text-3xl font-semibold text-teal-900 mb-4">Why Carmela?</h2>
+      <p class="text-teal-800 text-lg">
+        Carmela was born from the breath — not to speed things up, but to help you slow down and realign. 
+        She’s part coach, part cheerleader, and part mission-driven Chief Operating Officer (COO).
       </p>
     </div>
   </section>
+  
 
   <!-- Features Section -->
-  <section class="py-16 px-6 bg-[#f0fdfa]">
+  <section class="py-16 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
       <h3 class="text-2xl font-semibold text-center text-gray-800 mb-8">What Carmela Can Do 💫</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
@@ -59,7 +120,7 @@
   </section>
 
   <!-- CTA Footer -->
-  <footer class="py-12 bg-white text-center">
+  <footer class="py-12 text-center" style="background-color: #eefdfa;">
     <p class="text-md text-gray-600 mb-4">“You don’t need to do more. You just need to return to your breath.”</p>
     <a href="{% url 'signup' %}" class="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition">
       Create Your Calm Space
