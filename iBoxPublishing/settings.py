@@ -15,9 +15,10 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import os
+from dotenv import load_dotenv
+load_dotenv()  # 👈 This loads variables from .env
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-u-z0@@2p70h*+5qop_adieh7l9y)selde*if_7iq8ot@5u^rad'
@@ -82,18 +83,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'iBoxPublishing.wsgi.application'
 
 
-import os
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'elwLBqfnPHALocRyaAnbaasmzfNHTzeE',  # Update this password
-        'HOST': 'autorack.proxy.rlwy.net',  # Ensure the host is correct
-        'PORT': '29184',  # Ensure the port is correct
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
+
 
 
 
