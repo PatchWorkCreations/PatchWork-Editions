@@ -3,6 +3,7 @@
 {% block title %}Chat Assistant - Carmela{% endblock %}
 {% block content %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
 <style>
@@ -176,7 +177,7 @@
 .chat-footer button {
   padding: 12px 20px;
   font-size: 14px;
-  background-color: #0f766e;
+  background-color: #d3dcdb;
   color: white;
   border: none;
   border-radius: 24px;
@@ -335,11 +336,55 @@ html, body {
   }
 }
 
+.mic-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 8px;
+  }
 
+  .mic-button {
+    background: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
 
+  .mic-button.listening {
+    animation: pulse 1.2s infinite;
+    color: #14b8a6; /* teal-500 */
+  }
+
+  .mic-status {
+    font-size: 10px;
+    color: #14b8a6;
+    margin-top: 2px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
 
 
 </style>
+
 
 <div id="preloader" class="preloader-overlay" style="display: none;">
     <div class="preloader-inner">
@@ -375,13 +420,24 @@ html, body {
 
         <div class="chat-footer">
             <input type="text" id="message" placeholder="Type your message..." autocomplete="off">
+          
+            <div id="mic-container" class="mic-wrapper">
+                <button id="mic" title="Speak" class="mic-button">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                  
+              <span id="mic-status" class="mic-status hidden">Listening...</span>
+            </div>
+          
             <button id="send">Send</button>
-        </div>
+          </div>
+          
+          
     </div>
 </div>
 
 <script>
-    const chatbox = document.getElementById('chatbox');
+    const chatbox = document.getElementById('chatbox');                                                                           
     const typingIndicator = document.getElementById('typing-indicator');
 
     function addMessage(sender, text, type = 'bot') {
@@ -498,28 +554,10 @@ function typeText(text, index, callback, parent) {
     }
 
     function initiateBotMessage() {
-    const mode = localStorage.getItem('carmelaMode') || 'breathe';
-    let greeting = "";
-
-    switch (mode) {
-        case 'breathe':
-            greeting = "Hey there! Let's take a deep breath 🍃 — in through the nose… hold… and exhale. Ready to begin?";
-            break;
-        case 'boss':
-            greeting = "Let’s get into it, boss 💼 Today’s a great day to take bold steps. What’s our first move?";
-            break;
-        case 'heart':
-            greeting = "I'm here for you 💜 Tell me what you're feeling or dreaming today ☺️";
-            break;
-        case 'sparkle':
-            greeting = "Hi there! Are you ready to spread some joy and get things done? ";
-            break;
-        default:
-            greeting = "Hey there! I’m Carmela, your personal assistant. How’s your day going?";
-    }
-
-    addMessage('Carmela', greeting);
+    const greetingFromServer = `{{ greeting|escapejs }}`;
+    addMessage('Carmela', greetingFromServer);
 }
+
 
 
     document.getElementById('message').addEventListener('keydown', function(event) {
@@ -647,7 +685,50 @@ document.getElementById('mode').addEventListener('change', () => {
     }, 2000);
 });
 
+const micBtn = document.getElementById('mic');
+  const input = document.getElementById('message');
+  const micStatus = document.getElementById('mic-status');
 
+  const preferredLang = "{{ preferred_language|default:'en' }}";
+
+  let recognition;
+  if ('webkitSpeechRecognition' in window) {
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = preferredLang;
+
+    recognition.onstart = function () {
+      micBtn.classList.add('listening');
+      micStatus.classList.remove('hidden');
+    };
+
+    recognition.onend = function () {
+      micBtn.classList.remove('listening');
+      micStatus.classList.add('hidden');
+    };
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[0][0].transcript;
+      input.value = transcript;
+    };
+
+    recognition.onerror = function (event) {
+      micBtn.classList.remove('listening');
+      micStatus.classList.add('hidden');
+      console.error("Speech recognition error:", event.error);
+    };
+  } else {
+    micBtn.disabled = true;
+    micBtn.title = "Speech recognition not supported";
+  }
+
+  micBtn.addEventListener('click', function () {
+    if (recognition) {
+      recognition.lang = preferredLang;
+      recognition.start();
+    }
+  });
 
 </script>
 {% endblock %}

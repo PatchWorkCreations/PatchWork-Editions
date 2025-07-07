@@ -1,0 +1,36 @@
+<header class="w-full px-6 py-4 flex items-center justify-between bg-white shadow-md">
+    <!-- Left: Brand -->
+    <a href="{% url 'dashboard' %}" class="text-lg font-bold text-teal-700 hover:text-teal-800 transition">
+      🌼 Carmela AI
+    </a>
+  
+    <!-- Right: Navigation -->
+    <nav class="flex gap-4 items-center text-sm">
+      <a href="{% url 'mood_calendar' %}" class="text-gray-600 hover:text-teal-600 transition">Mood Calendar</a>
+      <a href="{% url 'chat' %}" class="text-gray-600 hover:text-teal-600 transition">Talk to Carmela</a>
+  
+      <!-- Language Selector -->
+      <form method="POST" action="{% url 'update_language' %}" class="flex items-center">
+        {% csrf_token %}
+        <label for="language-select" class="sr-only">Preferred Language</label>
+        <select
+          id="language-select"
+          name="preferred_language"
+          onchange="this.form.submit()"
+          class="text-sm border rounded px-2 py-1 bg-white text-gray-700"
+        >
+          {% for code, name in language_choices %}
+            <option value="{{ code }}" {% if preferred_language == code %}selected{% endif %}>
+              {{ name }}
+            </option>
+          {% endfor %}
+        </select>
+      </form>
+      
+  
+      <a href="{% url 'logout' %}" class="px-4 py-1.5 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition">
+        Logout
+      </a>
+    </nav>
+  </header>
+  

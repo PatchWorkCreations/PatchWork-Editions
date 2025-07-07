@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Tracker – Carmela AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="icon" href="{% static 'images/logo.png' %}">
+</head>
+{% include 'ai/includes/header.html' %}
+
+
+<body class="bg-gradient-to-b from-[#e6fdfc] to-[#ccf5f2] text-gray-800 font-sans min-h-screen">
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-teal-700 mb-6 text-center">🌿 Mood Calendar</h2>
+    
+    <div class="bg-white rounded-xl shadow p-4 sm:p-6 mb-10">
+      <div id="calendar" class="rounded-lg overflow-hidden text-sm"></div>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-semibold text-teal-700 mb-6 text-center">📊 Weekly Mood Overview</h2>
+    
+    <div class="bg-white rounded-xl shadow p-6">
+      <canvas id="moodChart" class="w-full h-60"></canvas>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,listWeek'
+        },
+        events: [
+          {% for entry in mood_data %}
+          {
+            title: '{{ entry.emoji }}',
+            date: '{{ entry.date }}',
+            extendedProps: {
+              mood: '{{ entry.mood }}',
+              note: `{{ entry.note|escapejs }}`,
+            },
+          },
+          {% endfor %}
+        ],
+        eventClick: function (info) {
+          const mood = info.event.extendedProps.mood;
+          const note = info.event.extendedProps.note;
+          Swal.fire({
+            title: `Mood: ${mood}`,
+            text: note || "No additional notes.",
+            icon: 'info',
+            confirmButtonText: 'Close',
+            customClass: {
+              popup: 'rounded-xl shadow-lg text-sm'
+            }
+          });
+        },
+        eventDisplay: 'block'
+      });
+      calendar.render();
+
+      const ctx = document.getElementById('moodChart').getContext('2d');
+      const moodCounts = JSON.parse(`{{ mood_counts|safe }}`);
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(moodCounts),
+          datasets: [{
+            label: 'Mood Count (Last 7 Days)',
+            data: Object.values(moodCounts),
+            backgroundColor: [
+              '#5EEAD4', '#FCD34D', '#F87171', '#A78BFA', '#34D399', '#F472B6', '#60A5FA', '#FBBF24', '#C084FC'
+            ],
+            borderColor: '#e5e7eb',
+            borderWidth: 1,
+            borderRadius: 6,
+            barThickness: 28
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#f9fafb',
+              titleColor: '#111827',
+              bodyColor: '#374151',
+              padding: 10,
+              cornerRadius: 8
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1,
+                color: '#6B7280',
+                font: { size: 12 }
+              },
+              grid: { color: '#E5E7EB' }
+            },
+            x: {
+              ticks: {
+                color: '#6B7280',
+                font: { size: 12 }
+              },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

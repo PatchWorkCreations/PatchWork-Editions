@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organize with Carmela</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f0fdfa; }
+  </style>
+</head>
+<body class="min-h-screen text-gray-800">
+
+  <!-- Header -->
+  <header class="w-full px-6 py-4 flex justify-between items-center bg-white shadow">
+    <div class="text-lg font-semibold text-teal-700">Carmela AI</div>
+    <a href="{% url 'dashboard' %}" class="text-sm text-gray-500 hover:text-teal-600 transition">← Back to Dashboard</a>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-14">
+    <!-- Title -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-semibold text-gray-800 mb-1">🗂 Organize with Carmela</h1>
+      <p class="text-gray-500 text-sm">Drop your messy thoughts. She’ll shape them into a soulful, structured plan.</p>
+    </div>
+
+    <!-- Form -->
+    <form method="POST" class="bg-white rounded-xl shadow-md border border-teal-100 p-6 max-w-3xl mx-auto space-y-6">
+      {% csrf_token %}
+
+      <div>
+        <label class="block text-sm text-gray-600 mb-2">What are these notes for?</label>
+        <select name="goal" class="w-full p-3 rounded-md border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-teal-400 text-sm" required>
+          <option value="">Select your structure</option>
+          <option value="blog post" {% if goal == 'blog post' %}selected{% endif %}>📝 Blog Post Outline</option>
+          <option value="launch plan" {% if goal == 'launch plan' %}selected{% endif %}>🚀 Launch Plan</option>
+          <option value="content calendar" {% if goal == 'content calendar' %}selected{% endif %}>📆 Content Calendar</option>
+          <option value="course roadmap" {% if goal == 'course roadmap' %}selected{% endif %}>🎓 Course Roadmap</option>
+          <option value="email sequence" {% if goal == 'email sequence' %}selected{% endif %}>📬 Email Sequence</option>
+          <option value="goal breakdown" {% if goal == 'goal breakdown' %}selected{% endif %}>🎯 Goal Breakdown</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-600 mb-2">Paste your messy notes or thoughts</label>
+        <textarea name="notes" rows="7" class="w-full p-4 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition text-sm resize-none" required>{{ notes }}</textarea>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition font-medium text-sm tracking-wide">
+        🧩 Organize It
+      </button>
+    </form>
+
+    <!-- Result -->
+    {% if result %}
+    <div class="max-w-3xl mx-auto mt-10 bg-[#fffdf8] border border-teal-200 rounded-xl shadow p-6">
+      <h2 class="text-teal-700 text-lg font-semibold mb-3">🧘 Here’s your organized structure:</h2>
+      <div id="organized-output" class="text-gray-700 whitespace-pre-line leading-relaxed text-sm">
+        {{ result }}
+      </div>
+
+      <div class="flex gap-3 mt-4">
+        <button onclick="copyOrganized()" class="bg-white border border-teal-500 text-teal-700 text-sm px-4 py-2 rounded-md hover:bg-teal-50 transition">📋 Copy</button>
+      </div>
+    </div>
+    {% endif %}
+
+    <script>
+      function copyOrganized() {
+        const text = document.getElementById('organized-output').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Copied to clipboard!');
+        });
+      }
+    </script>
+  </main>
+</body>
+</html>

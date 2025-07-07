@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brainstorm with Carmela</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f0fdfa; }
+  </style>
+</head>
+<body class="min-h-screen text-gray-800">
+
+  <header class="w-full px-6 py-4 flex justify-between items-center bg-white shadow">
+    <div class="text-lg font-semibold text-teal-700">Carmela AI</div>
+    <a href="{% url 'dashboard' %}" class="text-sm text-gray-500 hover:text-teal-600 transition">← Back to Dashboard</a>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-14">
+    <!-- Title -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-semibold text-gray-800 mb-1">🧠 Brainstorm with Carmela</h1>
+      <p class="text-gray-500 text-sm">Tell Carmela what you're working on and she'll sprinkle some ideas your way ✨</p>
+    </div>
+
+    <!-- Form -->
+    <form method="POST" class="bg-white rounded-xl shadow-md border border-teal-100 p-6 max-w-3xl mx-auto space-y-6">
+      {% csrf_token %}
+
+      <div>
+        <label class="block text-sm text-gray-600 mb-2">What are you working on?</label>
+        <input name="theme" type="text" placeholder="e.g. my new coaching program, email launch, personal brand" value="{{ theme }}" required class="w-full p-3 rounded-md border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-teal-400 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-600 mb-2">What do you need ideas for?</label>
+        <select name="idea_type" class="w-full p-3 rounded-md border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-teal-400 text-sm" required>
+          <option value="">Select a type</option>
+          <option value="Instagram reel ideas" {% if idea_type == 'Instagram reel ideas' %}selected{% endif %}>📱 Instagram Reels</option>
+          <option value="online course outlines" {% if idea_type == 'online course outlines' %}selected{% endif %}>🎓 Course Outlines</option>
+          <option value="podcast or product names" {% if idea_type == 'podcast or product names' %}selected{% endif %}>🎤 Podcast or Product Names</option>
+          <option value="event titles or campaign hashtags" {% if idea_type == 'event titles or campaign hashtags' %}selected{% endif %}>📢 Event Titles & Hashtags</option>
+          <option value="newsletter themes or hooks" {% if idea_type == 'newsletter themes or hooks' %}selected{% endif %}>📬 Newsletter Hooks</option>
+          <option value="launch bonuses or client gifts" {% if idea_type == 'launch bonuses or client gifts' %}selected{% endif %}>🎁 Bonuses & Gift Ideas</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition font-medium text-sm tracking-wide">
+        🌟 Spark Ideas
+      </button>
+    </form>
+
+    <!-- Results -->
+   
+    {% if result %}
+    <div class="max-w-3xl mx-auto mt-10 bg-[#fffdf8] border border-teal-200 rounded-xl shadow p-6">
+    <h2 class="text-teal-700 text-lg font-semibold mb-3">✨ Ideas from Carmela:</h2>
+    <div id="idea-output" class="text-gray-700 leading-relaxed text-sm space-y-4">
+        {% if idea_type == 'podcast or product names' %}
+          {% for line in result.splitlines %}
+            {% if line.strip %}
+              <form method="POST" action="{% url 'expand_podcast' %}">
+                {% csrf_token %}
+                <input type="hidden" name="title" value="{{ line|escape }}">
+                <button type="submit" class="...">
+                🎙️ <strong>{{ line|escape }}</strong><br>
+                <span class="text-xs text-gray-500">Click to expand into a full podcast episode ✨</span>
+                </button>
+
+              </form>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <pre class="whitespace-pre-line">{{ result }}</pre>
+        {% endif %}
+      </div>
+      
+    <p class="text-center text-xs text-gray-400 mt-4">🧪 idea_type: {{ idea_type }}</p>
+
+
+    <div class="flex flex-wrap gap-3 mt-4">
+        <button onclick="copyIdeas()" class="bg-white border border-teal-500 text-teal-700 text-sm px-4 py-2 rounded-md hover:bg-teal-50 transition">📋 Copy</button>
+
+        {% if idea_type == 'online course outlines' %}
+        <form method="POST" action="{% url 'expand_course' %}">
+        {% csrf_token %}
+        <input type="hidden" name="course_outline" value="{{ result|escape }}">
+        <button type="submit" class="bg-teal-600 text-white text-sm px-4 py-2 rounded-md hover:bg-teal-700 transition">
+            📚 Expand to Full Curriculum
+        </button>
+        </form>
+        {% endif %}
+
+        </div>
+    </div>
+    {% endif %}
+
+
+    <script>
+      function copyIdeas() {
+        const content = document.getElementById('idea-output').innerText;
+        navigator.clipboard.writeText(content).then(() => {
+          alert('Copied to clipboard!');
+        });
+      }
+    </script>
+  </main>
+</body>
+</html>

@@ -97,6 +97,16 @@ urlpatterns = [
     path('write/', writing_tool, name='writing_tool'),
     path('rewrite/', rewrite_tool, name='rewrite_tool'),
 
+    path('mindset/', mindset_tool, name='mindset_tool'),
+    path('brainstorm-tool/', brainstorm_tool, name='brainstorm_tool'),
+    path('organize-tool/', organize_tool, name='organize_tool'),
+    path('expand-course/', expand_course_outline, name='expand_course'),
+    path('expand-podcast/', expand_podcast, name='expand_podcast'),
+
+
+    path('mood-tracker/', mood_calendar, name='mood_calendar'),
+
+    path('update-language/', update_language, name='update_language'),
 
 
     path('api/chat/', chat_api, name='chat_api'),

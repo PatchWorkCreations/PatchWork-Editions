@@ -622,22 +622,70 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import JournalEntry
+from .models import JournalEntry, SoulThread
+
+# Alphabetically sorted language choices
+LANGUAGE_CHOICES = sorted([
+    ('sq', 'Albanian'), ('am', 'Amharic'), ('ar', 'Arabic'), ('hy', 'Armenian'),
+    ('bn', 'Bengali'), ('bs', 'Bosnian'), ('bg', 'Bulgarian'), ('my', 'Burmese'),
+    ('ca', 'Catalan'), ('zh', 'Chinese'), ('hr', 'Croatian'), ('cs', 'Czech'),
+    ('da', 'Danish'), ('nl', 'Dutch'), ('et', 'Estonian'), ('fi', 'Finnish'),
+    ('fr', 'French'), ('ka', 'Georgian'), ('de', 'German'), ('el', 'Greek'),
+    ('gu', 'Gujarati'), ('hi', 'Hindi'), ('hu', 'Hungarian'), ('is', 'Icelandic'),
+    ('id', 'Indonesian'), ('it', 'Italian'), ('ja', 'Japanese'), ('kn', 'Kannada'),
+    ('kk', 'Kazakh'), ('ko', 'Korean'), ('lv', 'Latvian'), ('lt', 'Lithuanian'),
+    ('mk', 'Macedonian'), ('ms', 'Malay'), ('ml', 'Malayalam'), ('mr', 'Marathi'),
+    ('mn', 'Mongolian'), ('no', 'Norwegian'), ('fa', 'Persian'), ('pl', 'Polish'),
+    ('pt', 'Portuguese'), ('pa', 'Punjabi'), ('ro', 'Romanian'), ('ru', 'Russian'),
+    ('sr', 'Serbian'), ('sk', 'Slovak'), ('sl', 'Slovenian'), ('so', 'Somali'),
+    ('es', 'Spanish'), ('sw', 'Swahili'), ('sv', 'Swedish'), ('tl', 'Tagalog'),
+    ('ta', 'Tamil'), ('te', 'Telugu'), ('th', 'Thai'), ('tr', 'Turkish'),
+    ('uk', 'Ukrainian'), ('ur', 'Urdu'), ('vi', 'Vietnamese'), ('en', 'English'),
+], key=lambda x: x[1])
 
 @login_required
 def dashboard(request):
     if request.method == 'POST':
-        mood = request.POST.get('mood')
-        if mood:
-            request.session['mood'] = mood
+        mood_raw = request.POST.get('mood')
+        if mood_raw:
+            mood = classify_mood(mood_raw)
+            JournalEntry.objects.create(
+                user=request.user,
+                mood=mood,
+                mood_raw=mood_raw
+            )
         return redirect('dashboard')
 
-    # Fetch user's journal entries (latest 10 for now)
+    # Retrieve recent journal entries
     journal_entries = JournalEntry.objects.filter(user=request.user).order_by('-created_at')[:10]
 
+    # Get or fallback preferred language
+    try:
+        soul = SoulThread.objects.get(user=request.user)
+        preferred_language = soul.preferred_language or 'en'
+    except SoulThread.DoesNotExist:
+        preferred_language = 'en'
+
     return render(request, 'ai/dashboard.html', {
-        'journal_entries': journal_entries
+        'journal_entries': journal_entries,
+        'preferred_language': preferred_language,
+        'language_choices': LANGUAGE_CHOICES  # 🔥 This was missing
     })
+
+
+from django.views.decorators.http import require_POST
+from django.shortcuts import redirect
+from .models import SoulThread
+
+@require_POST
+def update_language(request):
+    lang = request.POST.get('preferred_language', 'en')
+    if request.user.is_authenticated:
+        soul, created = SoulThread.objects.get_or_create(user=request.user)
+        soul.preferred_language = lang
+        soul.save()
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
+
 
 
 from django.shortcuts import redirect
@@ -652,70 +700,154 @@ def save_journal(request):
             JournalEntry.objects.create(user=request.user, entry=entry)
     return redirect('dashboard')  # or wherever your dashboard lives
 
+BASE_GREETINGS = {
+    'breathe': "Hey there! Let's take a deep breath 🍃 — in through the nose… hold… and exhale. Ready to begin?",
+    'boss': "Let’s get into it, boss 💼 Today’s a great day to take bold steps. What’s our first move?",
+    'heart': "I'm here for you 💜 Tell me what you're feeling or dreaming today ☺️",
+    'sparkle': "Hi there! Are you ready to spread some joy and get things done? ✨",
+    'default': "Hey there! I’m Carmela, your personal assistant. How’s your day going?"
+}
 
+
+
+
+
+import logging
+
+def translate_greeting(text, target_lang):
+    if target_lang == 'en':
+        return text  # No need to translate
+
+    try:
+        prompt = f"""
+You are Carmela, an emotionally intelligent and bubbly assistant.
+Your job is to translate *chatbot greetings* into the target language: **{target_lang}**.
+
+✨ Guidelines:
+- Make it **natural** for native speakers.
+- Keep it **emotionally warm**, **friendly**, and **casual**.
+- Use light, localized slang or expressions where appropriate.
+- Add emojis **only if** it enhances the tone.
+- Don't do literal word-for-word translation.
+
+💬 Message to translate:
+{text}
+""".strip()
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}]
+        )
+
+        return response.choices[0].message.content.strip()
+
+    except Exception as e:
+        logging.error(f"Translation failed: {e}")
+        return f"{text} [⚠️ Translation failed]"
+
+
+@login_required
 def chatbot(request):
-    return render(request, 'ai/chatbot.html')
+    mode = request.GET.get('mode', 'default')
+
+    try:
+        soul = SoulThread.objects.get(user=request.user)
+        preferred_lang = soul.preferred_language or 'en'
+    except SoulThread.DoesNotExist:
+        preferred_lang = 'en'
+
+    base_text = BASE_GREETINGS.get(mode, BASE_GREETINGS['default'])
+    greeting = translate_greeting(base_text, preferred_lang)
+
+    return render(request, 'ai/chatbot.html', {
+        'greeting': greeting,
+        'preferred_language': preferred_lang,
+        'mode': mode
+    })
+
 
 # views.py
 import os
 from dotenv import load_dotenv
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.html import strip_tags
 from openai import OpenAI
+from langdetect import detect
+from app.models import SoulThread  # 🔁 Update 'myapp' to your actual app name
+from django.contrib.auth.models import User
 
 # Load environment variables
 load_dotenv()
 
 # Initialize OpenAI client with API key from .env
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.html import strip_tags
 
 @csrf_exempt
 def chat_api(request):
     if request.method == 'POST':
+        user = request.user
         message = request.POST.get('message', '').strip()
         mode = request.POST.get('mode', 'breathe')
         mood = request.session.get('mood', 'calm')
 
+        # Detect input language (fallback to English)
+        try:
+            detected_lang = detect(message)
+        except:
+            detected_lang = 'en'
+
+        # Retrieve preferred language from SoulThread
+        try:
+            soul_thread = SoulThread.objects.get(user=user)
+            preferred_lang = soul_thread.preferred_language or 'en'
+        except SoulThread.DoesNotExist:
+            preferred_lang = 'en'
+
+        # Final language: English if detected, otherwise preferred
+        final_lang = 'en' if detected_lang == 'en' else preferred_lang
+
+        # Persona tone configuration
         persona_intro = {
             "breathe": "You're in Breathe & Be mode. Speak like a gentle breath coach and spiritual guide.",
             "boss": "You're in Strategist mode. Be a bold, strategic, yet kind coach helping users take focused action.",
             "heart": "You're in Confidant mode. Speak with soul, reflection, and emotional presence.",
             "sparkle": "You're in BFF mode. Be bubbly, joyful, and full of affirmations and emojis."
         }
+        persona_tone = persona_intro.get(mode, "You're a kind assistant.")
 
-        # Initialize or get existing chat history
+        # Build dynamic system instruction
+        system_instruction = f"""
+        You are Carmela, a joyful and intuitive assistant.
+        {persona_tone}
+
+        The user may speak different languages. Always reply in the language they’re using, 
+        or in their preferred language which is '{final_lang}' if unsure.
+
+        Make your responses warm, emotionally attuned, and breath-centered.
+        Gently reflect back the user's mood (current mood: '{mood}').
+        End each response with either a calming question or an encouraging reminder.
+        """
+
+        # Load chat history
         chat_history = request.session.get('chat_history', [])
 
-        # Inject system prompt once at the top
-        if not chat_history:
-            chat_history.append({
-                "role": "system",
-                "content": f"""
-                    You are Carmela, a joyful and intuitive assistant. 
-                    You speak with warmth, breath-centered presence, and emotional attunement.
-                    Current mood of the user: '{mood}'.
-                    {persona_intro.get(mode, '')}
-                    Always reflect back the user's emotional state with empathy and clarity.
-                    End your responses with a question or breath-based encouragement.
-                """
-            })
+        # Inject system message once
+        if not any(msg["role"] == "system" for msg in chat_history):
+            chat_history.insert(0, {"role": "system", "content": system_instruction.strip()})
 
-        # Add user message to history
+        # Add current user input
         chat_history.append({"role": "user", "content": message})
 
         try:
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
-                messages=chat_history[-10:]  # limit to last 10 for memory optimization
+                messages=chat_history[-10:]
             )
             ai_message = response.choices[0].message.content.strip()
 
-            # Save assistant reply
+            # Save response
             chat_history.append({"role": "assistant", "content": ai_message})
-
-            # Save updated history to session
             request.session['chat_history'] = chat_history
 
             return JsonResponse({'response': ai_message})
@@ -815,6 +947,218 @@ def rewrite_tool(request):
         'tone': tone
     })
 
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from openai import OpenAI
+
+client = OpenAI()
+
+@login_required
+def mindset_tool(request):
+    result = {}
+    mood = None
+
+    if request.method == 'POST':
+        mood = request.POST.get('mood')
+        mood_map = {
+            'launch': "I have an exciting launch coming up and I need courage, clarity, and calm.",
+            'rejection': "I just experienced rejection and I'm feeling discouraged. I need encouragement and perspective.",
+            'imposter': "I'm feeling imposter syndrome—doubting my worth or readiness.",
+            'overwhelmed': "I'm overwhelmed and need help grounding and resetting.",
+            'celebration': "I did something brave today and I want to reflect and celebrate gently."
+        }
+
+        user_context = mood_map.get(mood, "I need a mindset boost.")
+        system_prompt = (
+            "You are a warm, reflective, and soulful guide named Carmela.\n"
+            "For the situation described by the user, provide:\n"
+            "1. A heartfelt affirmation\n"
+            "2. A thoughtful journaling prompt\n"
+            "3. A breathwork or nervous system reset suggestion\n"
+            "Respond in this format:\n"
+            "💬 Affirmation: ...\n"
+            "📝 Journaling Prompt: ...\n"
+            "🌬️ Breath Suggestion: ..."
+        )
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_context}
+            ]
+        )
+
+        ai_reply = response.choices[0].message.content.strip()
+
+        # Optional: parse into sections for styling (split by emoji)
+        parts = {
+            'affirmation': '',
+            'prompt': '',
+            'breath': ''
+        }
+        for line in ai_reply.split('\n'):
+            if '💬' in line:
+                parts['affirmation'] = line.replace('💬 Affirmation: ', '').strip()
+            elif '📝' in line:
+                parts['prompt'] = line.replace('📝 Journaling Prompt: ', '').strip()
+            elif '🌬️' in line:
+                parts['breath'] = line.replace('🌬️ Breath Suggestion: ', '').strip()
+
+        result = parts
+
+    return render(request, 'ai/mindset_tool.html', {
+        'result': result,
+        'mood': mood
+    })
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from openai import OpenAI
+
+client = OpenAI()
+
+@login_required
+def brainstorm_tool(request):
+    result = None
+    theme = ''
+    idea_type = ''
+
+    if request.method == 'POST':
+        theme = request.POST.get('theme')
+        idea_type = request.POST.get('idea_type', '').strip().lower()
+
+
+        if theme and idea_type:
+            system_prompt = (
+                f"You are Carmela, a playful yet strategic brainstorming assistant who helps solopreneurs, coaches, and creatives spark bold ideas.\n"
+                f"Based on the user's goal or theme, generate fresh and soulful {idea_type} ideas.\n"
+                f"Respond with a creative but aligned tone, using short and punchy bullets. Avoid fluff.\n"
+            )
+
+            user_prompt = f"I'm working on: {theme}. I need {idea_type} ideas."
+
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ]
+            )
+
+            result = response.choices[0].message.content.strip()
+
+    return render(request, 'ai/brainstorm_tool.html', {
+        'result': result,
+        'theme': theme,
+        'idea_type': idea_type
+    })
+
+@login_required
+def expand_course_outline(request):
+    outline = request.POST.get('course_outline', '')
+
+    if outline:
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": (
+                    "You are Carmela, a warm and strategic course design assistant. "
+                    "Expand the outline into a full curriculum. Each week should include a title, lesson objectives, optional activities or tools, and a warm, empowering tone."
+                )},
+                {"role": "user", "content": outline}
+            ]
+        )
+        full_text = response.choices[0].message.content.strip()
+        sections = full_text.split('\n\n')  # ✅ Split in Python
+    else:
+        full_text = "No outline provided."
+        sections = [full_text]
+
+    return render(request, 'ai/expanded_course.html', {
+        'expanded_result': full_text,
+        'sections': sections,
+        'original_outline': outline
+    })
+
+
+from django.views.decorators.csrf import csrf_exempt
+from openai import OpenAI
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+client = OpenAI()
+
+@login_required
+def expand_podcast(request):
+    title = request.POST.get('title', '')
+    episode = ''
+    
+    if title:
+        system_msg = (
+            f"You are a podcast producer. Create a full podcast episode outline and script "
+            f"based on the title: '{title}'. Include the hook, intro, segment breakdown, key points, and a gentle outro."
+        )
+
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": title}
+            ]
+        )
+        episode = response.choices[0].message.content.strip()
+
+    return render(request, 'ai/podcast_builder.html', {
+        'title': title,
+        'episode': episode
+    })
+
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from openai import OpenAI
+
+client = OpenAI()
+
+@login_required
+def organize_tool(request):
+    result = None
+    raw_notes = ''
+    goal = ''
+
+    if request.method == 'POST':
+        raw_notes = request.POST.get('notes')
+        goal = request.POST.get('goal')
+
+        if raw_notes and goal:
+            system_prompt = (
+                f"You are Carmela, a gentle but strategic organizing assistant. Help the user turn their scattered thoughts into a structured {goal}.\n"
+                f"Be warm, clear, and organized. Use headings and bullet points. Make the user feel grounded and empowered."
+            )
+
+            user_prompt = f"Here are my raw notes:\n{raw_notes}"
+
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ]
+            )
+
+            result = response.choices[0].message.content.strip()
+
+    return render(request, 'ai/organize_tool.html', {
+        'result': result,
+        'notes': raw_notes,
+        'goal': goal
+    })
+
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from openai import OpenAI
@@ -852,3 +1196,100 @@ def chatbot_response(request):
 
         except Exception as e:
             return JsonResponse({'reply': f'Sorry, an error occurred: {str(e)}'})
+
+
+
+
+
+from openai import OpenAI
+import os
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+def classify_mood(raw_text):
+    categories = ["Calm", "Anxious", "Tired", "Hopeful", "Joyful", "Overwhelmed", "Sad", "Excited", "Angry"]
+    prompt = f"""Classify the mood described below into one of the following:
+{', '.join(categories)}.
+
+Mood description: "{raw_text}"
+Only return the category name."""
+
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful mood classifier."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    return response.choices[0].message.content.strip()
+
+
+from .models import JournalEntry
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
+
+@login_required
+def save_mood(request):
+    if request.method == 'POST':
+        mood_raw = request.POST.get('mood')
+        mood = classify_mood(mood_raw)
+
+        JournalEntry.objects.create(
+            user=request.user,
+            mood_raw=mood_raw,
+            mood=mood,
+        )
+
+        return redirect('dashboard')
+    
+
+from django.utils.timezone import now, timedelta
+from django.contrib.auth.decorators import login_required
+from .models import JournalEntry
+from django.shortcuts import render
+import json
+
+@login_required
+def mood_calendar(request):
+    entries = JournalEntry.objects.filter(user=request.user)
+    
+    # Full calendar data
+    mood_data = [
+        {
+            "date": entry.created_at.strftime('%Y-%m-%d'),
+            "mood": entry.mood,
+            "emoji": mood_to_emoji(entry.mood),
+            "note": entry.entry or "",
+        }
+        for entry in entries
+    ]
+
+    # Weekly mood count
+    last_week = now() - timedelta(days=7)
+    recent = entries.filter(created_at__gte=last_week)
+
+    mood_counts = {}
+    for e in recent:
+        mood_counts[e.mood] = mood_counts.get(e.mood, 0) + 1
+
+    context = {
+        "mood_data": mood_data,
+        "mood_counts": json.dumps(mood_counts),  # for JS
+    }
+
+    return render(request, "ai/mood_calendar.html", context)
+
+def mood_to_emoji(mood):
+    mood_map = {
+        "Calm": "😌",
+        "Anxious": "😰",
+        "Tired": "🥱",
+        "Hopeful": "🌈",
+        "Joyful": "😄",
+        "Overwhelmed": "😩",
+        "Sad": "😢",
+        "Excited": "🤩",
+        "Angry": "😠",
+    }
+    return mood_map.get(mood.capitalize(), "📝")
+

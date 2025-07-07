@@ -50,6 +50,45 @@
     from { transform: rotateY(0deg); }
     to   { transform: rotateY(360deg); }
   }
+
+  .heartbeat {
+  position: relative;
+  z-index: 1;
+}
+
+.heartbeat::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #0f766e;
+  opacity: 0.2;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%) scale(1);
+  animation: calmAura 2.4s ease-out infinite;
+  filter: blur(10px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes calmAura {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.25;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+  
   </style>
   
 <body class="bg-gradient-to-b from-[#e6fdfc] to-[#ccf5f2] text-gray-700 font-sans">
@@ -75,9 +114,11 @@
     <p class="text-lg sm:text-xl text-gray-600 max-w-xl">
       A breath-first sidekick designed to help you reset, refocus, and get things done — with purpose.
     </p>
-    <a href="{% url 'login' %}" class="mt-8 px-6 py-3 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition">
+    <a href="{% url 'login' %}" class="mt-8 px-6 py-3 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition relative heartbeat">
       Let's Breathe Together
     </a>
+    
+    
   </section>
   
   

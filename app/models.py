@@ -46,13 +46,77 @@ class Blog(models.Model):
         return self.title
 
 
-from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.auth.models import User
+
+LANGUAGE_CHOICES = [
+    ('sq', 'Albanian'),
+    ('am', 'Amharic'),
+    ('ar', 'Arabic'),
+    ('hy', 'Armenian'),
+    ('bn', 'Bengali'),
+    ('bs', 'Bosnian'),
+    ('bg', 'Bulgarian'),
+    ('my', 'Burmese'),
+    ('ca', 'Catalan'),
+    ('zh', 'Chinese'),
+    ('hr', 'Croatian'),
+    ('cs', 'Czech'),
+    ('da', 'Danish'),
+    ('nl', 'Dutch'),
+    ('et', 'Estonian'),
+    ('fi', 'Finnish'),
+    ('fr', 'French'),
+    ('ka', 'Georgian'),
+    ('de', 'German'),
+    ('el', 'Greek'),
+    ('gu', 'Gujarati'),
+    ('hi', 'Hindi'),
+    ('hu', 'Hungarian'),
+    ('is', 'Icelandic'),
+    ('id', 'Indonesian'),
+    ('it', 'Italian'),
+    ('ja', 'Japanese'),
+    ('kn', 'Kannada'),
+    ('kk', 'Kazakh'),
+    ('ko', 'Korean'),
+    ('lv', 'Latvian'),
+    ('lt', 'Lithuanian'),
+    ('mk', 'Macedonian'),
+    ('ms', 'Malay'),
+    ('ml', 'Malayalam'),
+    ('mr', 'Marathi'),
+    ('mn', 'Mongolian'),
+    ('no', 'Norwegian'),
+    ('fa', 'Persian'),
+    ('pl', 'Polish'),
+    ('pt', 'Portuguese'),
+    ('pa', 'Punjabi'),
+    ('ro', 'Romanian'),
+    ('ru', 'Russian'),
+    ('sr', 'Serbian'),
+    ('sk', 'Slovak'),
+    ('sl', 'Slovenian'),
+    ('so', 'Somali'),
+    ('es', 'Spanish'),
+    ('sw', 'Swahili'),
+    ('sv', 'Swedish'),
+    ('tl', 'Tagalog'),
+    ('ta', 'Tamil'),
+    ('te', 'Telugu'),
+    ('th', 'Thai'),
+    ('tr', 'Turkish'),
+    ('uk', 'Ukrainian'),
+    ('ur', 'Urdu'),
+    ('vi', 'Vietnamese'),
+    ('en', 'English'),  # fallback/default
+]
 
 class SoulThread(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mood = models.CharField(max_length=100, blank=True, null=True)
     preferred_mode = models.CharField(max_length=20, default='boss')
+    preferred_language = models.CharField(max_length=10, choices=LANGUAGE_CHOICES, default='en')
     last_prompt = models.TextField(blank=True, null=True)
     last_response = models.TextField(blank=True, null=True)
     insights = models.TextField(blank=True, null=True)
@@ -68,6 +132,8 @@ from django.contrib.auth.models import User
 class JournalEntry(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     entry = models.TextField()
+    mood = models.CharField(max_length=100, blank=True, null=True)  # AI-classified mood
+    mood_raw = models.CharField(max_length=255, blank=True, null=True)  # User input
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
