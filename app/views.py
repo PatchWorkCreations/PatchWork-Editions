@@ -841,7 +841,7 @@ def chat_api(request):
 
         try:
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=chat_history[-10:]
             )
             ai_message = response.choices[0].message.content.strip()
@@ -884,7 +884,7 @@ def writing_tool(request):
         system_msg = role_map.get(writing_type, role_map['email'])
 
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": system_msg},
                 {"role": "user", "content": prompt}
@@ -933,7 +933,7 @@ def rewrite_tool(request):
             system_msg = tone_map.get(tone, 'Rewrite the text in a clearer tone.')
 
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[
                     {"role": "system", "content": system_msg},
                     {"role": "user", "content": prompt}
@@ -1103,7 +1103,7 @@ def expand_podcast(request):
         )
 
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": system_msg},
                 {"role": "user", "content": title}
@@ -1177,7 +1177,7 @@ def chatbot_response(request):
                 return JsonResponse({'reply': 'No message provided.'})
 
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[
                     {
                         "role": "system",
@@ -1215,7 +1215,7 @@ Mood description: "{raw_text}"
 Only return the category name."""
 
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a helpful mood classifier."},
             {"role": "user", "content": prompt}
