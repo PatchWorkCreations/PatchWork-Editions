@@ -1394,12 +1394,64 @@ def expand_podcast(request):
     })
 
 
-
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from openai import OpenAI
 
 client = OpenAI()
+
+def get_prompt_for_goal(goal):
+    if goal == 'content calendar':
+        return (
+            "You are a content strategist. Organize the input into a clear content calendar:\n"
+            "- Use week headers (e.g., Week 1: July 1–5)\n"
+            "- Dates as subheadings (e.g., July 1)\n"
+            "- Bullet points for tasks\n"
+            "- Use → for extra notes\n"
+            "- Do NOT format using markdown, emojis, or HTML"
+        )
+    elif goal == 'blog post':
+        return (
+            "You're a professional blog editor. Turn the notes into a clean outline:\n"
+            "- Suggest a title\n"
+            "- Write a 1–2 line intro\n"
+            "- Add 3–6 section headings with 2–3 bullets each\n"
+            "- Conclude with a takeaway idea\n"
+            "- No markdown, no formatting syntax"
+        )
+    elif goal == 'launch plan':
+        return (
+            "You’re a launch strategist. Create a phased launch plan:\n"
+            "- Break into sections like Pre-launch, Launch Week, Post-launch\n"
+            "- Use bullet points for each phase\n"
+            "- Include notes using → when needed"
+        )
+    elif goal == 'course roadmap':
+        return (
+            "You’re an instructional designer. Create a course roadmap:\n"
+            "- Suggest a course title\n"
+            "- Break into weeks or modules\n"
+            "- List 2–3 lessons per module\n"
+            "- Use → for optional notes"
+        )
+    elif goal == 'email sequence':
+        return (
+            "You're an email strategist. Build a 3–5 step email sequence:\n"
+            "- Email 1, Email 2, etc.\n"
+            "- Subject lines + short summaries\n"
+            "- Keep tone warm and helpful"
+        )
+    elif goal == 'goal breakdown':
+        return (
+            "You're a clarity coach. Break the big goal into steps:\n"
+            "- Start with the goal rephrased clearly\n"
+            "- List 3–5 key steps\n"
+            "- Add subtasks with → when needed"
+        )
+    else:
+        return (
+            "Organize this content into a clear, logical structure using bullet points and simple headings. No formatting syntax."
+        )
 
 @login_required
 def organize_tool(request):
@@ -1408,22 +1460,17 @@ def organize_tool(request):
     goal = ''
 
     if request.method == 'POST':
-        raw_notes = request.POST.get('notes')
-        goal = request.POST.get('goal')
+        raw_notes = request.POST.get('notes', '').strip()
+        goal = request.POST.get('goal', '').strip()
 
         if raw_notes and goal:
-            system_prompt = (
-                f"You are Carmela, a gentle but strategic organizing assistant. Help the user turn their scattered thoughts into a structured {goal}.\n"
-                f"Be warm, clear, and organized. Use headings and bullet points. Make the user feel grounded and empowered."
-            )
-
-            user_prompt = f"Here are my raw notes:\n{raw_notes}"
+            system_prompt = get_prompt_for_goal(goal)
 
             response = client.chat.completions.create(
                 model="gpt-4",
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
+                    {"role": "user", "content": raw_notes}
                 ]
             )
 
@@ -1434,6 +1481,7 @@ def organize_tool(request):
         'notes': raw_notes,
         'goal': goal
     })
+
 
 
 from django.http import JsonResponse

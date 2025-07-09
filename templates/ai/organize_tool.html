@@ -61,6 +61,7 @@
       <div id="organized-output" class="text-gray-700 whitespace-pre-line leading-relaxed text-sm">
         {{ result }}
       </div>
+      
 
       <div class="flex gap-3 mt-4">
         <button onclick="copyOrganized()" class="bg-white border border-teal-500 text-teal-700 text-sm px-4 py-2 rounded-md hover:bg-teal-50 transition">📋 Copy</button>
@@ -75,6 +76,94 @@
           alert('Copied to clipboard!');
         });
       }
+      document.addEventListener('DOMContentLoaded', () => {
+    const outputDiv = document.getElementById('organized-output');
+    if (!outputDiv) return;
+
+    // 🔹 Clean Markdown Function
+    document.addEventListener('DOMContentLoaded', () => {
+  const outputDiv = document.getElementById('organized-output');
+  if (!outputDiv) return;
+
+  function cleanMarkdown(text) {
+    return text
+      .replace(/[*_#`]+/g, '') // Strip markdown symbols
+      .replace(/\s{2,}/g, ' ') // Excessive spaces
+      .trim();
+  }
+
+  const rawText = cleanMarkdown(outputDiv.innerText);
+  const lines = rawText.split('\n');
+
+  let html = '';
+  let currentModule = '';
+  let insideList = false;
+
+  lines.forEach((line, i) => {
+    line = line.trim();
+
+    // New module title
+    if (line.toLowerCase().startsWith('module')) {
+      // Close previous card if needed
+      if (currentModule) html += '</div></div></details>';
+      currentModule = line;
+
+      html += `
+        <details open class="mb-4 border border-teal-200 rounded-lg bg-white shadow-sm overflow-hidden group">
+          <summary class="cursor-pointer px-4 py-3 bg-teal-50 hover:bg-teal-100 text-teal-700 font-semibold text-base transition">
+            📦 ${line}
+          </summary>
+          <div class="px-6 py-4 text-sm text-gray-700 space-y-3">
+      `;
+    }
+
+    // Week line
+    else if (line.startsWith('Week')) {
+      html += `<div class="font-medium text-gray-800">${line}</div>`;
+    }
+
+    // Bullet point
+    else if (line.startsWith('-')) {
+      const item = line.slice(1).trim();
+      html += `<ul class="list-disc ml-6 text-sm"><li>${item}</li></ul>`;
+    }
+
+    // Optional notes
+    else if (line.startsWith('→')) {
+      const note = line.slice(1).trim();
+      html += `<div class="ml-8 text-gray-500 text-xs">↳ ${note}</div>`;
+    }
+
+    // Section headers
+    else if (
+      line.toLowerCase().includes('brainstorm') ||
+      line.toLowerCase().includes('timeline') ||
+      line.toLowerCase().includes('notes') ||
+      line.toLowerCase().includes('components') ||
+      line.toLowerCase().includes('title')
+    ) {
+      html += `<h3 class="text-teal-600 font-semibold mt-6">${line}</h3>`;
+    }
+
+    // Spacer
+    else if (line === '') {
+      html += '<br>';
+    }
+
+    // Default content
+    else {
+      html += `<div>${line}</div>`;
+    }
+  });
+
+  // Close last card if needed
+  if (currentModule) {
+    html += '</div></div></details>';
+  }
+
+  outputDiv.innerHTML = html;
+});
+
     </script>
   </main>
 </body>
