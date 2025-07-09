@@ -1,58 +1,95 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <header class="w-full px-6 py-4 bg-white shadow-md">
-    <div class="flex items-center justify-between">
-      <!-- Brand -->
-      <a href="{% url 'dashboard' %}" class="text-lg font-bold text-teal-700 hover:text-teal-800 transition">
-        🌼 Carmela AI
+  <div class="flex items-center justify-between">
+    <!-- Logo -->
+    <a href="{% url 'dashboard' %}" class="text-lg font-bold text-teal-700 hover:text-teal-800 transition">
+      🌼 Carmela AI
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="{% url 'mood_calendar' %}" class="text-gray-600 hover:text-teal-600 transition">Mood Calendar</a>
+      <a href="{% url 'chat' %}" class="text-gray-600 hover:text-teal-600 transition">Talk to Carmela</a>
+
+      <!-- Language Dropdown -->
+      <form method="POST" action="{% url 'update_language' %}" class="flex items-center">
+        {% csrf_token %}
+        <label for="language-select" class="sr-only">Preferred Language</label>
+        <select
+          id="language-select"
+          name="preferred_language"
+          onchange="this.form.submit()"
+          class="text-sm border rounded px-2 py-1 bg-white text-gray-700"
+        >
+          {% for code, name in language_choices %}
+            <option value="{{ code }}" {% if preferred_language == code %}selected{% endif %}>
+              {{ name }}
+            </option>
+          {% endfor %}
+        </select>
+      </form>
+
+      <a href="{% url 'logout' %}" class="px-4 py-1.5 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition">
+        Logout
       </a>
-  
-      <!-- Hamburger Button -->
-      <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
-        <i class="fas fa-bars text-xl"></i>
-      </button>
-    </div>
-  
-    <!-- Navigation Menu -->
-    <nav id="menu" class="mt-4 md:mt-0 md:flex md:items-center md:justify-between hidden md:flex-row gap-4 text-sm">
-      <div class="flex flex-col md:flex-row md:items-center gap-4">
-        <a href="{% url 'mood_calendar' %}" class="text-gray-600 hover:text-teal-600 transition">Mood Calendar</a>
-        <a href="{% url 'chat' %}" class="text-gray-600 hover:text-teal-600 transition">Talk to Carmela</a>
-      </div>
-  
-      <div class="flex flex-col md:flex-row md:items-center gap-4 mt-2 md:mt-0">
-        <!-- Language Selector -->
-        <form method="POST" action="{% url 'update_language' %}" class="flex items-center">
-          {% csrf_token %}
-          <label for="language-select" class="sr-only">Preferred Language</label>
-          <select
-            id="language-select"
-            name="preferred_language"
-            onchange="this.form.submit()"
-            class="text-sm border rounded px-2 py-1 bg-white text-gray-700"
-          >
-            {% for code, name in language_choices %}
-              <option value="{{ code }}" {% if preferred_language == code %}selected{% endif %}>
-                {{ name }}
-              </option>
-            {% endfor %}
-          </select>
-        </form>
-  
-        <a href="{% url 'logout' %}" class="px-4 py-1.5 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition">
-          Logout
-        </a>
-      </div>
     </nav>
-  </header>
-  
-  <!-- Script for Hamburger Toggle -->
-  <script>
-    const toggleBtn = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-  
-    toggleBtn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-  </script>
-  
+
+    <!-- Hamburger -->
+    <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Overlay Menu -->
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-40 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+  <div class="p-6 space-y-6">
+    <a href="{% url 'mood_calendar' %}" class="block text-gray-700 hover:text-teal-600 transition">Mood Calendar</a>
+    <a href="{% url 'chat' %}" class="block text-gray-700 hover:text-teal-600 transition">Talk to Carmela</a>
+
+    <!-- Language Selector -->
+    <form method="POST" action="{% url 'update_language' %}" class="block">
+      {% csrf_token %}
+      <label for="mobile-language" class="text-gray-600 text-sm block mb-1">Language</label>
+      <select
+        id="mobile-language"
+        name="preferred_language"
+        onchange="this.form.submit()"
+        class="w-full border rounded px-2 py-1 bg-white text-sm text-gray-700"
+      >
+        {% for code, name in language_choices %}
+          <option value="{{ code }}" {% if preferred_language == code %}selected{% endif %}>
+            {{ name }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+
+    <a href="{% url 'logout' %}" class="block w-full text-center mt-4 px-4 py-2 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition">
+      Logout
+    </a>
+  </div>
+</div>
+
+<!-- Overlay Background -->
+<div id="overlay-bg" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden md:hidden"></div>
+
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('overlay-bg');
+
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = menu.classList.contains('translate-x-0');
+    menu.classList.toggle('translate-x-0');
+    menu.classList.toggle('translate-x-full');
+    overlay.classList.toggle('hidden');
+  });
+
+  overlay.addEventListener('click', () => {
+    menu.classList.remove('translate-x-0');
+    menu.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  });
+</script>
